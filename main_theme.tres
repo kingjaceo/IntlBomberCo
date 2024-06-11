@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://twbyj3fev8td"]
+
+[resource]
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 8
+Label/constants/shadow_outline_size = 1
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8

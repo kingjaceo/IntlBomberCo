@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://yoo2ao845o6"]
+
+[ext_resource type="Script" path="res://unused/following_camera.gd" id="1_603fv"]
+
+[node name="FollowingCamera" type="Camera2D"]
+script = ExtResource("1_603fv")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlo6uvbuoa4km"]
+
+[ext_resource type="Script" path="res://ui/inventory_display.gd" id="1_843lv"]
+[ext_resource type="PackedScene" uid="uid://qogj43l328gl" path="res://ui/inventory_button.tscn" id="2_vacms"]
+
+[node name="InventoryDisplay" type="HBoxContainer"]
+offset_left = -176.0
+offset_top = -96.0
+offset_right = 216.0
+offset_bottom = 32.0
+script = ExtResource("1_843lv")
+inventory_button = ExtResource("2_vacms")

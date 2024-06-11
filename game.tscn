@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bad2i7hengnt5"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_mbofm"]
+[ext_resource type="PackedScene" uid="uid://cs08dwnrlb8sc" path="res://scenes/start_menu.tscn" id="2_mtt2o"]
+[ext_resource type="Resource" uid="uid://dm8rrjo4uf2f3" path="res://game_data.tres" id="2_t1aqk"]
+[ext_resource type="PackedScene" uid="uid://65ocxmwtyspx" path="res://ui/pause_menu.tscn" id="4_jnvtl"]
+
+[node name="Game" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_mbofm")
+game_data = ExtResource("2_t1aqk")
+
+[node name="StartMenu" parent="." instance=ExtResource("2_mtt2o")]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_jnvtl")]
+unique_name_in_owner = true
+visible = false
+layout_direction = 1
+
+[connection signal="main_menu_selected" from="CanvasLayer/PauseMenu" to="." method="_transition_to_main_menu"]

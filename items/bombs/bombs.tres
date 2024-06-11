@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GameStat" load_steps=2 format=3 uid="uid://blg6qmqks8rp3"]
+
+[ext_resource type="Script" path="res://items/game_stat.gd" id="1_ksmhb"]
+
+[resource]
+script = ExtResource("1_ksmhb")
+name = "Bombs"
+amount = 10.0
+capacity = inf
+cost = 100.0

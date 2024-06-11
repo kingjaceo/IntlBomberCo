@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Contract" load_steps=2 format=3 uid="uid://bgnko4pqpa1eg"]
+
+[ext_resource type="Script" path="res://contracts/contract.gd" id="1_m5s17"]
+
+[resource]
+script = ExtResource("1_m5s17")
+name = "Destroy 1 Building"
+description = "We need you to test a new bomb."
+amount = 1000.0
+reward = 10000.0

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://iglvsx4ixo45"]
+
+[ext_resource type="PackedScene" uid="uid://odiu4yktqh6t" path="res://city.tscn" id="1_nkstb"]
+[ext_resource type="Script" path="res://main.gd" id="1_wwgvm"]
+[ext_resource type="PackedScene" uid="uid://thons4d02mrv" path="res://cargo_plane.tscn" id="2_lde4l"]
+[ext_resource type="Script" path="res://reset.gd" id="3_kqsth"]
+[ext_resource type="Script" path="res://drop_bomb_button.gd" id="4_jusja"]
+[ext_resource type="Script" path="res://bombs_label.gd" id="5_ds8w6"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_wwgvm")
+
+[node name="City" parent="." instance=ExtResource("1_nkstb")]
+
+[node name="CargoPlane" parent="." instance=ExtResource("2_lde4l")]
+unique_name_in_owner = true
+position = Vector2(4, 262)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Reset" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Reset
+"
+script = ExtResource("3_kqsth")
+
+[node name="Bomb" type="Button" parent="CanvasLayer"]
+offset_top = 37.0
+offset_right = 97.0
+offset_bottom = 68.0
+text = "Drop Bomb
+"
+script = ExtResource("4_jusja")
+
+[node name="Bombs" type="Label" parent="CanvasLayer"]
+offset_left = 104.0
+offset_top = 43.0
+offset_right = 203.0
+offset_bottom = 66.0
+text = "Bombs: 1000
+"
+script = ExtResource("5_ds8w6")

@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://iglvsx4ixo45"]
+
+[ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_wesgq"]
+[ext_resource type="PackedScene" uid="uid://5fk7lukuw2lg" path="res://scenes/company_page.tscn" id="2_d0i5a"]
+[ext_resource type="PackedScene" uid="uid://odiu4yktqh6t" path="res://scenes/level/city.tscn" id="3_2urlf"]
+[ext_resource type="PackedScene" uid="uid://thons4d02mrv" path="res://scenes/level/cargo_plane.tscn" id="4_qu3ay"]
+[ext_resource type="Script" path="res://reset.gd" id="5_mv288"]
+[ext_resource type="PackedScene" uid="uid://dlo6uvbuoa4km" path="res://ui/inventory_display.tscn" id="6_hqf1s"]
+
+[node name="Level" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_wesgq")
+transition_scene = ExtResource("2_d0i5a")
+
+[node name="City" parent="." instance=ExtResource("3_2urlf")]
+unique_name_in_owner = true
+
+[node name="CargoPlane" parent="." instance=ExtResource("4_qu3ay")]
+unique_name_in_owner = true
+position = Vector2(-52, 258)
+
+[node name="Camera2D" type="Camera2D" parent="CargoPlane"]
+
+[node name="LevelUI" type="CanvasLayer" parent="."]
+
+[node name="Reset" type="Button" parent="LevelUI"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Reset
+"
+script = ExtResource("5_mv288")
+metadata/_edit_use_anchors_ = true
+
+[node name="CompanyPage" type="Button" parent="LevelUI"]
+offset_left = 1.0
+offset_top = 39.0
+offset_right = 124.0
+offset_bottom = 70.0
+text = "Company Page
+"
+
+[node name="Inventory" parent="LevelUI" instance=ExtResource("6_hqf1s")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="pressed" from="LevelUI/CompanyPage" to="." method="_transition"]
