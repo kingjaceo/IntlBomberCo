@@ -17,22 +17,25 @@ func _ready():
 	description_label.text = contract.description
 	amount.text = str(contract.upfront_reward)
 	reward.text = str(contract.completion_reward)
+	button.text = "Accept"
 	
 	if contract.accepted:
-		_on_accept()
+		_show_accepted()
 	else:
-		button.text = "Accept"
 		button.pressed.connect(_on_accept)
-		
 	if contract.completed:
 		button.disabled = false
 
 
 func _on_accept():
-	button.text = "Complete"
-	button.disabled = true
+	_show_accepted()
 	contract.activate()
 	button.pressed.disconnect(_on_accept)
+
+
+func _show_accepted():
+	button.text = "Complete"
+	button.disabled = true
 	button.pressed.connect(_on_complete)
 	progress_label.text = contract.progress + "\n\n"
 	accepted.emit()

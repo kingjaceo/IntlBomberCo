@@ -3,7 +3,6 @@ extends Control
 
 @export var step_name: String
 @export var step_number: int
-@onready var moving_element = get_child(0)
 signal step_finished
 
 

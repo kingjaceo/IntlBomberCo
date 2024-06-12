@@ -124,6 +124,5 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[connection signal="accepted" from="UILayer/MarginContainer/Page/Columns/Contracts/ShopColumn/ContractPanel" to="UILayer/MarginContainer/Page/Columns/Contracts/ShopColumn/ContractPanel/TutorialStep" method="_on_trigger"]
 [connection signal="pressed" from="UILayer/MarginContainer/Page/Launch Mission" to="." method="_transition"]
 [connection signal="pressed" from="UILayer/MarginContainer/Page/Launch Mission" to="UILayer/MarginContainer/Page/Launch Mission/TutorialStep" method="_on_trigger"]
