@@ -3,11 +3,12 @@ extends Resource
 
 
 @export var name: String
-@export var amount: float:
-	set(value):
-		amount = min(capacity, value)
-		amount_changed.emit()
-@export var capacity: float = INF
-@export var cost: float
+@export var value: float:
+	set(new_value):
+		value = min(new_value, max_value)
+		value_changed.emit()
+@export var max_value: float = INF
+@export var step_size: float
+@export var step_cost: float
 
-signal amount_changed
+signal value_changed

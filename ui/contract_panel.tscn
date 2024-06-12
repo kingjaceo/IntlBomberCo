@@ -37,6 +37,14 @@ text = "Contract Description
 
 "
 
+[node name="Progress" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "
+
+"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 

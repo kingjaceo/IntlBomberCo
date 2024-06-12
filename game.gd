@@ -1,3 +1,4 @@
+class_name Game
 extends Node2D
 
 @onready var pause_menu = %PauseMenu
@@ -9,6 +10,7 @@ var current_scene: Node2D
 
 func _ready():
 	Global.game_data = game_data
+	
 	current_scene = start_menu
 	start_menu.transitioned_to.connect(_transition_to)
 
@@ -16,6 +18,7 @@ func _ready():
 func _transition_to(scene: PackedScene):
 	await get_tree().process_frame
 	if current_scene != scene:
+		Tutorial.current_step = 0
 		current_scene.queue_free()
 		pause_menu.hide()
 		var new_scene = scene.instantiate()

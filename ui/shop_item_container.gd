@@ -20,9 +20,15 @@ func _ready():
 	game_item.amount_changed.connect(update)
 	item_buy_button.pressed.connect(increase)
 
+	var first_stat = true
 	for item_stat in game_item.item_stats:
 		var line = shop_item_line.instantiate()
 		line.item_stat = item_stat
+		if not has_node("TutorialStep") or not first_stat:
+			line.get_node("TutorialStep").free()
+		#elif not first_stat and line.has_node("TutorialStep"):
+			#line.get_node("TutorialStep").queue_free()
+		first_stat = false
 		item_stat_container.add_child(line)
 
 

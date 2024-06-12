@@ -7,21 +7,37 @@ extends PanelContainer
 @onready var button = %Button
 @onready var contract_name_label = %ContractName
 @onready var description_label = %Description
+@onready var progress_label = %Progress
+
+signal accepted
 
 
 func _ready():
 	contract_name_label.text = contract.name
 	description_label.text = contract.description
-	amount.text = Utility.format_money(contract.amount)
-	reward.text = Utility.format_money(contract.reward)
-	button.pressed.connect(_on_accept)
+	amount.text = str(contract.upfront_reward)
+	reward.text = str(contract.completion_reward)
+	
+	if contract.accepted:
+		_on_accept()
+	else:
+		button.text = "Accept"
+		button.pressed.connect(_on_accept)
+		
+	if contract.completed:
+		button.disabled = false
+
 
 func _on_accept():
 	button.text = "Complete"
-	contract.accepted = true
+	button.disabled = true
+	contract.activate()
 	button.pressed.disconnect(_on_accept)
 	button.pressed.connect(_on_complete)
+	progress_label.text = contract.progress + "\n\n"
+	accepted.emit()
 
 
 func _on_complete():
-	print("not implemented!")
+	contract.complete()
+	queue_free()

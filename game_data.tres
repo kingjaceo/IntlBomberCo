@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=4 format=3 uid="uid://dm8rrjo4uf2f3"]
+[gd_resource type="Resource" script_class="GameData" load_steps=5 format=3 uid="uid://dm8rrjo4uf2f3"]
 
 [ext_resource type="Resource" uid="uid://ddjlsmhf475qo" path="res://items/bombs/bomb.tres" id="1_6dxn0"]
 [ext_resource type="Script" path="res://game_data.gd" id="1_a3n4k"]
+[ext_resource type="Resource" uid="uid://2vwocpt2r4ns" path="res://cargo_plane.tres" id="1_kpra1"]
 [ext_resource type="Resource" uid="uid://dtw8w5rcl84rg" path="res://items/bombs/big_bomb.tres" id="2_3ns8t"]
 
 [resource]
 script = ExtResource("1_a3n4k")
+current_plane = ExtResource("1_kpra1")
 items = Array[Resource("res://items/game_item.gd")]([ExtResource("1_6dxn0"), ExtResource("2_3ns8t")])
-money = 10000
+planes = Array[Resource("res://airplane.gd")]([ExtResource("1_kpra1")])
+money = 50000

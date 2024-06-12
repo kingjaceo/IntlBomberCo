@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://1u5flf0jbkmx"]
+[gd_scene load_steps=5 format=3 uid="uid://1u5flf0jbkmx"]
 
 [ext_resource type="Script" path="res://ui/shop_item_container.gd" id="1_2tksc"]
-[ext_resource type="PackedScene" uid="uid://brlcq1t2ug506" path="res://ui/shop_item_line.tscn" id="2_faphf"]
+[ext_resource type="PackedScene" uid="uid://brlcq1t2ug506" path="res://ui/item_stat_line.tscn" id="2_faphf"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="3_hmhvv"]
+[ext_resource type="Script" path="res://scenes/tutorial_step.gd" id="4_44crs"]
 
 [node name="ShopItemContainer" type="PanelContainer"]
 anchors_preset = 8
@@ -64,3 +65,24 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="TutorialStep" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 1
+script = ExtResource("4_44crs")
+step_number = 1
+
+[node name="Label" type="Label" parent="TutorialStep"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.926
+anchor_top = 0.135
+anchor_right = 0.926
+anchor_bottom = 0.135
+offset_left = 24.504
+offset_top = -11.455
+offset_right = 157.504
+offset_bottom = 11.545
+text = "Buy some of this."
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Item/Buy" to="TutorialStep" method="_on_trigger"]

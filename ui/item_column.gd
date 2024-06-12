@@ -5,8 +5,11 @@ extends ShopColumn
 
 func _ready():
 	super._ready()
+	var first_item = true
 	for item in game_data.items:
 		var c = shop_item_container.instantiate()
-		c.game_data = game_data
 		c.game_item = item
+		if not first_item and c.has_node("TutorialStep"):
+			c.get_node("TutorialStep").free()
+		first_item = false
 		add_child(c)
