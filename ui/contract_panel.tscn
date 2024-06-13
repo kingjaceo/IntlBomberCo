@@ -32,10 +32,12 @@ text = "Contract Name"
 
 [node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Contract Description
 
 "
+autowrap_mode = 3
 
 [node name="Progress" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

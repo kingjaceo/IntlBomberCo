@@ -5,6 +5,8 @@ extends Resource
 @export var current_plane: Airplane
 @export var items: Array[GameItem]
 @export var planes: Array[Airplane]
+@export var contracts: Array[Contract]
+@export var active_contracts: Array[Contract]
 @export var money: int = 10000:
 	set(value):
 		money = value

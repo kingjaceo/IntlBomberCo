@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AidItem" load_steps=2 format=3 uid="uid://cfe012gc6sp50"]
+
+[ext_resource type="Script" path="res://items/aid_item.gd" id="1_dhv2x"]
+
+[resource]
+script = ExtResource("1_dhv2x")
+name = "Food Package"
+amount = 0.0
+capacity = 1.0
+cost = 1000.0

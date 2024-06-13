@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Airplane" load_steps=5 format=3 uid="uid://2vwocpt2r4ns"]
 
 [ext_resource type="Script" path="res://items/game_stat.gd" id="1_4j1k3"]
-[ext_resource type="Script" path="res://airplane.gd" id="1_jkmm0"]
+[ext_resource type="Script" path="res://planes/airplane.gd" id="2_r25nd"]
 
 [sub_resource type="Resource" id="Resource_lfav7"]
 script = ExtResource("1_4j1k3")
@@ -20,7 +20,7 @@ step_size = 0.3
 step_cost = 10000.0
 
 [resource]
-script = ExtResource("1_jkmm0")
+script = ExtResource("2_r25nd")
 name = "Cargo Plane"
 forward_speed = SubResource("Resource_lfav7")
 rotation_speed = SubResource("Resource_5x7mv")

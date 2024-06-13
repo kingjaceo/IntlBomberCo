@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TutorialContract" load_steps=7 format=3 uid="uid://c6ogexnll72m7"]
+
+[ext_resource type="Resource" uid="uid://6y8ml2qk431i" path="res://planes/starter_plane.tres" id="1_1jep6"]
+[ext_resource type="Script" path="res://contracts/plane_reward.gd" id="1_1w1sr"]
+[ext_resource type="Script" path="res://contracts/tutorial_contract.gd" id="1_sq48g"]
+[ext_resource type="Script" path="res://contracts/cash_reward.gd" id="2_cqpni"]
+
+[sub_resource type="Resource" id="Resource_t5vl1"]
+script = ExtResource("1_1w1sr")
+airplane = ExtResource("1_1jep6")
+
+[sub_resource type="Resource" id="Resource_qv1ss"]
+script = ExtResource("2_cqpni")
+amount = 1000.0
+
+[resource]
+script = ExtResource("1_sq48g")
+name = "Buy an Aid Package"
+description = "Folks in the rural villages are running out of food. You can help."
+upfront_reward = SubResource("Resource_qv1ss")
+completion_reward = SubResource("Resource_t5vl1")

@@ -12,8 +12,8 @@ func complete():
 
 
 func get_progress():
-	return "0 %"
+	return "Done" if completed else "Incomplete"
 
 
 func get_description():
-	return "This contract is meaningless."
+	return str(description)

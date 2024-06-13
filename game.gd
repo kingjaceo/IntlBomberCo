@@ -36,5 +36,3 @@ func _process(_delta):
 		else:
 			get_tree().paused = true
 			pause_menu.show()
-
-
