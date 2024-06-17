@@ -11,9 +11,7 @@ signal transitioned_to(scene: GameScene)
 func _ready():
 	transition_scene = load(transition_scene_path)
 	game_data = Global.game_data
-	
-	if game_data.tutorial_active:
-		Tutorial.current_step = 0
+
 
 
 func _transition():

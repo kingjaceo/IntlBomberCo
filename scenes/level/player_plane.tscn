@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://thons4d02mrv"]
+[gd_scene load_steps=10 format=3 uid="uid://thons4d02mrv"]
 
 [ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="1_3bt4v"]
 [ext_resource type="Script" path="res://scenes/level/player_plane.gd" id="1_l736k"]
+[ext_resource type="Texture2D" uid="uid://casmdw1resubx" path="res://key/w.png" id="3_1efyj"]
+[ext_resource type="Texture2D" uid="uid://bptg6u6b4y5no" path="res://key/a.png" id="4_opbov"]
+[ext_resource type="Texture2D" uid="uid://db6nbed6w2fis" path="res://key/s.png" id="5_jefrf"]
+[ext_resource type="Texture2D" uid="uid://dlwamiuq1f5t6" path="res://key/d.png" id="6_ph1eb"]
+[ext_resource type="Texture2D" uid="uid://coqj2fcsaxvcn" path="res://key/space.png" id="7_afk7h"]
+[ext_resource type="Script" path="res://scenes/level/fuel_burner.gd" id="8_nddix"]
+[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="9_0b1v5"]
 
 [node name="PlayerPlane" type="Node2D"]
 z_index = 1
@@ -11,3 +18,67 @@ script = ExtResource("1_l736k")
 rotation = 1.5708
 scale = Vector2(0.09375, 0.453125)
 texture = ExtResource("1_3bt4v")
+
+[node name="W" type="TextureRect" parent="."]
+visible = false
+offset_left = -50.0
+offset_top = -123.0
+offset_right = 50.0
+offset_bottom = -23.0
+texture = ExtResource("3_1efyj")
+
+[node name="A" type="TextureRect" parent="."]
+visible = false
+offset_left = -52.0
+offset_top = -124.0
+offset_right = 48.0
+offset_bottom = -24.0
+texture = ExtResource("4_opbov")
+
+[node name="S" type="TextureRect" parent="."]
+visible = false
+offset_left = -52.0
+offset_top = 29.0
+offset_right = 48.0
+offset_bottom = 129.0
+texture = ExtResource("5_jefrf")
+
+[node name="D" type="TextureRect" parent="."]
+visible = false
+offset_left = -52.0
+offset_top = 28.0
+offset_right = 48.0
+offset_bottom = 128.0
+texture = ExtResource("6_ph1eb")
+
+[node name="Space" type="TextureRect" parent="."]
+visible = false
+offset_left = -146.0
+offset_top = -52.0
+offset_right = -46.0
+offset_bottom = 48.0
+texture = ExtResource("7_afk7h")
+
+[node name="FuelBurner" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_nddix")
+
+[node name="Timer" type="Timer" parent="FuelBurner"]
+unique_name_in_owner = true
+
+[node name="Label" type="Label" parent="FuelBurner"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_top = -67.0
+offset_right = -41.0
+offset_bottom = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("9_0b1v5")
+theme_type_variation = &"HeaderLarge"
+text = "RANGE_S"

@@ -1,24 +1,57 @@
 extends Node
 
 
-func format_number(amount: float) -> String:
+func format_number(amount: float, shorten=true) -> String:
+	if shorten:
+		return get_short_number(amount)
+
+
 	var integer: int = floor(amount)
 	var decimal = amount - integer
 	var formatted_number = ""
-	if integer >= 1000:
-		formatted_number += str(floor(integer / 1000)) + ","
-		integer %= 1000
-	while integer >= 1000:
-		var new_digits: int = floor(integer / 1000)
-		formatted_number += "%03d" % new_digits + ","
-		integer %= 1000
-	formatted_number += "%03d" % integer
+	if integer != 0:
+		if integer >= 1000:
+			formatted_number += str(floor(integer / 1000)) + ","
+			integer %= 1000
+		while integer >= 1000:
+			var new_digits: int = floor(integer / 1000)
+			formatted_number += "%03d" % new_digits + ","
+			integer %= 1000
+		formatted_number += "%03d" % integer
+	else:
+		formatted_number = "0" 
 	formatted_number += "." + "%02d" % decimal
 	return formatted_number
 
 
+func get_short_number(amount: float):
+	var integer: int = round(amount)
+	var remainder: int = 0
+	var thousands = 0
+	if integer != 0:
+		while integer > 1000:
+			remainder = integer % 1000
+			integer /= 1000
+			thousands += 1
+	else:
+		return "0"
+	if thousands == 1:
+		return str(integer) + "," + "%03d" % remainder
+	var letter = get_letter_shorthand(thousands)
+	var short_number = str(integer) + letter
+	return short_number
+
+
+func get_letter_shorthand(thousands):
+	match thousands:
+		0: return ""
+		2: return "m"
+		3: return "b"
+		4: return "t"
+
+
 func format_money(amount: float) -> String:
-	return "$ " + format_number(amount)
+	return "$ " + format_number(amount, true)
 
 
 func rotate_to_target(subject: Node2D, target: Node2D, delta: float):

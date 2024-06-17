@@ -7,8 +7,7 @@ var current_amount: int = 0
 
 
 func activate():
-	accepted = true
-	upfront_reward.receive()
+	super.activate()
 	Events.building_destroyed.connect(_on_building_destroyed)
 
 
@@ -17,6 +16,7 @@ func _on_building_destroyed(building_type: int):
 		current_amount += 1
 		if current_amount >= target_amount:
 			completed = true
+			condition_satisfied.emit()
 
 
 func get_progress():
@@ -25,4 +25,4 @@ func get_progress():
 
 
 func get_description():
-	return "We need you to destroy %s buildings" % target_amount
+	return str(description)

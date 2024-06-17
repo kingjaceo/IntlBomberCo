@@ -6,9 +6,11 @@ var current_plane: Airplane
 var rotation_speed: float
 var forward_speed: float
 var placed: bool = false
+@onready var fuel_burner: FuelBurner = %FuelBurner
 
 signal started
 signal item_dropped
+signal returned_home
 
 
 func _ready():
@@ -38,9 +40,9 @@ func drop_active_item():
 
 func check_update_rotation(delta: float):
 	var rotation_change = rotation_speed * delta
-	if Input.is_action_pressed("up"):
+	if Input.is_action_pressed("left"):
 		rotation -= rotation_change
-	if Input.is_action_pressed("down"):
+	if Input.is_action_pressed("right"):
 		rotation += rotation_change
 
 
@@ -54,6 +56,7 @@ func check_update_position():
 func _input(event):
 	if not placed and event.is_action_pressed("action"): # event.is_action("confirm"):
 		placed = true
+		fuel_burner.start()
 		started.emit()
 	elif event.is_action_pressed("action"): # event.is_action_("confirm"):
 		drop_active_item()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/contract_panel.gd" id="1_dbb34"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="2_mti3i"]
 
-[node name="ContractPanel" type="PanelContainer"]
+[node name="ContractPanel" type="PanelContainer" groups=["ContractPanel"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

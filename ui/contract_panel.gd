@@ -2,8 +2,8 @@ class_name ContractPanel
 extends PanelContainer
 
 @export var contract: Contract
-@onready var amount = %Amount
-@onready var reward = %Reward
+@onready var upfront_reward_label = %Amount
+@onready var completion_reward_label = %Reward
 @onready var button = %Button
 @onready var contract_name_label = %ContractName
 @onready var description_label = %Description
@@ -15,8 +15,11 @@ signal accepted
 func _ready():
 	contract_name_label.text = contract.name
 	description_label.text = contract.description
-	amount.text = str(contract.upfront_reward)
-	reward.text = str(contract.completion_reward)
+	if contract.upfront_reward:
+		upfront_reward_label.text = str(contract.upfront_reward)
+	else:
+		upfront_reward_label.text = "None"
+	completion_reward_label.text = str(contract.completion_reward)
 	button.text = "Accept"
 	
 	if contract.accepted:
@@ -24,7 +27,9 @@ func _ready():
 	else:
 		button.pressed.connect(_on_accept)
 	if contract.completed:
-		button.disabled = false
+		_enable_complete()
+
+	contract.condition_satisfied.connect(_enable_complete)
 
 
 func _on_accept():
@@ -36,11 +41,15 @@ func _on_accept():
 func _show_accepted():
 	button.text = "Complete"
 	button.disabled = true
-	button.pressed.connect(_on_complete)
 	progress_label.text = contract.progress + "\n\n"
 	accepted.emit()
 
 
-func _on_complete():
-	contract.complete()
+func _enable_complete():
+	button.disabled = false
+	button.pressed.connect(_on_complete_pressed)
+	button.pressed.connect(contract.complete)
+
+
+func _on_complete_pressed():
 	queue_free()

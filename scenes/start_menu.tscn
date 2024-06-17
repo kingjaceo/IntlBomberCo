@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs08dwnrlb8sc"]
+[gd_scene load_steps=6 format=3 uid="uid://cs08dwnrlb8sc"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_flmls"]
 [ext_resource type="Script" path="res://scenes/tutorial_checkbox.gd" id="2_s64ik"]
+[ext_resource type="Script" path="res://scenes/game_data_selection.gd" id="3_yy1av"]
+[ext_resource type="Resource" uid="uid://dm8rrjo4uf2f3" path="res://tutorial_game_data.tres" id="4_aqhhg"]
+[ext_resource type="Resource" uid="uid://bfwfabfplqh1n" path="res://debug_game_data.tres" id="5_x4sfy"]
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_flmls")
@@ -60,6 +63,20 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Exit"
+
+[node name="GameDataOptions" type="OptionButton" parent="CanvasLayer/VBoxContainer/GridContainer"]
+layout_mode = 2
+item_count = 3
+selected = 2
+popup/item_0/text = "MySave"
+popup/item_0/id = 2
+popup/item_1/text = "Tutorial"
+popup/item_1/id = 0
+popup/item_2/text = "Debug"
+popup/item_2/id = 1
+script = ExtResource("3_yy1av")
+tutorial_game_data = ExtResource("4_aqhhg")
+debug_game_data = ExtResource("5_x4sfy")
 
 [node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2

@@ -1,14 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://iglvsx4ixo45"]
+[gd_scene load_steps=6 format=3 uid="uid://iglvsx4ixo45"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_wesgq"]
 [ext_resource type="PackedScene" uid="uid://odiu4yktqh6t" path="res://scenes/level/city.tscn" id="3_2urlf"]
 [ext_resource type="PackedScene" uid="uid://thons4d02mrv" path="res://scenes/level/player_plane.tscn" id="4_qu3ay"]
-[ext_resource type="Script" path="res://scenes/tutorial_step.gd" id="5_01t5x"]
+[ext_resource type="Script" path="res://scenes/level/level_tutorial.gd" id="5_1b4di"]
 [ext_resource type="PackedScene" uid="uid://dlo6uvbuoa4km" path="res://ui/inventory_display.tscn" id="6_hqf1s"]
-[ext_resource type="Texture2D" uid="uid://coqj2fcsaxvcn" path="res://addons/controller_icons/assets/key/space.png" id="6_tv816"]
-[ext_resource type="Texture2D" uid="uid://casmdw1resubx" path="res://addons/controller_icons/assets/key/w.png" id="8_jhpor"]
-[ext_resource type="Texture2D" uid="uid://db6nbed6w2fis" path="res://addons/controller_icons/assets/key/s.png" id="9_m0f5q"]
-[ext_resource type="Script" path="res://scenes/level/input_timer_signaler.gd" id="10_rylot"]
 
 [node name="Level" type="Node2D"]
 process_mode = 1
@@ -46,129 +42,9 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Control" type="Control" parent="LevelUI"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Tutorial" type="Node" parent="."]
+script = ExtResource("5_1b4di")
+tutorial_name = "Level"
 
-[node name="TutorialStep0" type="TextureRect" parent="LevelUI/Control"]
-modulate = Color(1, 1, 1, 0.490196)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -54.0
-offset_top = 49.0
-offset_right = 46.0
-offset_bottom = 149.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_m0f5q")
-script = ExtResource("5_01t5x")
-step_name = "Down"
-
-[node name="TutorialStep1" type="TextureRect" parent="LevelUI/Control"]
-modulate = Color(1, 1, 1, 0.490196)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -49.0
-offset_top = -153.0
-offset_right = 51.0
-offset_bottom = -53.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_jhpor")
-script = ExtResource("5_01t5x")
-step_name = "Up"
-step_number = 1
-
-[node name="TutorialStep2" type="TextureRect" parent="LevelUI/Control"]
-modulate = Color(1, 1, 1, 0.490196)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -238.0
-offset_top = -50.0
-offset_right = -138.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_tv816")
-script = ExtResource("5_01t5x")
-step_name = "Start"
-step_number = 2
-
-[node name="Label" type="Label" parent="LevelUI/Control/TutorialStep2"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -71.0
-offset_top = 81.0
-offset_right = 76.0
-offset_bottom = 104.0
-grow_horizontal = 2
-text = "Press to Start
-"
-horizontal_alignment = 1
-
-[node name="TutorialStep3" type="TextureRect" parent="LevelUI/Control"]
-modulate = Color(1, 1, 1, 0.490196)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -238.0
-offset_top = -50.0
-offset_right = -138.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_tv816")
-script = ExtResource("5_01t5x")
-step_name = "Drop Item"
-step_number = 3
-
-[node name="Label" type="Label" parent="LevelUI/Control/TutorialStep3"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -71.0
-offset_top = 81.0
-offset_right = 76.0
-offset_bottom = 104.0
-grow_horizontal = 2
-text = "Press to Drop Item
-"
-horizontal_alignment = 1
-
-[node name="InputTimerSignaler" type="Node" parent="LevelUI/Control"]
-script = ExtResource("10_rylot")
-
-[connection signal="started" from="CargoPlane" to="LevelUI/Control/TutorialStep2/Label" method="_on_started"]
+[connection signal="returned_home" from="CargoPlane" to="." method="_transition"]
 [connection signal="pressed" from="LevelUI/CompanyPage" to="." method="_transition"]
-[connection signal="action_pressed" from="LevelUI/Control/InputTimerSignaler" to="LevelUI/Control/TutorialStep2" method="_on_trigger"]
-[connection signal="down_time_finished" from="LevelUI/Control/InputTimerSignaler" to="LevelUI/Control/TutorialStep0" method="_on_trigger"]
-[connection signal="item_dropped" from="LevelUI/Control/InputTimerSignaler" to="LevelUI/Control/TutorialStep3" method="_on_trigger"]
-[connection signal="up_time_finished" from="LevelUI/Control/InputTimerSignaler" to="LevelUI/Control/TutorialStep1" method="_on_trigger"]

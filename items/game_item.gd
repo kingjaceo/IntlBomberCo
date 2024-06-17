@@ -10,7 +10,7 @@ extends Resource
 @export var capacity: float = INF
 @export var cost: float
 @export var item_scene: PackedScene
-var item_stats: Array[GameStat]
+@export var item_stats: Array[GameStat]
 
 signal amount_changed
 

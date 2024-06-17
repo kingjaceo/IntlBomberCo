@@ -22,7 +22,6 @@ func _ready():
 			block.position = Vector2(x_start, y_start)
 			block_width = block.width
 			y_start += block_width + road_width
-			block.building_destroyed.connect(game_data.on_building_destroyed)
 		x_start += block_width + road_width
 		height = y_start
 		y_start = road_width

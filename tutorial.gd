@@ -1,14 +1,11 @@
 extends Node
 
 
-var current_step: int
+var current_tutorial_steps: Dictionary = {}
 
 signal step_finished(step_number: int)
 
 
 func _ready():
-	step_finished.connect(_on_step_finished)
-
-
-func _on_step_finished(last_step: int):
-	current_step += 1
+	current_tutorial_steps["CompanyPage"] = 0
+	current_tutorial_steps["Level"] = 0

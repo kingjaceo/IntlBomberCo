@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://5fk7lukuw2lg"]
+[gd_scene load_steps=13 format=3 uid="uid://5fk7lukuw2lg"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_0arc6"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="3_21g82"]
 [ext_resource type="PackedScene" uid="uid://bgxvmu2e7ns4u" path="res://money_label.tscn" id="3_dptu5"]
 [ext_resource type="PackedScene" uid="uid://bday68s44p2p" path="res://ui/shop_column.tscn" id="4_r4gwm"]
 [ext_resource type="PackedScene" uid="uid://dnv1bjsbws60h" path="res://ui/contract_panel.tscn" id="5_kvort"]
-[ext_resource type="PackedScene" uid="uid://1u5flf0jbkmx" path="res://ui/shop_item_container.tscn" id="5_ota5p"]
 [ext_resource type="Script" path="res://ui/item_column.gd" id="5_qi44y"]
+[ext_resource type="PackedScene" uid="uid://dyircgc7smbuf" path="res://shop_panel.tscn" id="6_5lu6b"]
 [ext_resource type="Script" path="res://ui/plane_column.gd" id="7_mby2k"]
-[ext_resource type="PackedScene" uid="uid://06tje8xu7j5c" path="res://ui/plane_container.tscn" id="8_gaasj"]
+[ext_resource type="PackedScene" uid="uid://06tje8xu7j5c" path="res://ui/plane_panel.tscn" id="8_gaasj"]
 [ext_resource type="Script" path="res://ui/contract_column.gd" id="9_vvq6n"]
+[ext_resource type="Script" path="res://scenes/free_money_button.gd" id="11_ifxos"]
 [ext_resource type="Script" path="res://scenes/first_company_page_tutorial.gd" id="12_gshtk"]
 
 [node name="CompanyPage" type="Node2D"]
@@ -49,9 +50,9 @@ theme = ExtResource("3_21g82")
 
 [node name="ItemColumn" parent="UILayer/MarginContainer/Page/Columns/Items" instance=ExtResource("4_r4gwm")]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 1
 script = ExtResource("5_qi44y")
-shop_item_container = ExtResource("5_ota5p")
+shop_item_container = ExtResource("6_5lu6b")
 column_name = "Items"
 
 [node name="Planes" type="MarginContainer" parent="UILayer/MarginContainer/Page/Columns"]
@@ -61,7 +62,7 @@ theme = ExtResource("3_21g82")
 
 [node name="PlaneColumn" parent="UILayer/MarginContainer/Page/Columns/Planes" instance=ExtResource("4_r4gwm")]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 1
 script = ExtResource("7_mby2k")
 plane_container = ExtResource("8_gaasj")
 column_name = "Planes"
@@ -73,16 +74,24 @@ theme = ExtResource("3_21g82")
 
 [node name="ContractColumn" parent="UILayer/MarginContainer/Page/Columns/Contracts" instance=ExtResource("4_r4gwm")]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 1
 script = ExtResource("9_vvq6n")
 contract_container = ExtResource("5_kvort")
 column_name = "Contracts"
 
-[node name="Launch Mission" type="Button" parent="UILayer/MarginContainer/Page"]
+[node name="LaunchMission" type="Button" parent="UILayer/MarginContainer/Page"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Launch Mission"
+
+[node name="FreeMoney" type="Button" parent="UILayer/MarginContainer/Page"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "FreeMoney"
+script = ExtResource("11_ifxos")
+amount = 100000
 
 [node name="Control" type="Control" parent="UILayer/MarginContainer/Page"]
 layout_mode = 2
@@ -91,5 +100,6 @@ size_flags_stretch_ratio = 0.1
 
 [node name="Tutorial" type="Node" parent="."]
 script = ExtResource("12_gshtk")
+tutorial_name = "CompanyPage"
 
-[connection signal="pressed" from="UILayer/MarginContainer/Page/Launch Mission" to="." method="_transition"]
+[connection signal="pressed" from="UILayer/MarginContainer/Page/LaunchMission" to="." method="_transition"]
