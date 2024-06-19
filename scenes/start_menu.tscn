@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://cs08dwnrlb8sc"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_flmls"]
-[ext_resource type="Script" path="res://scenes/tutorial_checkbox.gd" id="2_s64ik"]
+[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="2_0lc5h"]
 [ext_resource type="Script" path="res://scenes/game_data_selection.gd" id="3_yy1av"]
-[ext_resource type="Resource" uid="uid://dm8rrjo4uf2f3" path="res://tutorial_game_data.tres" id="4_aqhhg"]
-[ext_resource type="Resource" uid="uid://bfwfabfplqh1n" path="res://debug_game_data.tres" id="5_x4sfy"]
+[ext_resource type="Resource" uid="uid://dm8rrjo4uf2f3" path="res://game_data/tutorial_game_data.tres" id="4_plwcl"]
+[ext_resource type="Resource" uid="uid://bfwfabfplqh1n" path="res://game_data/debug_game_data.tres" id="5_2uifc"]
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_flmls")
-transition_scene_path = "res://scenes/company_page.tscn"
+transition_scene_path = "res://scenes/company_page/company_page.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -18,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_0lc5h")
 
 [node name="Name" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
@@ -39,35 +40,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Start Game"
 
-[node name="Tutorial" type="CheckBox" parent="CanvasLayer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-button_pressed = true
-script = ExtResource("2_s64ik")
-
-[node name="TutorialLabel" type="Label" parent="CanvasLayer/VBoxContainer/GridContainer/Tutorial"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 29.0
-offset_top = -11.5
-offset_right = 128.0
-offset_bottom = 11.5
-grow_vertical = 2
-size_flags_vertical = 6
-text = "with Tutorial"
-horizontal_alignment = 1
-
-[node name="Exit" type="Button" parent="CanvasLayer/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Exit"
-
 [node name="GameDataOptions" type="OptionButton" parent="CanvasLayer/VBoxContainer/GridContainer"]
 layout_mode = 2
 item_count = 3
-selected = 2
+selected = 1
 popup/item_0/text = "MySave"
 popup/item_0/id = 2
 popup/item_1/text = "Tutorial"
@@ -75,8 +51,13 @@ popup/item_1/id = 0
 popup/item_2/text = "Debug"
 popup/item_2/id = 1
 script = ExtResource("3_yy1av")
-tutorial_game_data = ExtResource("4_aqhhg")
-debug_game_data = ExtResource("5_x4sfy")
+tutorial_game_data = ExtResource("4_plwcl")
+debug_game_data = ExtResource("5_2uifc")
+
+[node name="Exit" type="Button" parent="CanvasLayer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit"
 
 [node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2

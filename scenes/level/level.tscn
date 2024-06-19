@@ -9,16 +9,16 @@
 [node name="Level" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_wesgq")
-transition_scene_path = "res://scenes/company_page.tscn"
+transition_scene_path = "res://scenes/company_page/company_page.tscn"
 
 [node name="City" parent="." instance=ExtResource("3_2urlf")]
 unique_name_in_owner = true
 
-[node name="CargoPlane" parent="." instance=ExtResource("4_qu3ay")]
+[node name="PlayerPlane" parent="." instance=ExtResource("4_qu3ay")]
 unique_name_in_owner = true
 position = Vector2(-250, 324)
 
-[node name="Camera2D" type="Camera2D" parent="CargoPlane"]
+[node name="Camera2D" type="Camera2D" parent="PlayerPlane"]
 
 [node name="LevelUI" type="CanvasLayer" parent="."]
 
@@ -46,5 +46,5 @@ grow_vertical = 0
 script = ExtResource("5_1b4di")
 tutorial_name = "Level"
 
-[connection signal="returned_home" from="CargoPlane" to="." method="_transition"]
+[connection signal="returned_home" from="PlayerPlane" to="." method="_transition"]
 [connection signal="pressed" from="LevelUI/CompanyPage" to="." method="_transition"]

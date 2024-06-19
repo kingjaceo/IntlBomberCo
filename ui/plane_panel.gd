@@ -3,9 +3,9 @@ extends Control
 
 var game_data: GameData
 var plane: Airplane
-@onready var name_label = %Name
-@onready var plane_stat_container = %PlaneStatContainer
-@export var plane_stat_line: PackedScene
+@onready var name_label: Label = %Name
+@onready var plane_stat_container: VBoxContainer = %PlaneStatContainer
+@onready var stat_panel: StatPanel = %StatPanel
 
 
 func _ready():
@@ -16,6 +16,7 @@ func _ready():
 
 func _make_lines():
 	for game_stat in plane.get_stats():
-		var line = plane_stat_line.instantiate()
-		line.plane_stat = game_stat
+		var line = stat_panel.duplicate()
+		line.visible = true
+		line.game_stat = game_stat
 		plane_stat_container.add_child(line)

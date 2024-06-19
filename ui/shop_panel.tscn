@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyircgc7smbuf"]
 
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="1_bgcfb"]
-[ext_resource type="Script" path="res://shop_panel.gd" id="2_3uvmc"]
+[ext_resource type="Script" path="res://ui/shop_panel.gd" id="2_3uvmc"]
 
 [node name="ShopPanel" type="PanelContainer"]
 anchors_preset = 14
@@ -44,7 +44,6 @@ max_value = 10.0
 step = 1.0
 value = 8.0
 rounded = true
-show_percentage = false
 
 [node name="Buy" type="Button" parent="MarginContainer/VBoxContainer/Item"]
 unique_name_in_owner = true

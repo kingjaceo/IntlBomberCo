@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://06tje8xu7j5c"]
+[gd_scene load_steps=7 format=3 uid="uid://06tje8xu7j5c"]
 
 [ext_resource type="Script" path="res://ui/plane_panel.gd" id="1_2dxkv"]
-[ext_resource type="PackedScene" uid="uid://c03krkfbxuk2a" path="res://ui/plane_stat_panel.tscn" id="2_762tl"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="3_vcodq"]
+[ext_resource type="PackedScene" uid="uid://dyircgc7smbuf" path="res://ui/shop_panel.tscn" id="4_cfxas"]
+[ext_resource type="Script" path="res://ui/stat_panel.gd" id="5_1tg8l"]
+[ext_resource type="Script" path="res://items/game_stat.gd" id="5_nsrr2"]
+
+[sub_resource type="Resource" id="Resource_hsubi"]
+script = ExtResource("5_nsrr2")
+name = ""
+value = 0.0
+max_value = inf
+step_size = 0.0
+step_cost = 0.0
 
 [node name="PlaneContainer" type="PanelContainer" groups=["PlanePanel"]]
 anchors_preset = 8
@@ -10,14 +20,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.0
-offset_top = -66.5
-offset_right = 98.0
-offset_bottom = 66.5
+offset_left = -284.0
+offset_top = -92.0
+offset_right = 284.0
+offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2dxkv")
-plane_stat_line = ExtResource("2_762tl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -45,3 +54,10 @@ layout_mode = 2
 [node name="PlaneStatContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="StatPanel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/PlaneStatContainer" instance=ExtResource("4_cfxas")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+script = ExtResource("5_1tg8l")
+game_stat = SubResource("Resource_hsubi")

@@ -12,6 +12,7 @@ extends Resource
 	set(value):
 		money = value
 		money_changed.emit()
+@export var contract_generator: ContractGenerator
 var buildings_destroyed: int = 0
 var aid_delivered: int = 0
 var active_item: GameItem
@@ -21,11 +22,6 @@ var contract_capacity: int = 1
 signal money_changed
 signal planes_updated
 signal contracts_updated
-
-
-func _ready():
-	Events.building_destroyed.connect(_on_building_destroyed)
-	Events.aid_delivered.connect(_on_aid_delivered)
 
 
 func _on_building_destroyed():

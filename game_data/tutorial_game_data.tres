@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://c6ogexnll72m7" path="res://contracts/tutorial_contract_1.tres" id="2_b64c7"]
 [ext_resource type="Resource" uid="uid://6y8ml2qk431i" path="res://planes/starter_plane.tres" id="3_cwdjr"]
 [ext_resource type="Resource" uid="uid://cfe012gc6sp50" path="res://items/food_package.tres" id="4_adfx3"]
-[ext_resource type="Script" path="res://game_data.gd" id="5_ayh5x"]
+[ext_resource type="Script" path="res://game_data/game_data.gd" id="5_ayh5x"]
 [ext_resource type="Resource" uid="uid://ddjlsmhf475qo" path="res://items/bombs/bomb.tres" id="5_pswxo"]
 
 [resource]

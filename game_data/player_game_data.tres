@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="GameData" load_steps=6 format=3 uid="uid://hcbghj83autn"]
+
+[ext_resource type="Script" path="res://game_data/game_data.gd" id="1_bbd2x"]
+[ext_resource type="Script" path="res://autoload/contract_generator.gd" id="1_eg4lq"]
+[ext_resource type="Resource" uid="uid://6y8ml2qk431i" path="res://planes/starter_plane.tres" id="1_veqhr"]
+[ext_resource type="Resource" uid="uid://ddjlsmhf475qo" path="res://items/bombs/bomb.tres" id="2_ucadd"]
+
+[sub_resource type="Resource" id="Resource_udloe"]
+script = ExtResource("1_eg4lq")
+
+[resource]
+script = ExtResource("1_bbd2x")
+current_plane = ExtResource("1_veqhr")
+items = Array[Resource("res://items/game_item.gd")]([ExtResource("2_ucadd")])
+planes = Array[Resource("res://planes/airplane.gd")]([ExtResource("1_veqhr")])
+contracts = Array[Resource("res://contracts/contract.gd")]([])
+active_contracts = Array[Resource("res://contracts/contract.gd")]([])
+contract_pool = Array[Resource("res://contracts/contract.gd")]([])
+money = 100000
+contract_generator = SubResource("Resource_udloe")
+tutorial_active = false

@@ -41,9 +41,9 @@ func drop_active_item():
 func check_update_rotation(delta: float):
 	var rotation_change = rotation_speed * delta
 	if Input.is_action_pressed("left"):
-		rotation -= rotation_change
+		rotation_degrees -= rotation_change
 	if Input.is_action_pressed("right"):
-		rotation += rotation_change
+		rotation_degrees += rotation_change
 
 
 func check_update_position():
