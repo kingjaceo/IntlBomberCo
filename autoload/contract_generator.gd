@@ -1,13 +1,22 @@
 class_name ContractGenerator
-extends Resource
+extends Node
 
 var game_data: GameData
-var number_completed_contracts_by_type: Dictionary = {"aid": 0, "destruction": 0, "story": 0}
+var generator_data: ContractGeneratorData
 
-func _on_contract_completed():
+
+func _ready():
+	game_data = Global.game_data
+	generator_data = game_data.generator_data
+	for contract in game_data.contracts:
+		contract.contract_completed.connect(_update_contracts)
+	_update_contracts()
+
+
+func _update_contracts():
 	while _needs_new_contract():
 		var new_contract = _generate_new_contract()
-		game_data.contracts.append(new_contract)
+		game_data.add_contract(new_contract)
 
 
 func _needs_new_contract():
@@ -15,15 +24,46 @@ func _needs_new_contract():
 
 
 func _generate_new_contract():
-	if number_completed_contracts_by_type["aid"] < 3:
-		var new_contract = AidContract.new()
-		new_contract.name = "Aid Contract #" + str(number_completed_contracts_by_type["aid"] + 1)
-		new_contract.target_amount = 3
-		new_contract.upfront_reward = CashReward.new()
-		new_contract.upfront_reward.amount = 3000
-		new_contract.completion_reward = CashReward.new()
-		new_contract.completion_reward.amount = 5000
-		new_contract.contract_completed.connect(_on_contract_completed)
-# whenever a contract gets completed, the ContractGenerator needs to:
-#  1) decide if a new contract is needed
-#  2) decide to create a new contract
+	var new_contract_type = _get_new_contract_type()
+	match new_contract_type:
+		"aid":
+			return _make_new_aid_contract()
+		"destruction":
+			return _make_new_destruction_contract()
+
+
+func _get_new_contract_type():
+	if generator_data.contracts_generated_by_type["aid"] <= generator_data.contracts_generated_by_type["destruction"]:
+		return "aid"
+	return "destruction"
+
+
+func _make_new_aid_contract():
+	var new_contract = AidContract.new()
+	generator_data.contracts_generated_by_type["aid"] += 1
+	new_contract.name = "Aid Contract #" + str(generator_data.contracts_generated_by_type["aid"])
+	new_contract.description = "Feed the people! Deliver 3 aid packages."
+	new_contract.target_amount = 3
+	new_contract.upfront_reward = CashReward.new()
+	new_contract.upfront_reward.amount = 3000
+	new_contract.completion_reward = CashReward.new()
+	new_contract.completion_reward.amount = 5000
+	new_contract.contract_completed.connect(_update_contracts)
+	print(new_contract.get_signal_connection_list("contract_completed"))
+	return new_contract
+
+
+func _make_new_destruction_contract():
+	var new_contract = DestructionContract.new()
+	generator_data.contracts_generated_by_type["destruction"] += 1
+	new_contract.name = "Destruction Contract #" + str(generator_data.contracts_generated_by_type["destruction"])
+	new_contract.description = "Our enemies must be destroyed! Destroy 1 building of any kind."
+	new_contract.target = BuildingType.new()
+	new_contract.target.building_type = 15
+	new_contract.target_amount = 1
+	new_contract.upfront_reward = CashReward.new()
+	new_contract.upfront_reward.amount = 3000
+	new_contract.completion_reward = CashReward.new()
+	new_contract.completion_reward.amount = 20000
+	new_contract.contract_completed.connect(_update_contracts)
+	return new_contract

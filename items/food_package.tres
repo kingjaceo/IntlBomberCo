@@ -7,6 +7,7 @@
 script = ExtResource("1_dhv2x")
 name = "Food Package"
 amount = 0.0
-capacity = 1.0
+capacity = 3.0
 cost = 1000.0
 item_scene = ExtResource("1_6mit1")
+item_stats = Array[Resource("res://items/game_stat.gd")]([])

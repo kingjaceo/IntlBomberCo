@@ -14,6 +14,7 @@ var completed: bool
 signal condition_satisfied
 signal contract_completed
 
+
 func activate():
 	accepted = true
 	if upfront_reward:
@@ -26,6 +27,8 @@ func satisfy_condition():
 
 
 func complete():
+	Global.game_data.remove_contract(self)
+	print(get_signal_connection_list("contract_completed"))
 	contract_completed.emit()
 	completion_reward.receive()
 

@@ -76,3 +76,4 @@ func get_screen_center(node: Node) -> Vector2:
 
 func load_player_data():
 	Global.game_data = Global.player_game_data
+	get_tree().reload_current_scene()

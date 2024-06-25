@@ -19,10 +19,11 @@ func _tutorial_logic():
 		4: # clock Launch Mission
 			focus = get_parent().find_child("LaunchMission", true, false)
 			focus.pressed.connect(_finish_step)
-		6: # Complete Contract
+		5: # Complete Contract
 			focus = _first_contract_button()
-		7: # swap out tutorial_game_data for player_game_data
-			Utility.load_player_data()
+		6: # swap out tutorial_game_data for player_game_data
+			Global.game_data = Global.player_game_data
+			get_parent().reload()
 
 
 func _first_contract_button():

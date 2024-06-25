@@ -6,18 +6,17 @@ extends Resource
 @export var items: Array[GameItem]
 @export var planes: Array[Airplane]
 @export var contracts: Array[Contract]
-@export var active_contracts: Array[Contract]
 @export var contract_pool: Array[Contract]
 @export var money: int = 10000:
 	set(value):
 		money = value
 		money_changed.emit()
-@export var contract_generator: ContractGenerator
 var buildings_destroyed: int = 0
 var aid_delivered: int = 0
 var active_item: GameItem
 @export var tutorial_active: bool = true
-var contract_capacity: int = 1
+@export var contract_capacity: int = 1
+@export var generator_data: ContractGeneratorData
 
 signal money_changed
 signal planes_updated
@@ -38,11 +37,11 @@ func add_plane(plane: Airplane):
 	planes_updated.emit()
 
 
+func add_contract(contract: Contract):
+	contracts.append(contract)
+	contracts_updated.emit()
 
-func on_contract_completed(contract: Contract):
+
+func remove_contract(contract: Contract):
 	contracts.erase(contract)
-	var num_new_contracts = min(len(contract_pool), contract_capacity - len(contracts))
-	for i in range(num_new_contracts):
-		var new_contract = contract_pool.pop_front()
-		contracts.append(new_contract)
 	contracts_updated.emit()

@@ -10,5 +10,5 @@ func start():
 	timer.start(parent_plane.range_s.value)
 
 
-func _process(delta):
+func _process(_delta):
 	label.text = str(round(timer.time_left))

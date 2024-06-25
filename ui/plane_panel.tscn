@@ -1,29 +1,29 @@
 [gd_scene load_steps=7 format=3 uid="uid://06tje8xu7j5c"]
 
 [ext_resource type="Script" path="res://ui/plane_panel.gd" id="1_2dxkv"]
+[ext_resource type="PackedScene" uid="uid://dsteuiq5y0pel" path="res://ui/shop_panel.tscn" id="3_c0nis"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="3_vcodq"]
-[ext_resource type="PackedScene" uid="uid://dyircgc7smbuf" path="res://ui/shop_panel.tscn" id="4_cfxas"]
-[ext_resource type="Script" path="res://ui/stat_panel.gd" id="5_1tg8l"]
-[ext_resource type="Script" path="res://items/game_stat.gd" id="5_nsrr2"]
+[ext_resource type="Script" path="res://ui/stat_panel.gd" id="4_u4eno"]
+[ext_resource type="Script" path="res://items/game_stat.gd" id="5_1ra0u"]
 
-[sub_resource type="Resource" id="Resource_hsubi"]
-script = ExtResource("5_nsrr2")
+[sub_resource type="Resource" id="Resource_p2s3o"]
+script = ExtResource("5_1ra0u")
 name = ""
 value = 0.0
 max_value = inf
 step_size = 0.0
 step_cost = 0.0
 
-[node name="PlaneContainer" type="PanelContainer" groups=["PlanePanel"]]
+[node name="PlanePanel" type="PanelContainer" groups=["PlanePanel"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -284.0
-offset_top = -92.0
-offset_right = 284.0
-offset_bottom = 93.0
+offset_left = -98.0
+offset_top = -66.5
+offset_right = 98.0
+offset_bottom = 66.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2dxkv")
@@ -55,9 +55,9 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StatPanel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/PlaneStatContainer" instance=ExtResource("4_cfxas")]
+[node name="StatPanel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/PlaneStatContainer" instance=ExtResource("3_c0nis")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-script = ExtResource("5_1tg8l")
-game_stat = SubResource("Resource_hsubi")
+script = ExtResource("4_u4eno")
+game_stat = SubResource("Resource_p2s3o")

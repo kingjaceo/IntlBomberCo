@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://5fk7lukuw2lg"]
+[gd_scene load_steps=15 format=3 uid="uid://5fk7lukuw2lg"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_wsmrm"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="2_1r0ml"]
-[ext_resource type="PackedScene" uid="uid://bgxvmu2e7ns4u" path="res://money_label.tscn" id="3_wgn3e"]
+[ext_resource type="PackedScene" uid="uid://bgxvmu2e7ns4u" path="res://ui/money_label.tscn" id="3_wgn3e"]
 [ext_resource type="PackedScene" uid="uid://bday68s44p2p" path="res://ui/shop_column.tscn" id="4_8syox"]
 [ext_resource type="Script" path="res://ui/item_column.gd" id="5_mn0dj"]
-[ext_resource type="PackedScene" uid="uid://dyircgc7smbuf" path="res://ui/shop_panel.tscn" id="6_mwjua"]
+[ext_resource type="PackedScene" uid="uid://dsteuiq5y0pel" path="res://ui/shop_panel.tscn" id="6_mwjua"]
 [ext_resource type="Script" path="res://ui/plane_column.gd" id="7_afw3w"]
 [ext_resource type="PackedScene" uid="uid://06tje8xu7j5c" path="res://ui/plane_panel.tscn" id="8_pt7gc"]
 [ext_resource type="Script" path="res://ui/contract_column.gd" id="9_fon0q"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scenes/company_page/free_money_button.gd" id="11_yp3tr"]
 [ext_resource type="Script" path="res://ui/quantity_changer.gd" id="12_mhs16"]
 [ext_resource type="Script" path="res://scenes/company_page/first_company_page_tutorial.gd" id="13_f1ey8"]
+[ext_resource type="Script" path="res://autoload/contract_generator.gd" id="14_40g2e"]
 
 [node name="CompanyPage" type="Node2D"]
 process_mode = 1
@@ -20,6 +21,7 @@ script = ExtResource("1_wsmrm")
 transition_scene_path = "res://scenes/level/level.tscn"
 
 [node name="UILayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="UILayer"]
 anchors_preset = 15
@@ -109,5 +111,8 @@ size_flags_stretch_ratio = 0.1
 [node name="Tutorial" type="Node" parent="."]
 script = ExtResource("13_f1ey8")
 tutorial_name = "CompanyPage"
+
+[node name="ContractGenerator" type="Node" parent="."]
+script = ExtResource("14_40g2e")
 
 [connection signal="pressed" from="UILayer/MarginContainer/Page/LaunchMission" to="." method="_transition"]

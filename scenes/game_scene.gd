@@ -6,12 +6,12 @@ var transition_scene: PackedScene
 var game_data: GameData
 
 signal transitioned_to(scene: GameScene)
+signal reloaded
 
 
 func _ready():
 	transition_scene = load(transition_scene_path)
 	game_data = Global.game_data
-
 
 
 func _transition():
@@ -20,3 +20,7 @@ func _transition():
 
 func _exit():
 	get_tree().quit()
+
+
+func reload():
+	reloaded.emit()

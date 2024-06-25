@@ -40,7 +40,7 @@ func _disconnect_focus():
 
 func _highlight_focus():
 	if focus:
-		tween = create_tween()
+		tween = get_tree().create_tween()
 		tween.set_trans(Tween.TRANS_SINE)
 		tween.set_loops()
 		while tween.is_running():
