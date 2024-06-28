@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://scenes/company_page/free_money_button.gd" id="11_yp3tr"]
 [ext_resource type="Script" path="res://ui/quantity_changer.gd" id="12_mhs16"]
 [ext_resource type="Script" path="res://scenes/company_page/first_company_page_tutorial.gd" id="13_f1ey8"]
-[ext_resource type="Script" path="res://autoload/contract_generator.gd" id="14_40g2e"]
+[ext_resource type="Script" path="res://objectives/contract_generator.gd" id="14_40g2e"]
 
 [node name="CompanyPage" type="Node2D"]
 process_mode = 1

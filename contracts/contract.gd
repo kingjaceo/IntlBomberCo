@@ -2,10 +2,11 @@ class_name Contract
 extends Resource
 
 @export var name: String
-@export var description: String:
-	get = get_description
+@export var description: String
 @export var upfront_reward: Reward
 @export var completion_reward: Reward
+@export var focus: Focus
+@export var trigger: Trigger
 var progress: String:
 	get = get_progress
 var accepted: bool
