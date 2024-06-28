@@ -18,7 +18,7 @@
 [node name="CompanyPage" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_wsmrm")
-transition_scene_path = "res://scenes/level/level.tscn"
+transition_scene_path = "res://scenes/levels/level.tscn"
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 0

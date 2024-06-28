@@ -14,6 +14,7 @@ func _ready():
 
 func _transition_to(scene: PackedScene):
 	await get_tree().process_frame
+	get_tree().paused = false
 	if current_scene_instance:
 		current_scene_instance.queue_free()
 	pause_menu.hide()

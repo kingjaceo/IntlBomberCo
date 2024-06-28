@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvkec04d0511w"]
+
+[ext_resource type="Script" path="res://buildings/building.gd" id="1_cdays"]
+[ext_resource type="Script" path="res://building_type.gd" id="2_57hnx"]
+[ext_resource type="Texture2D" uid="uid://s0jasky252cc" path="res://scenes/levels/city_spritesheet_1028.png" id="3_r0mao"]
+
+[sub_resource type="Resource" id="Resource_sygn2"]
+script = ExtResource("2_57hnx")
+building_type = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykveo"]
+size = Vector2(64, 64)
+
+[node name="MilitaryBase" type="Node2D" groups=["destructible"]]
+script = ExtResource("1_cdays")
+building_type = SubResource("Resource_sygn2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("3_r0mao")
+region_enabled = true
+region_rect = Rect2(128, 0, 64, 64)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ykveo")

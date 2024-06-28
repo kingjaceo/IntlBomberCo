@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://odiu4yktqh6t"]
-
-[ext_resource type="Script" path="res://scenes/level/city.gd" id="1_dpbpn"]
-[ext_resource type="PackedScene" uid="uid://cifxbc2xrac5n" path="res://scenes/level/building.tscn" id="2_w32w0"]
-
-[node name="City" type="Node2D"]
-script = ExtResource("1_dpbpn")
-building = ExtResource("2_w32w0")

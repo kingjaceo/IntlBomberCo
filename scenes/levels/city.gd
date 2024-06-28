@@ -9,7 +9,6 @@ var game_data: Resource
 var width: float = 0
 var height: float = 0
 
-
 func _ready():
 	game_data = Global.game_data
 	var x_start: int = road_width

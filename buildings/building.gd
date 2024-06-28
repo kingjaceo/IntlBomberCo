@@ -1,17 +1,17 @@
 extends Node2D
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
-@export var health: float = 100
+var health: float = 100
 var width: float = 0
 var height: float = 0
-var building_type: BuildingType = BuildingType.new()
+@export var building_type: BuildingType
 var destroyed: bool
 
 signal building_destroyed
 
 
 func _ready():
-	building_type.building_type = BuildingType.BuildingType.values().pick_random()
+	#building_type.building_type = BuildingType.BuildingType.values().pick_random()
 	if building_type.building_type & 8:
 		modulate = Color.RED
 	elif building_type.building_type & 4:
