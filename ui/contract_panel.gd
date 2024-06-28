@@ -1,7 +1,7 @@
 class_name ContractPanel
 extends PanelContainer
 
-@export var contract: Contract
+@export var contract: Objective
 @onready var upfront_reward_label = %Amount
 @onready var completion_reward_label = %Reward
 @onready var button = %Button

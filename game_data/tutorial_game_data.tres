@@ -12,7 +12,6 @@ current_plane = ExtResource("3_cwdjr")
 items = Array[Resource("res://items/game_item.gd")]([ExtResource("4_adfx3")])
 planes = Array[Resource("res://planes/airplane.gd")]([])
 contracts = Array[Resource("res://contracts/contract.gd")]([ExtResource("2_b64c7")])
-active_contracts = Array[Resource("res://contracts/contract.gd")]([])
 contract_pool = Array[Resource("res://contracts/contract.gd")]([ExtResource("1_2oejf")])
 money = 0
 tutorial_active = true
