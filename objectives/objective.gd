@@ -24,6 +24,7 @@ func accept():
 		upfront_reward.receive()
 	if focus:
 		focus.highlight()
+	trigger.activate()
 	trigger.triggered.connect(_on_trigger)
 
 
