@@ -9,7 +9,7 @@ func _ready():
 	game_data = Global.game_data
 	generator_data = game_data.generator_data
 	for contract in game_data.contracts:
-		contract.contract_completed.connect(_update_contracts)
+		contract.objective_completed.connect(_update_contracts)
 	_update_contracts()
 
 
@@ -39,31 +39,45 @@ func _get_new_contract_type():
 
 
 func _make_new_aid_contract():
-	var new_contract = AidContract.new()
+	var new_contract = Objective.new()
 	generator_data.contracts_generated_by_type["aid"] += 1
 	new_contract.name = "Aid Contract #" + str(generator_data.contracts_generated_by_type["aid"])
 	new_contract.description = "Feed the people! Deliver 3 aid packages."
-	new_contract.target_amount = 3
-	new_contract.upfront_reward = CashReward.new()
-	new_contract.upfront_reward.amount = 3000
-	new_contract.completion_reward = CashReward.new()
-	new_contract.completion_reward.amount = 5000
-	new_contract.contract_completed.connect(_update_contracts)
-	print(new_contract.get_signal_connection_list("contract_completed"))
+	
+	var aid_trigger = AidTrigger.new()
+	aid_trigger.target_amount = 3
+	new_contract.trigger = aid_trigger
+	
+	var upfront_reward = CashReward.new()
+	upfront_reward.amount = 3000
+	new_contract.upfront_reward = upfront_reward
+	
+	var completion_reward = CashReward.new()
+	completion_reward.amount = 5000
+	new_contract.completion_reward = completion_reward
+	
+	new_contract.objective_completed.connect(_update_contracts)
 	return new_contract
 
 
 func _make_new_destruction_contract():
-	var new_contract = DestructionContract.new()
+	var new_contract = Objective.new()
 	generator_data.contracts_generated_by_type["destruction"] += 1
 	new_contract.name = "Destruction Contract #" + str(generator_data.contracts_generated_by_type["destruction"])
-	new_contract.description = "Our enemies must be destroyed! Destroy 1 building of any kind."
-	new_contract.target = BuildingType.new()
-	new_contract.target.building_type = 15
-	new_contract.target_amount = 1
-	new_contract.upfront_reward = CashReward.new()
-	new_contract.upfront_reward.amount = 3000
-	new_contract.completion_reward = CashReward.new()
-	new_contract.completion_reward.amount = 20000
-	new_contract.contract_completed.connect(_update_contracts)
+	new_contract.description = "Our enemies must be destroyed! Destroy 1 military building (red)."
+	
+	var destruction_trigger = DestructionTrigger.new()
+	destruction_trigger.building_type = BuildingType.BuildingType.MILITARY
+	destruction_trigger.target_amount = 1
+	new_contract.trigger = destruction_trigger
+	
+	var upfront_reward = CashReward.new()
+	upfront_reward.amount = 3000
+	new_contract.upfront_reward = upfront_reward
+	
+	var completion_reward = CashReward.new()
+	completion_reward.amount = 20000
+	new_contract.completion_reward = completion_reward
+	
+	new_contract.objective_completed.connect(_update_contracts)
 	return new_contract

@@ -1,16 +1,19 @@
-class_name DestructionTrigger
+class_name AidTrigger
 extends Trigger
 
-@export var building_type: BuildingType.BuildingType
 @export var target_amount: int
 var current_amount = 0
 
+
 func activate():
-	Events.building_destroyed.connect(_on_building_destroyed)
+	Events.aid_delivered.connect(_on_aid_delivered)
 
 
-func _on_building_destroyed(type: int):
-	if type & building_type:
-		current_amount += 1
-		if current_amount >= target_amount:
-			triggered.emit()
+func _on_aid_delivered(_location: Vector2):
+	current_amount += 1
+	if current_amount >= target_amount:
+		triggered.emit()
+
+
+func _get_progress() -> String:
+	return str(round(current_amount / target_amount * 100)) + "%"

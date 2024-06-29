@@ -29,12 +29,12 @@ func _ready():
 	if contract.completed:
 		_enable_complete()
 
-	contract.condition_satisfied.connect(_enable_complete)
+	contract.triggered.connect(_enable_complete)
 
 
 func _on_accept():
 	_show_accepted()
-	contract.activate()
+	contract.accept()
 	button.pressed.disconnect(_on_accept)
 
 

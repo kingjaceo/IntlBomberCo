@@ -20,6 +20,9 @@ process_mode = 1
 script = ExtResource("1_wsmrm")
 transition_scene_path = "res://scenes/levels/level.tscn"
 
+[node name="ContractGenerator" type="Node" parent="."]
+script = ExtResource("14_40g2e")
+
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 0
 
@@ -111,8 +114,5 @@ size_flags_stretch_ratio = 0.1
 [node name="Tutorial" type="Node" parent="."]
 script = ExtResource("13_f1ey8")
 tutorial_name = "CompanyPage"
-
-[node name="ContractGenerator" type="Node" parent="."]
-script = ExtResource("14_40g2e")
 
 [connection signal="pressed" from="UILayer/MarginContainer/Page/LaunchMission" to="." method="_transition"]

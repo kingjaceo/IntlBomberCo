@@ -5,7 +5,7 @@ extends Resource
 @export var current_plane: Airplane
 @export var items: Array[GameItem]
 @export var planes: Array[Airplane]
-@export var contracts: Array[Contract]
+@export var contracts: Array[Objective]
 @export var money: int = 10000:
 	set(value):
 		money = value
@@ -39,13 +39,13 @@ func add_plane(plane: Airplane):
 	planes_updated.emit()
 
 
-func add_objective(objective: Objective):
-	objectives.append(objective)
-	objectives_updated.emit()
-	objective.objective_completed.connect(_objective_completed)
+func add_contract(contract: Objective):
+	contracts.append(contract)
+	contracts_updated.emit()
+	contract.objective_completed.connect(_contract_completed)
 
 
-func _objective_completed(objective: Objective):
-	objectives.erase(objective)
-	objectives.erase(objective)
-	objectives_updated.emit()
+func _contract_completed(contract: Objective):
+	contracts.erase(contract)
+	contracts.erase(contract)
+	contracts_updated.emit()
