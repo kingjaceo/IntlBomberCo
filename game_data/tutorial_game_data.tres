@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GameData" load_steps=7 format=3 uid="uid://dm8rrjo4uf2f3"]
 
-[ext_resource type="Resource" uid="uid://clawf265mckby" path="res://contracts/tutorial_contract_2.tres" id="1_2oejf"]
-[ext_resource type="Resource" uid="uid://c6ogexnll72m7" path="res://contracts/tutorial_contract_1.tres" id="2_b64c7"]
+[ext_resource type="Resource" uid="uid://clawf265mckby" path="res://objectives/contracts/tutorial_contract_2.tres" id="1_2oejf"]
+[ext_resource type="Resource" uid="uid://c6ogexnll72m7" path="res://objectives/contracts/tutorial_contract_1.tres" id="2_b64c7"]
 [ext_resource type="Resource" uid="uid://6y8ml2qk431i" path="res://planes/starter_plane.tres" id="3_cwdjr"]
 [ext_resource type="Resource" uid="uid://cfe012gc6sp50" path="res://items/food_package.tres" id="4_adfx3"]
 [ext_resource type="Resource" uid="uid://cqtfub1fch8me" path="res://game_data/contractor_generator.tres" id="4_v3gwh"]

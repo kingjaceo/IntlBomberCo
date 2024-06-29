@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlaneReward" load_steps=2 format=3 uid="uid://bx3idbyl6p6ib"]
 
-[ext_resource type="Script" path="res://contracts/plane_reward.gd" id="1_271u8"]
+[ext_resource type="Script" path="res://objectives/contracts/plane_reward.gd" id="1_271u8"]
 
 [resource]
 script = ExtResource("1_271u8")
