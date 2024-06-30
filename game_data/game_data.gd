@@ -42,7 +42,7 @@ func add_plane(plane: Airplane):
 func add_contract(contract: Objective):
 	contracts.append(contract)
 	contracts_updated.emit()
-	contract.objective_completed.connect(_contract_completed)
+	contract.objective_completed.connect(_contract_completed.bind(contract))
 
 
 func _contract_completed(contract: Objective):

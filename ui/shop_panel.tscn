@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsteuiq5y0pel"]
+[gd_scene load_steps=4 format=3 uid="uid://dsteuiq5y0pel"]
 
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="1_bgcfb"]
 [ext_resource type="Script" path="res://ui/shop_panel.gd" id="2_3uvmc"]
+[ext_resource type="Script" path="res://ui/interactable_button.gd" id="3_imkjx"]
 
 [node name="ShopPanel" type="PanelContainer"]
 anchors_preset = 14
@@ -50,6 +51,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "+"
+script = ExtResource("3_imkjx")
 
 [node name="Cost" type="Label" parent="MarginContainer/VBoxContainer/Item"]
 unique_name_in_owner = true

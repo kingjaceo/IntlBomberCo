@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=2 format=3 uid="uid://cyx3jjycudvob"]
+[gd_resource type="Resource" script_class="GameData" load_steps=2 format=3 uid="uid://bqqjqfrlkbtae"]
 
-[ext_resource type="Script" path="res://game_data/game_data.gd" id="1_jxtkv"]
+[ext_resource type="Script" path="res://game_data/game_data.gd" id="1_5k4ke"]
 
 [resource]
-script = ExtResource("1_jxtkv")
+script = ExtResource("1_5k4ke")
 items = Array[Resource("res://items/game_item.gd")]([])
 planes = Array[Resource("res://planes/airplane.gd")]([])
 contracts = Array[Resource("res://objectives/objective.gd")]([])

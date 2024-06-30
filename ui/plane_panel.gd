@@ -11,12 +11,12 @@ var plane: Airplane
 func _ready():
 	game_data = Global.game_data
 	name_label.text = str(plane.name)
-	_make_lines()
+	#_make_lines()
 
 
 func _make_lines():
 	for game_stat in plane.get_stats():
-		var line = stat_panel.duplicate()
+		var line = stat_panel.duplicate(DUPLICATE_GROUPS)
 		line.visible = true
 		line.game_stat = game_stat
-		plane_stat_container.add_child(line)
+		add_child(line)
