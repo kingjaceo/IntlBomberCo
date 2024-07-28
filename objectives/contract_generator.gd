@@ -67,7 +67,7 @@ func _make_new_destruction_contract():
 	new_contract.description = "Our enemies must be destroyed! Destroy 1 military building (red)."
 	
 	var destruction_trigger = DestructionTrigger.new()
-	destruction_trigger.building_type = BuildingType.BuildingType.MILITARY
+	destruction_trigger.building_type = Global.BuildingType.MILITARY
 	destruction_trigger.target_amount = 1
 	new_contract.trigger = destruction_trigger
 	

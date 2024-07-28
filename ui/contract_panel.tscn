@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/contract_panel.gd" id="1_dbb34"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="2_mti3i"]
-[ext_resource type="Script" path="res://ui/interactable_button.gd" id="3_7hcgn"]
+[ext_resource type="Script" path="res://ui/interactable_button.gd" id="3_4dmmq"]
 
 [node name="ContractPanel" type="PanelContainer" groups=["ContractPanel"]]
 anchors_preset = 8
@@ -82,4 +82,4 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "Accept
 "
-script = ExtResource("3_7hcgn")
+script = ExtResource("3_4dmmq")

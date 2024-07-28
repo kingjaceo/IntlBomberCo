@@ -11,7 +11,6 @@ signal building_destroyed
 
 
 func _ready():
-	#building_type.building_type = BuildingType.BuildingType.values().pick_random()
 	if building_type.building_type & 8:
 		modulate = Color.RED
 	elif building_type.building_type & 4:

@@ -4,8 +4,8 @@ extends Button
 var tween: Tween
 
 
-#func _ready():
-	#_highlight()
+func _ready():
+	_highlight()
 
 
 func _set(property, value):

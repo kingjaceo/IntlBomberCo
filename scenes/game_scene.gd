@@ -4,7 +4,6 @@ extends Node2D
 @export_file var transition_scene_path: String
 var transition_scene: PackedScene
 var game_data: GameData
-
 signal transitioned_to(scene: GameScene)
 signal reloaded
 
@@ -15,7 +14,7 @@ func _ready():
 
 
 func _transition():
-	transitioned_to.emit(transition_scene)
+	Global.transition_to(transition_scene)
 
 
 func _exit():

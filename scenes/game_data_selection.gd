@@ -12,7 +12,7 @@ func _ready():
 func _update_game_data(item):
 	match item:
 		0:
-			Global.game_data = player_game_data
+			Utility.load_game_data("player_save.res")
 		1:
 			Global.game_data = tutorial_game_data
 		2:

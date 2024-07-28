@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5fk7lukuw2lg"]
+[gd_scene load_steps=14 format=3 uid="uid://5fk7lukuw2lg"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_wsmrm"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="2_1r0ml"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dnv1bjsbws60h" path="res://ui/contract_panel.tscn" id="10_f8iey"]
 [ext_resource type="Script" path="res://scenes/company_page/free_money_button.gd" id="11_yp3tr"]
 [ext_resource type="Script" path="res://ui/quantity_changer.gd" id="12_mhs16"]
-[ext_resource type="Script" path="res://scenes/company_page/first_company_page_tutorial.gd" id="13_f1ey8"]
 [ext_resource type="Script" path="res://objectives/contract_generator.gd" id="14_40g2e"]
 
 [node name="CompanyPage" type="Node2D"]
@@ -110,9 +109,5 @@ ctrl_shift_multiplier = 100.0
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
-
-[node name="Tutorial" type="Node" parent="."]
-script = ExtResource("13_f1ey8")
-tutorial_name = "CompanyPage"
 
 [connection signal="pressed" from="UILayer/MarginContainer/Page/LaunchMission" to="." method="_transition"]

@@ -1,12 +1,30 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=2 format=3 uid="uid://bqqjqfrlkbtae"]
+[gd_resource type="Resource" script_class="GameData" load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://game_data/game_data.gd" id="1_5k4ke"]
+[ext_resource type="Resource" path="res://objectives/contracts/first_contract.tres" id="1_jja26"]
+[ext_resource type="Script" path="res://objectives/objective.gd" id="3_eugah"]
+[ext_resource type="Resource" path="res://items/food_package.tres" id="4_adfx3"]
+[ext_resource type="Script" path="res://game_data/contract_generator_data.gd" id="6_66tah"]
+
+[sub_resource type="Resource" id="Resource_4t6f1"]
+script = ExtResource("3_eugah")
+name = "Deliver an Aid Package."
+description = "You can help! DroFeed the people! Launch the mission, then drop the aid package."
+objective_type = 2
+accepted = false
+completed = false
+
+[sub_resource type="Resource" id="Resource_c84b4"]
+script = ExtResource("6_66tah")
+contract_pool = Array[ExtResource("3_eugah")]([SubResource("Resource_4t6f1")])
+contract_templates = Array[Resource("res://objectives/contracts/contract_template.gd")]([])
 
 [resource]
 script = ExtResource("1_5k4ke")
-items = Array[Resource("res://items/game_item.gd")]([])
+items = Array[Resource("res://items/game_item.gd")]([ExtResource("4_adfx3")])
 planes = Array[Resource("res://planes/airplane.gd")]([])
-contracts = Array[Resource("res://objectives/objective.gd")]([])
-money = 10000
+contracts = Array[ExtResource("3_eugah")]([ExtResource("1_jja26")])
+money = 0
 tutorial_active = true
 contract_capacity = 1
+generator_data = SubResource("Resource_c84b4")

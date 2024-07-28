@@ -33,6 +33,7 @@ func _increase():
 	if game_item.amount < game_item.capacity and game_data.money >= game_item.cost:
 		game_data.money -= game_item.cost
 		game_item.amount += 1
+		Events.item_purchased.emit(game_item.item_type)
 
 
 func _toggle_button():

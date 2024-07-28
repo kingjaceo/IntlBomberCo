@@ -30,3 +30,4 @@ capacity = 20.0
 cost = 100.0
 item_scene = ExtResource("2_23oqy")
 item_stats = Array[Resource("res://items/game_stat.gd")]([])
+item_type = 1

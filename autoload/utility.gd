@@ -74,6 +74,12 @@ func get_screen_center(node: Node) -> Vector2:
 	return viewport_rect.get_center()
 
 
-func load_player_data():
-	Global.game_data = Global.player_game_data
-	get_tree().reload_current_scene()
+func load_game_data(path: String):
+	Global.game_data = ResourceLoader.load("res://game_data/player_game_data.tres")
+	for contract in Global.game_data.contracts:
+		if contract.accepted:
+			contract.activate()
+
+
+func save_game_data(path: String):
+	ResourceSaver.save(Global.game_data)

@@ -35,6 +35,8 @@ func _on_aid_delivered():
 
 
 func add_plane(plane: Airplane):
+	if not current_plane:
+		current_plane = plane
 	planes.append(plane)
 	planes_updated.emit()
 
@@ -46,6 +48,5 @@ func add_contract(contract: Objective):
 
 
 func _contract_completed(contract: Objective):
-	contracts.erase(contract)
 	contracts.erase(contract)
 	contracts_updated.emit()

@@ -1,17 +1,17 @@
-class_name DestructionTrigger
+class_name ItemPurchaseTrigger
 extends Trigger
 
-@export var building_type: Global.BuildingType
 @export var target_amount: int
+@export var target_type: Global.ItemType
 var current_amount = 0
 
 
 func activate():
-	Events.building_destroyed.connect(_on_building_destroyed)
+	Events.item_purchased.connect(_on_item_purchased)
 
 
-func _on_building_destroyed(type: int):
-	if type & building_type:
+func _on_item_purchased(item_type: Global.ItemType):
+	if item_type == target_type:
 		current_amount += 1
 		if current_amount >= target_amount:
 			triggered.emit()
