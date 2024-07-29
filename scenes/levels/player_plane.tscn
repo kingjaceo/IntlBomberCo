@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://thons4d02mrv"]
+[gd_scene load_steps=12 format=3 uid="uid://thons4d02mrv"]
 
 [ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="1_3bt4v"]
 [ext_resource type="Script" path="res://scenes/levels/player_plane.gd" id="1_l736k"]
+[ext_resource type="Resource" uid="uid://6y8ml2qk431i" path="res://planes/starter_plane.tres" id="2_5qowe"]
 [ext_resource type="Texture2D" uid="uid://casmdw1resubx" path="res://key/w.png" id="3_1efyj"]
 [ext_resource type="Texture2D" uid="uid://bptg6u6b4y5no" path="res://key/a.png" id="4_opbov"]
 [ext_resource type="Texture2D" uid="uid://db6nbed6w2fis" path="res://key/s.png" id="5_jefrf"]
@@ -13,9 +14,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yca3l"]
 size = Vector2(58, 12)
 
-[node name="PlayerPlane" type="Node2D"]
+[node name="Player" type="Node2D"]
 z_index = 1
 script = ExtResource("1_l736k")
+current_plane = ExtResource("2_5qowe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -99,3 +101,5 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_yca3l")
+
+[node name="Camera2D" type="Camera2D" parent="."]

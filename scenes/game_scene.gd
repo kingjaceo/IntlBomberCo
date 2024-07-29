@@ -9,7 +9,8 @@ signal reloaded
 
 
 func _ready():
-	transition_scene = load(transition_scene_path)
+	if transition_scene_path:
+		transition_scene = load(transition_scene_path)
 	game_data = Global.game_data
 
 
@@ -23,3 +24,7 @@ func _exit():
 
 func reload():
 	reloaded.emit()
+
+
+func _on_area_2d_area_entered():
+	pass # Replace with function body.

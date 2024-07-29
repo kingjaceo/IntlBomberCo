@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://iglvsx4ixo45"]
+[gd_scene load_steps=6 format=3 uid="uid://iglvsx4ixo45"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_wesgq"]
-[ext_resource type="PackedScene" uid="uid://thons4d02mrv" path="res://scenes/levels/player_plane.tscn" id="4_qu3ay"]
 [ext_resource type="Script" path="res://scenes/levels/level_tutorial.gd" id="5_1b4di"]
 [ext_resource type="PackedScene" uid="uid://ctcnh2en3sovj" path="res://scenes/levels/village.tscn" id="5_1w3v0"]
 [ext_resource type="PackedScene" uid="uid://dlo6uvbuoa4km" path="res://ui/inventory_display.tscn" id="6_hqf1s"]
@@ -15,12 +14,6 @@ script = ExtResource("1_wesgq")
 transition_scene_path = "res://scenes/map.tscn"
 
 [node name="Village" parent="." instance=ExtResource("5_1w3v0")]
-
-[node name="PlayerPlane" parent="." instance=ExtResource("4_qu3ay")]
-unique_name_in_owner = true
-position = Vector2(-418, 1)
-
-[node name="Camera2D" type="Camera2D" parent="PlayerPlane"]
 
 [node name="LevelUI" type="CanvasLayer" parent="."]
 
@@ -56,6 +49,5 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
 shape = SubResource("CircleShape2D_dgag1")
 
-[connection signal="returned_home" from="PlayerPlane" to="." method="_transition"]
 [connection signal="pressed" from="LevelUI/CompanyPage" to="." method="_transition"]
 [connection signal="area_exited" from="Bounds" to="." method="_transition" flags=3 unbinds=1]

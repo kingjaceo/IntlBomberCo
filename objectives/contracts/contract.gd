@@ -5,7 +5,7 @@ extends Resource
 @export var description: String
 @export var upfront_reward: Reward
 @export var completion_reward: Reward
-@export var focus: Focus
+#@export var focus: Focus
 @export var trigger: Trigger
 var progress: String:
 	get = get_progress

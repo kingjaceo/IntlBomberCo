@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_flmls"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="2_0lc5h"]
 [ext_resource type="Script" path="res://scenes/game_data_selection.gd" id="3_yy1av"]
-[ext_resource type="Resource" uid="uid://bqqjqfrlkbtae" path="res://game_data/tutorial_game_data.tres" id="4_plwcl"]
+[ext_resource type="Resource" uid="uid://bw04mqbcds5s" path="res://game_data/tutorial_game_data.tres" id="4_plwcl"]
 [ext_resource type="Resource" uid="uid://wq4r25s1p682" path="res://game_data/player_game_data.tres" id="4_r4j0d"]
 [ext_resource type="Resource" uid="uid://cyx3jjycudvob" path="res://game_data/debug_game_data.tres" id="5_2uifc"]
 

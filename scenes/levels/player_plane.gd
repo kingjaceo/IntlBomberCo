@@ -2,7 +2,7 @@ class_name PlayerPlane
 extends Node2D
 
 var game_data: GameData
-var current_plane: Airplane
+@export var current_plane: Airplane
 var rotation_speed: float
 var forward_speed: float
 var placed: bool = false
@@ -18,7 +18,7 @@ func _ready():
 	current_plane = game_data.current_plane
 	rotation_speed = current_plane.rotation_speed.value
 	forward_speed = current_plane.forward_speed.value
-
+	Global.player = self
 
 func _process(delta):
 	if placed:

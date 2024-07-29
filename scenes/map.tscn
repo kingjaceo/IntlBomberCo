@@ -1,102 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtwh113wc5fpm"]
+[gd_scene load_steps=3 format=3 uid="uid://dtwh113wc5fpm"]
 
 [ext_resource type="Script" path="res://scenes/game_scene.gd" id="1_v8wyq"]
-[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="2_t1eii"]
-[ext_resource type="PackedScene" uid="uid://thons4d02mrv" path="res://scenes/levels/player_plane.tscn" id="3_drtaj"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_oeqr5"]
+[ext_resource type="PackedScene" uid="uid://cqnqptfq4e5ur" path="res://map_location.tscn" id="2_ujpdp"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_v8wyq")
 
-[node name="Hometown" type="Node2D" parent="."]
-position = Vector2(150, 222)
-script = ExtResource("1_v8wyq")
-transition_scene_path = "res://scenes/levels/city.tscn"
+[node name="MapLocation" parent="." instance=ExtResource("2_ujpdp")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Hometown"]
-texture = ExtResource("2_t1eii")
+[node name="MapLocation2" parent="." instance=ExtResource("2_ujpdp")]
+position = Vector2(727, 141)
+scale = Vector2(0.4, 0.404371)
 
-[node name="Area2D" type="Area2D" parent="Hometown"]
-scale = Vector2(10.4932, 10.4932)
-collision_layer = 128
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hometown/Area2D"]
-shape = SubResource("CircleShape2D_oeqr5")
-
-[node name="Label" type="Label" parent="Hometown"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -41.0
-offset_top = 69.0
-offset_right = 45.0
-offset_bottom = 92.0
-grow_horizontal = 2
-text = "Hometown"
-
-[node name="Village1" type="Node2D" parent="."]
-position = Vector2(478, 489)
-scale = Vector2(0.599999, 0.599999)
-script = ExtResource("1_v8wyq")
-transition_scene_path = "res://scenes/levels/level.tscn"
-
-[node name="Sprite2D2" type="Sprite2D" parent="Village1"]
-texture = ExtResource("2_t1eii")
-
-[node name="Area2D2" type="Area2D" parent="Village1"]
-scale = Vector2(9.75536, 9.75536)
-collision_layer = 128
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Village1/Area2D2"]
-shape = SubResource("CircleShape2D_oeqr5")
-
-[node name="Label" type="Label" parent="Village1"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -41.0
-offset_top = 69.0
-offset_right = 45.0
-offset_bottom = 92.0
-grow_horizontal = 2
-text = "Breezeway"
-
-[node name="Village2" type="Node2D" parent="."]
-position = Vector2(891, 163)
-scale = Vector2(0.634666, 0.634666)
-script = ExtResource("1_v8wyq")
-transition_scene_path = "res://scenes/levels/village.tscn"
-
-[node name="Sprite2D3" type="Sprite2D" parent="Village2"]
-texture = ExtResource("2_t1eii")
-
-[node name="Area2D3" type="Area2D" parent="Village2"]
-scale = Vector2(10.423, 10.423)
-collision_layer = 128
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Village2/Area2D3"]
-shape = SubResource("CircleShape2D_oeqr5")
-
-[node name="Label" type="Label" parent="Village2"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -41.0
-offset_top = 69.0
-offset_right = 45.0
-offset_bottom = 92.0
-grow_horizontal = 2
-text = "Windswept"
-
-[node name="PlayerPlane" parent="." instance=ExtResource("3_drtaj")]
-unique_name_in_owner = true
-position = Vector2(-250, 324)
-
-[node name="Camera2D" type="Camera2D" parent="PlayerPlane"]
-
-[connection signal="area_entered" from="Hometown/Area2D" to="Hometown" method="_transition" unbinds=1]
-[connection signal="area_entered" from="Village1/Area2D2" to="Village1" method="_transition" unbinds=1]
+[node name="MapLocation3" parent="." instance=ExtResource("2_ujpdp")]
+position = Vector2(562, 508)
+scale = Vector2(0.472747, 0.472747)
