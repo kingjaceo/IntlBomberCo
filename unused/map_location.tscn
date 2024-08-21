@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqnqptfq4e5ur"]
+
+[ext_resource type="Script" path="res://_common/game_scene.gd" id="1_xx38f"]
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="2_gknvs"]
+[ext_resource type="Script" path="res://unused/scenes/levels/site_boundary.gd" id="3_xn5w0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oeqr5"]
+radius = 100.0
+
+[node name="MapLocation" type="Node2D"]
+script = ExtResource("1_xx38f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gknvs")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("3_xn5w0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_oeqr5")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_top = 69.0
+offset_right = 45.0
+offset_bottom = 92.0
+grow_horizontal = 2
+text = "Hometown"
+
+[connection signal="area_entered" from="Area2D" to="." method="_transition" unbinds=1]

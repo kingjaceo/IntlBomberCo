@@ -1,73 +1,24 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=19 format=3]
+[gd_resource type="Resource" script_class="GameData" load_steps=9 format=3 uid="uid://mrnelixwcvbm"]
 
-[ext_resource type="Script" path="res://objectives/contracts/cash_reward.gd" id="1_6ydb1"]
 [ext_resource type="Script" path="res://game_data/game_data.gd" id="1_bbd2x"]
-[ext_resource type="Resource" path="res://planes/starter_plane.tres" id="1_veqhr"]
+[ext_resource type="Resource" uid="uid://6y8ml2qk431i" path="res://airships/starter_plane.tres" id="1_veqhr"]
 [ext_resource type="Script" path="res://game_data/contract_generator_data.gd" id="2_574h1"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="2_cpqls"]
-[ext_resource type="Resource" path="res://items/food_package.tres" id="2_g3fgq"]
-[ext_resource type="Resource" path="res://items/bombs/bomb.tres" id="2_ucadd"]
-[ext_resource type="Script" path="res://objectives/aid_trigger.gd" id="3_dyxjg"]
-[ext_resource type="Script" path="res://objectives/destruction_trigger.gd" id="4_81wyq"]
-
-[sub_resource type="Resource" id="Resource_a1qqo"]
-script = ExtResource("1_6ydb1")
-amount = 5000.0
-
-[sub_resource type="Resource" id="Resource_ta0jo"]
-script = ExtResource("3_dyxjg")
-target_amount = 3
-
-[sub_resource type="Resource" id="Resource_31pev"]
-script = ExtResource("1_6ydb1")
-amount = 3000.0
-
-[sub_resource type="Resource" id="Resource_urpo5"]
-script = ExtResource("2_cpqls")
-name = "Aid Contract #1"
-description = "Feed the people! Deliver 3 aid packages."
-objective_type = 0
-upfront_reward = SubResource("Resource_31pev")
-completion_reward = SubResource("Resource_a1qqo")
-trigger = SubResource("Resource_ta0jo")
-accepted = true
-completed = true
-
-[sub_resource type="Resource" id="Resource_jgnnw"]
-script = ExtResource("1_6ydb1")
-amount = 20000.0
-
-[sub_resource type="Resource" id="Resource_xfewu"]
-script = ExtResource("4_81wyq")
-building_type = 8
-target_amount = 1
-
-[sub_resource type="Resource" id="Resource_sd3vn"]
-script = ExtResource("1_6ydb1")
-amount = 3000.0
-
-[sub_resource type="Resource" id="Resource_oe37h"]
-script = ExtResource("2_cpqls")
-name = "Destruction Contract #1"
-description = "Our enemies must be destroyed! Destroy 1 military building (red)."
-objective_type = 0
-upfront_reward = SubResource("Resource_sd3vn")
-completion_reward = SubResource("Resource_jgnnw")
-trigger = SubResource("Resource_xfewu")
-accepted = true
-completed = false
+[ext_resource type="Script" path="res://objectives/contracts/contract_template.gd" id="6_grfet"]
+[ext_resource type="Script" path="res://items/game_item.gd" id="8_hclts"]
+[ext_resource type="Script" path="res://airships/airplane.gd" id="11_gy17r"]
 
 [sub_resource type="Resource" id="Resource_424hc"]
 script = ExtResource("2_574h1")
 contract_pool = Array[ExtResource("2_cpqls")]([])
-contract_templates = Array[Resource("res://objectives/contracts/contract_template.gd")]([])
+contract_templates = Array[ExtResource("6_grfet")]([])
 
 [resource]
 script = ExtResource("1_bbd2x")
 current_plane = ExtResource("1_veqhr")
-items = Array[Resource("res://items/game_item.gd")]([ExtResource("2_g3fgq"), ExtResource("2_ucadd")])
-planes = Array[Resource("res://planes/airplane.gd")]([ExtResource("1_veqhr")])
-contracts = Array[ExtResource("2_cpqls")]([SubResource("Resource_urpo5"), SubResource("Resource_oe37h")])
+items = Array[ExtResource("8_hclts")]([])
+planes = Array[ExtResource("11_gy17r")]([ExtResource("1_veqhr")])
+contracts = Array[ExtResource("2_cpqls")]([])
 money = 29000
 tutorial_active = false
 contract_capacity = 2

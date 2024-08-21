@@ -9,7 +9,7 @@ func activate():
 	Events.aid_delivered.connect(_on_aid_delivered)
 
 
-func _on_aid_delivered(_location: Vector2):
+func _on_aid_delivered(_location: Vector2, location: Global.PlaceName):
 	current_amount += 1
 	if current_amount >= target_amount:
 		triggered.emit()

@@ -1,22 +1,61 @@
-[gd_scene load_steps=6 format=3 uid="uid://0sro2v6rx8so"]
+[gd_scene load_steps=10 format=3 uid="uid://0sro2v6rx8so"]
 
+[ext_resource type="Shader" path="res://buildings/dotted_circle_outline.gdshader" id="1_0pjfu"]
 [ext_resource type="Script" path="res://buildings/building.gd" id="1_xeo1y"]
-[ext_resource type="Script" path="res://building_type.gd" id="2_t2827"]
-[ext_resource type="Texture2D" uid="uid://s0jasky252cc" path="res://scenes/levels/city_spritesheet_1028.png" id="3_l775x"]
+[ext_resource type="Script" path="res://unused/building_type.gd" id="2_t2827"]
+[ext_resource type="Texture2D" uid="uid://s0jasky252cc" path="res://world/city_spritesheet_1028.png" id="3_l775x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jve0"]
+shader = ExtResource("1_0pjfu")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/diameter = 1.0
+shader_parameter/thickness = 0.05
+shader_parameter/frequency = 10.0
+shader_parameter/phase = 0.0
+shader_parameter/pulse_speed = 1.0
+shader_parameter/rotation_speed = 1.0
 
 [sub_resource type="Resource" id="Resource_sygn2"]
 script = ExtResource("2_t2827")
 building_type = 4
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yntjg"]
+shader = ExtResource("1_0pjfu")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/diameter = 0.95
+shader_parameter/thickness = 0.02
+shader_parameter/frequency = 16.0
+shader_parameter/phase = 0.0
+shader_parameter/pulse_speed = 5.0
+shader_parameter/rotation_speed = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r4arl"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykveo"]
 size = Vector2(64, 64)
 
 [node name="Factory" type="Node2D" groups=["destructible"]]
+material = SubResource("ShaderMaterial_7jve0")
 script = ExtResource("1_xeo1y")
 building_type = SubResource("Resource_sygn2")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yntjg")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -54.0
+offset_right = 54.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_r4arl")
 texture = ExtResource("3_l775x")
 region_enabled = true
 region_rect = Rect2(128, 128, 64, 64)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bad2i7hengnt5"]
+[gd_scene load_steps=3 format=3 uid="uid://bad2i7hengnt5"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_mbofm"]
-[ext_resource type="PackedScene" uid="uid://cs08dwnrlb8sc" path="res://scenes/start_menu.tscn" id="3_ru34f"]
-[ext_resource type="PackedScene" uid="uid://65ocxmwtyspx" path="res://ui/pause_menu.tscn" id="4_jnvtl"]
+[ext_resource type="PackedScene" uid="uid://cs08dwnrlb8sc" path="res://_common/start_menu.tscn" id="3_ru34f"]
 
 [node name="Game" type="Node2D"]
 process_mode = 3
@@ -10,12 +9,4 @@ script = ExtResource("1_mbofm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_jnvtl")]
-unique_name_in_owner = true
-visible = false
-layout_direction = 1
-main_menu_scene_path = "res://scenes/start_menu.tscn"
-
 [node name="StartMenu" parent="." instance=ExtResource("3_ru34f")]
-
-[connection signal="main_menu_selected" from="CanvasLayer/PauseMenu" to="." method="_transition_to"]

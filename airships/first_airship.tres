@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="AirshipData" load_steps=2 format=3 uid="uid://bx57wvgdov4wo"]
+
+[ext_resource type="Script" path="res://airships/airship_data.gd" id="1_70prm"]
+
+[resource]
+script = ExtResource("1_70prm")

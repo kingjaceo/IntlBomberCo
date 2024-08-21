@@ -1,0 +1,2 @@
+class_name WorldLocation
+extends Node2D

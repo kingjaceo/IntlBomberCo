@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctcnh2en3sovj"]
+
+[ext_resource type="Script" path="res://world/settlements/settlement.gd" id="1_r0coc"]
+[ext_resource type="PackedScene" uid="uid://htv2xjxwl35t" path="res://buildings/apartment.tscn" id="4_rx346"]
+[ext_resource type="PackedScene" uid="uid://0sro2v6rx8so" path="res://buildings/factory.tscn" id="5_0dmav"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_itwam"]
+radius = 374.12
+
+[node name="Village" type="Node2D"]
+script = ExtResource("1_r0coc")
+
+[node name="Dock" parent="." instance=ExtResource("5_0dmav")]
+position = Vector2(30, 15)
+scale = Vector2(1.72, 1.72)
+
+[node name="Apartment" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(-25, 164)
+
+[node name="Apartment2" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(-144, 75)
+
+[node name="Apartment3" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(4, -175)
+
+[node name="Apartment4" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(104, -108)
+
+[node name="Apartment5" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(-109, -97)
+
+[node name="Apartment6" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(-109, -97)
+
+[node name="Apartment7" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(-272, -66)
+
+[node name="Apartment8" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(-135, -233)
+
+[node name="Bounds" type="Area2D" parent="."]
+visible = false
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+shape = SubResource("CircleShape2D_itwam")

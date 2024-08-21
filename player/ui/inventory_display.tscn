@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlo6uvbuoa4km"]
+
+[ext_resource type="Script" path="res://player/ui/inventory_display.gd" id="1_843lv"]
+[ext_resource type="PackedScene" uid="uid://qogj43l328gl" path="res://player/ui/inventory_button.tscn" id="2_vacms"]
+
+[node name="InventoryDisplay" type="HBoxContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -294.0
+offset_top = -144.0
+offset_right = 294.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_843lv")
+
+[node name="InventoryButton" parent="." instance=ExtResource("2_vacms")]
+layout_mode = 2
+
+[node name="InventoryButton2" parent="." instance=ExtResource("2_vacms")]
+layout_mode = 2
+
+[node name="InventoryButton3" parent="." instance=ExtResource("2_vacms")]
+layout_mode = 2
+
+[node name="InventoryButton4" parent="." instance=ExtResource("2_vacms")]
+layout_mode = 2

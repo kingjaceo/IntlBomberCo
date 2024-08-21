@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://1u5flf0jbkmx"]
 
 [ext_resource type="Script" path="res://unused/shop_item_panel.gd" id="1_2tksc"]
-[ext_resource type="PackedScene" uid="uid://brlcq1t2ug506" path="res://ui/item_stat_line.tscn" id="2_faphf"]
-[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://main_theme.tres" id="3_hmhvv"]
+[ext_resource type="PackedScene" uid="uid://brlcq1t2ug506" path="res://town_screen/items/item_stat_line.tscn" id="2_faphf"]
+[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://_common/main_theme.tres" id="3_hmhvv"]
 
 [node name="ShopItemContainer" type="PanelContainer"]
 anchors_preset = 8

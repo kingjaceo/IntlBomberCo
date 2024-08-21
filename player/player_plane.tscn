@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://thons4d02mrv"]
+
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="1_3bt4v"]
+[ext_resource type="Script" path="res://player/player_plane.gd" id="1_l736k"]
+[ext_resource type="Script" path="res://items/game_stat.gd" id="2_mncvq"]
+[ext_resource type="Script" path="res://items/game_item.gd" id="3_6p2dw"]
+[ext_resource type="Script" path="res://airships/airship_data.gd" id="3_ggpjp"]
+[ext_resource type="Script" path="res://buildings/dock_detector.gd" id="4_6whou"]
+[ext_resource type="PackedScene" uid="uid://tkux0fjlpkgo" path="res://items/aid/aid_package.tscn" id="4_ax3wq"]
+[ext_resource type="PackedScene" uid="uid://dlo6uvbuoa4km" path="res://player/ui/inventory_display.tscn" id="5_eurip"]
+
+[sub_resource type="Resource" id="Resource_g47tv"]
+script = ExtResource("2_mncvq")
+name = "Speed"
+value = -1.0
+max_value = 300.0
+step_size = 50.0
+step_cost = 20000.0
+
+[sub_resource type="Resource" id="Resource_ultpg"]
+script = ExtResource("3_6p2dw")
+name = "Aid Package"
+type = 0
+amount = 0.0
+capacity = inf
+cost = 1000.0
+item_scene = ExtResource("4_ax3wq")
+item_stats = Array[ExtResource("2_mncvq")]([])
+
+[sub_resource type="Resource" id="Resource_pnm2t"]
+script = ExtResource("2_mncvq")
+name = "Turning"
+value = 60.0
+max_value = 180.0
+step_size = 30.0
+step_cost = 10000.0
+
+[sub_resource type="Resource" id="Resource_frmne"]
+script = ExtResource("3_ggpjp")
+items = Array[ExtResource("3_6p2dw")]([SubResource("Resource_ultpg"), null])
+name = "Starter"
+forward_speed = SubResource("Resource_g47tv")
+rotation_speed = SubResource("Resource_pnm2t")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yca3l"]
+size = Vector2(58, 12)
+
+[node name="Player" type="Node2D"]
+z_index = 1
+script = ExtResource("1_l736k")
+current_airship = SubResource("Resource_frmne")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.09375, 0.453125)
+texture = ExtResource("1_3bt4v")
+
+[node name="SiteDetector" type="Area2D" parent="."]
+collision_layer = 192
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiteDetector"]
+shape = SubResource("RectangleShape2D_yca3l")
+
+[node name="DockDetector" type="Area2D" parent="."]
+script = ExtResource("4_6whou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DockDetector"]
+shape = SubResource("RectangleShape2D_yca3l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryDisplay" parent="CanvasLayer" instance=ExtResource("5_eurip")]
+offset_bottom = 48.0
+
+[connection signal="area_entered" from="SiteDetector" to="." method="_on_site_entered"]
+[connection signal="area_exited" from="SiteDetector" to="." method="_on_site_exited"]

@@ -2,9 +2,6 @@ class_name GameData
 extends Resource
 
 
-@export var current_plane: Airplane
-@export var items: Array[GameItem]
-@export var planes: Array[Airplane]
 @export var contracts: Array[Objective]
 @export var money: int = 10000:
 	set(value):
@@ -32,13 +29,6 @@ func _on_building_destroyed():
 
 func _on_aid_delivered():
 	aid_delivered += 1
-
-
-func add_plane(plane: Airplane):
-	if not current_plane:
-		current_plane = plane
-	planes.append(plane)
-	planes_updated.emit()
 
 
 func add_contract(contract: Objective):

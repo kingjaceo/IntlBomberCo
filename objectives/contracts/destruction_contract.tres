@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://objectives/contracts/cash_reward.gd" id="1_b31yp"]
 [ext_resource type="Script" path="res://objectives/contracts/destruction_contract.gd" id="1_m5s17"]
-[ext_resource type="Script" path="res://building_type.gd" id="3_l5c50"]
+[ext_resource type="Script" path="res://unused/building_type.gd" id="3_l5c50"]
 
 [sub_resource type="Resource" id="Resource_smruc"]
 script = ExtResource("1_b31yp")

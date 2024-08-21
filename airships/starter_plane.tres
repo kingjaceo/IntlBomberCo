@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="Airplane" load_steps=7 format=3 uid="uid://6y8ml2qk431i"]
+
+[ext_resource type="Script" path="res://items/game_stat.gd" id="1_nsyyq"]
+[ext_resource type="Script" path="res://airships/airplane.gd" id="2_coob1"]
+
+[sub_resource type="Resource" id="Resource_hhxrs"]
+script = ExtResource("1_nsyyq")
+name = "Speed"
+value = 0.0
+max_value = 300.0
+step_size = 50.0
+step_cost = 20000.0
+
+[sub_resource type="Resource" id="Resource_ddq62"]
+script = ExtResource("1_nsyyq")
+name = "Cargo Bays"
+value = 1.0
+max_value = 2.0
+step_size = 1.0
+step_cost = 7500.0
+
+[sub_resource type="Resource" id="Resource_gmak5"]
+script = ExtResource("1_nsyyq")
+name = "Range"
+value = 20.0
+max_value = 120.0
+step_size = 20.0
+step_cost = 10000.0
+
+[sub_resource type="Resource" id="Resource_ku4qd"]
+script = ExtResource("1_nsyyq")
+name = "Turning"
+value = 60.0
+max_value = 180.0
+step_size = 30.0
+step_cost = 10000.0
+
+[resource]
+script = ExtResource("2_coob1")
+name = "Starter Plane"
+forward_speed = SubResource("Resource_hhxrs")
+rotation_speed = SubResource("Resource_ku4qd")
+range_s = SubResource("Resource_gmak5")
+number_of_bays = SubResource("Resource_ddq62")

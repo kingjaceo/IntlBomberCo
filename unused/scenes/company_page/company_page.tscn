@@ -1,0 +1,113 @@
+[gd_scene load_steps=14 format=3 uid="uid://5fk7lukuw2lg"]
+
+[ext_resource type="Script" path="res://_common/game_scene.gd" id="1_je5qp"]
+[ext_resource type="Script" path="res://objectives/contract_generator.gd" id="2_pd8m4"]
+[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://_common/main_theme.tres" id="3_sxbos"]
+[ext_resource type="PackedScene" uid="uid://bgxvmu2e7ns4u" path="res://town_screen/money/money_label.tscn" id="4_rbv5c"]
+[ext_resource type="PackedScene" uid="uid://bday68s44p2p" path="res://town_screen/items/shop_column.tscn" id="5_s3glg"]
+[ext_resource type="Script" path="res://town_screen/items/item_column.gd" id="6_3fuy3"]
+[ext_resource type="PackedScene" uid="uid://dsteuiq5y0pel" path="res://town_screen/items/shop_panel.tscn" id="7_6k66h"]
+[ext_resource type="Script" path="res://unused/plane_column.gd" id="8_vqq6y"]
+[ext_resource type="PackedScene" uid="uid://06tje8xu7j5c" path="res://unused/plane_panel.tscn" id="9_l8bgj"]
+[ext_resource type="Script" path="res://town_screen/contracts/contract_column.gd" id="10_e58ht"]
+[ext_resource type="PackedScene" uid="uid://dnv1bjsbws60h" path="res://town_screen/contracts/contract_panel.tscn" id="11_g6k6l"]
+[ext_resource type="Script" path="res://town_screen/free_money_button.gd" id="12_rmqy8"]
+[ext_resource type="Script" path="res://_common/quantity_changer.gd" id="13_ib2jn"]
+
+[node name="CompanyPage" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_je5qp")
+
+[node name="ContractGenerator" type="Node" parent="."]
+script = ExtResource("2_pd8m4")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_sxbos")
+
+[node name="Page" type="VBoxContainer" parent="UILayer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/MarginContainer/Page"]
+layout_mode = 2
+text = "International Bomber Co"
+horizontal_alignment = 1
+
+[node name="Money" parent="UILayer/MarginContainer/Page" instance=ExtResource("4_rbv5c")]
+layout_mode = 2
+
+[node name="Columns" type="HBoxContainer" parent="UILayer/MarginContainer/Page"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Items" type="MarginContainer" parent="UILayer/MarginContainer/Page/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_sxbos")
+
+[node name="ItemColumn" parent="UILayer/MarginContainer/Page/Columns/Items" instance=ExtResource("5_s3glg")]
+layout_mode = 2
+size_flags_horizontal = 1
+script = ExtResource("6_3fuy3")
+shop_item_container = ExtResource("7_6k66h")
+column_name = "Items"
+
+[node name="Planes" type="MarginContainer" parent="UILayer/MarginContainer/Page/Columns"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_sxbos")
+
+[node name="PlaneColumn" parent="UILayer/MarginContainer/Page/Columns/Planes" instance=ExtResource("5_s3glg")]
+layout_mode = 2
+size_flags_horizontal = 1
+script = ExtResource("8_vqq6y")
+plane_container = ExtResource("9_l8bgj")
+column_name = "Planes"
+
+[node name="Contracts" type="MarginContainer" parent="UILayer/MarginContainer/Page/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_sxbos")
+
+[node name="ContractColumn" parent="UILayer/MarginContainer/Page/Columns/Contracts" instance=ExtResource("5_s3glg")]
+layout_mode = 2
+size_flags_horizontal = 1
+script = ExtResource("10_e58ht")
+contract_container = ExtResource("11_g6k6l")
+column_name = "Contracts"
+
+[node name="LaunchMission" type="Button" parent="UILayer/MarginContainer/Page"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Launch Mission"
+
+[node name="FreeMoney" type="Button" parent="UILayer/MarginContainer/Page"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "FreeMoney"
+script = ExtResource("12_rmqy8")
+amount = 100000
+
+[node name="QuantityChanger" type="Node" parent="UILayer/MarginContainer/Page/FreeMoney"]
+script = ExtResource("13_ib2jn")
+base_amount = 20000.0
+ctrl_multiplier = 10.0
+ctrl_shift_multiplier = 100.0
+
+[node name="Control" type="Control" parent="UILayer/MarginContainer/Page"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[connection signal="pressed" from="UILayer/MarginContainer/Page/LaunchMission" to="." method="_transition"]

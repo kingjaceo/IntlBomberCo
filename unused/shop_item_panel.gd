@@ -1,4 +1,4 @@
-class_name ShopItemPanel
+class_name ShopItemPanelDEPRECATED
 extends Control
 
 var game_data: GameData

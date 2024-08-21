@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdm80x5f7vpis"]
+
+[ext_resource type="Script" path="res://_common/escape_menu.gd" id="1_tdy0o"]
+
+[node name="EscapeMenu" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tdy0o")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.5
+offset_top = -92.5
+offset_right = 188.5
+offset_bottom = 92.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "MENU"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="ToMenu" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[node name="Exit" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_resume"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ToMenu" to="." method="_back_to_main"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Exit" to="." method="_exit_game"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://qogj43l328gl"]
+
+[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://_common/main_theme.tres" id="1_fjnku"]
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="2_iytfj"]
+[ext_resource type="Script" path="res://player/ui/inventory_button.gd" id="3_1v6wb"]
+
+[node name="InventoryButton" type="PanelContainer"]
+size_flags_horizontal = 3
+script = ExtResource("3_1v6wb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_fjnku")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_iytfj")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_fjnku")
+text = "Item
+"
+horizontal_alignment = 1

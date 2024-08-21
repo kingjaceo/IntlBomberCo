@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bday68s44p2p"]
+
+[ext_resource type="Script" path="res://town_screen/items/shop_column.gd" id="1_64nbj"]
+
+[node name="ShopColumn" type="VBoxContainer"]
+offset_right = 60.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+script = ExtResource("1_64nbj")
+column_name = "Column"
+
+[node name="ColumnName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Column
+"
+horizontal_alignment = 1

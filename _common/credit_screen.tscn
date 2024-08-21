@@ -1,0 +1,142 @@
+[gd_scene load_steps=9 format=3 uid="uid://8cma6mur4xhm"]
+
+[ext_resource type="Shader" path="res://_common/scrolling_background.gdshader" id="1_u3n2b"]
+[ext_resource type="Script" path="res://_common/game_menu.gd" id="1_vdana"]
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="2_xacsy"]
+[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://_common/main_theme.tres" id="3_y4704"]
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="4_heq33"]
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="5_ugt84"]
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="6_tvu0c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6xqj2"]
+shader = ExtResource("1_u3n2b")
+shader_parameter/direction = Vector2(1, 0)
+
+[node name="CreditScreen" type="Node2D"]
+script = ExtResource("1_vdana")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6xqj2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xacsy")
+expand_mode = 3
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/TextureRect"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -292.0
+offset_right = 580.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_y4704")
+
+[node name="Name" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 100
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("4_heq33")
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/PanelContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = 39.5
+offset_right = 137.5
+offset_bottom = 146.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jace King
+Programming"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+texture = ExtResource("5_ugt84")
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/PanelContainer2/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = 39.5
+offset_right = 137.5
+offset_bottom = 146.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jessie Lipsett
+Art"
+horizontal_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+texture = ExtResource("6_tvu0c")
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/PanelContainer3/TextureRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = 39.5
+offset_right = 137.5
+offset_bottom = 146.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nathan Oakes
+Design"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back to Menu"
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_back_to_main"]

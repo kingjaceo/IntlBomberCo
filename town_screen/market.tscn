@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjwfteevdu6gq"]
+
+[ext_resource type="Script" path="res://town_screen/market.gd" id="1_5ruxy"]
+[ext_resource type="PackedScene" uid="uid://bm41uk4saf206" path="res://town_screen/items/shop_item_panel.tscn" id="1_y211s"]
+
+[node name="Market" type="GridContainer"]
+script = ExtResource("1_5ruxy")
+metadata/_tab_index = 1
+
+[node name="ShopItemContainer" parent="." instance=ExtResource("1_y211s")]
+layout_mode = 2
+
+[node name="ShopItemContainer2" parent="." instance=ExtResource("1_y211s")]
+layout_mode = 2
+
+[node name="ShopItemContainer3" parent="." instance=ExtResource("1_y211s")]
+layout_mode = 2
+
+[node name="ShopItemContainer4" parent="." instance=ExtResource("1_y211s")]
+layout_mode = 2

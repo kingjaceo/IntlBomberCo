@@ -1,0 +1,62 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://brthav1j23iiw"]
+
+[sub_resource type="VisualShaderNodeVectorDistance" id="VisualShaderNodeVectorDistance_vsfec"]
+output_port_for_preview = 0
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0.5, 0.5)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_6kqcv"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_chenl"]
+constant = 0.3
+
+[sub_resource type="VisualShaderNodeSmoothStep" id="VisualShaderNodeSmoothStep_70j3c"]
+output_port_for_preview = 0
+default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1), 2, Vector2(0.5, 0.5)]
+op_type = 1
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+void fragment() {
+// Input:3
+	vec2 n_out3p0 = UV;
+
+
+// Distance:2
+	vec2 n_in2p1 = vec2(0.50000, 0.50000);
+	float n_out2p0 = distance(n_out3p0, n_in2p1);
+
+
+// FloatConstant:4
+	float n_out4p0 = 0.300000;
+
+
+// SmoothStep:5
+	vec2 n_in5p2 = vec2(0.50000, 0.50000);
+	vec2 n_out5p0 = smoothstep(vec2(n_out2p0), vec2(n_out4p0), n_in5p2);
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out5p0, 0.0);
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(520, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeVectorDistance_vsfec")
+nodes/fragment/2/position = Vector2(40, 120)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_6kqcv")
+nodes/fragment/3/position = Vector2(-280, 120)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_chenl")
+nodes/fragment/4/position = Vector2(-260, 440)
+nodes/fragment/5/node = SubResource("VisualShaderNodeSmoothStep_70j3c")
+nodes/fragment/5/position = Vector2(300, 120)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 2, 0, 5, 0, 4, 0, 5, 1, 5, 0, 0, 0)
