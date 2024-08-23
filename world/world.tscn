@@ -1,26 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtwh113wc5fpm"]
+[gd_scene load_steps=11 format=3 uid="uid://dtwh113wc5fpm"]
 
+[ext_resource type="Script" path="res://_common/game_scene.gd" id="1_mfa67"]
 [ext_resource type="PackedScene" uid="uid://ctcnh2en3sovj" path="res://world/settlements/village.tscn" id="2_dkhhs"]
 [ext_resource type="Resource" uid="uid://ck1gtw12jeblh" path="res://world/settlements/daresh_data.tres" id="3_277t3"]
 [ext_resource type="PackedScene" uid="uid://cdm80x5f7vpis" path="res://_common/escape_menu.tscn" id="3_ahabp"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="3_pfbug"]
-[ext_resource type="PackedScene" uid="uid://thons4d02mrv" path="res://player/player_plane.tscn" id="4_pims6"]
-[ext_resource type="Script" path="res://items/game_item.gd" id="6_fnxm6"]
+[ext_resource type="PackedScene" uid="uid://thons4d02mrv" path="res://player/player.tscn" id="4_pims6"]
+[ext_resource type="Script" path="res://inventory/game_item.gd" id="6_fnxm6"]
 [ext_resource type="Script" path="res://world/settlements/settlement_data.gd" id="9_gobnr"]
 
 [sub_resource type="Resource" id="Resource_4q8jh"]
 script = ExtResource("9_gobnr")
-settlement_name = ""
+settlement_name = 1
 contracts = Array[ExtResource("3_pfbug")]([])
 items = Array[ExtResource("6_fnxm6")]([])
 
 [sub_resource type="Resource" id="Resource_07cmc"]
 script = ExtResource("9_gobnr")
-settlement_name = ""
+settlement_name = 2
 contracts = Array[ExtResource("3_pfbug")]([])
 items = Array[ExtResource("6_fnxm6")]([])
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_mfa67")
 
 [node name="Daresh" parent="." instance=ExtResource("2_dkhhs")]
 position = Vector2(1011, 649)
@@ -34,8 +36,8 @@ data = SubResource("Resource_4q8jh")
 position = Vector2(3129, 148)
 data = SubResource("Resource_07cmc")
 
+[node name="Player" parent="." instance=ExtResource("4_pims6")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="EscapeMenu" parent="CanvasLayer" instance=ExtResource("3_ahabp")]
-
-[node name="Player" parent="." instance=ExtResource("4_pims6")]

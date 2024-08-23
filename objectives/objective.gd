@@ -1,10 +1,8 @@
 class_name Objective
 extends Resource
 
-enum ObjectiveType {ACHIEVEMENT, OBJECTIVE, CONTRACT}
 @export var name: String
 @export var description: String
-@export var objective_type: ObjectiveType
 @export var upfront_reward: Reward
 @export var completion_reward: Reward
 @export var trigger: Trigger
@@ -17,20 +15,21 @@ signal triggered
 signal objective_completed
 
 
-func accept():
+func accept(): # called when contract is accepted by player
 	accepted = true
+	activate()
 	if upfront_reward:
 		upfront_reward.receive()
 
 
-func activate():
+func activate(): # called when contract is loaded into memory or accepted
 	trigger.activate()
 	trigger.triggered.connect(_on_trigger)
 
 
-func complete():
+func complete(): # called when the objective is "turned in" by the player
 	completion_reward.receive()
-	objective_completed.emit()
+	objective_completed.emit(self)
 
 
 func _on_trigger():

@@ -8,6 +8,14 @@ func format_number(amount: float, shorten=true) -> String:
 		return get_long_number(amount)
 
 
+func format_percent(top: float, bottom: float) -> String:
+	return str(get_short_number(top / bottom)) + "%"
+
+
+func format_ratio(top: float, bottom: float) -> String:
+	return str(int(top)) + "/" + str(int(bottom))
+
+
 func get_short_number(amount: float):
 	if amount <= 1000000:
 		return get_long_number(amount)

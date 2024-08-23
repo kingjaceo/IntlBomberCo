@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvkec04d0511w" path="res://buildings/military_base.tscn" id="2_loa2u"]
 [ext_resource type="PackedScene" uid="uid://bjklxnkld1mvx" path="res://buildings/shops.tscn" id="3_c2xt6"]
 [ext_resource type="PackedScene" uid="uid://htv2xjxwl35t" path="res://buildings/apartment.tscn" id="4_48031"]
-[ext_resource type="PackedScene" uid="uid://0sro2v6rx8so" path="res://buildings/factory.tscn" id="5_rbl3i"]
+[ext_resource type="PackedScene" uid="uid://0sro2v6rx8so" path="res://buildings/airdock.tscn" id="5_rbl3i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxlfo"]
 texture = ExtResource("1_sd28t")

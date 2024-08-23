@@ -26,7 +26,6 @@ func _load_item():
 	item_name_label.text = str(item.name)
 	update()
 	item_cost_label.text = Utility.format_money(item.cost)
-	item.amount_changed.connect(update)
 	item_buy_button.pressed.connect(increase)
 	
 	var first_stat = true
@@ -49,6 +48,7 @@ func increase():
 	if player_plane_amount < item.capacity and game_data.money >= item.cost:
 		Global.player_airship_data.add_item(item, 1)
 	game_data.money -= item.cost
+	update()
 
 
 func _toggle_button():

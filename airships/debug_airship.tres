@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="AirshipData" load_steps=7 format=3 uid="uid://doblub01swjr4"]
+
+[ext_resource type="Script" path="res://inventory/game_stat.gd" id="1_1waka"]
+[ext_resource type="Script" path="res://inventory/game_item.gd" id="2_kgqr4"]
+[ext_resource type="Script" path="res://airships/airship_data.gd" id="3_6ac5e"]
+
+[sub_resource type="Resource" id="Resource_g47tv"]
+script = ExtResource("1_1waka")
+name = "Speed"
+value = -1.0
+max_value = 300.0
+step_size = 50.0
+step_cost = 20000.0
+
+[sub_resource type="Resource" id="Resource_pnm2t"]
+script = ExtResource("1_1waka")
+name = "Turning"
+value = 60.0
+max_value = 180.0
+step_size = 30.0
+step_cost = 10000.0
+
+[sub_resource type="Resource" id="Resource_6vfl1"]
+script = ExtResource("1_1waka")
+name = "Slots"
+value = 2.0
+max_value = 3.0
+step_size = 1.0
+step_cost = 10000.0
+
+[resource]
+script = ExtResource("3_6ac5e")
+items = Array[ExtResource("2_kgqr4")]([])
+name = "Starter"
+forward_speed = SubResource("Resource_g47tv")
+rotation_speed = SubResource("Resource_pnm2t")
+slots = SubResource("Resource_6vfl1")
+world_position = Vector2(500, 500)
+rotation = 0.0

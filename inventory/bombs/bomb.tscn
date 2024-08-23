@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctr041ayv5bfw"]
+
+[ext_resource type="Script" path="res://inventory/bombs/bomb.gd" id="1_fa1fj"]
+[ext_resource type="PackedScene" uid="uid://dwjeink4hu7ba" path="res://inventory/bombs/particle_explosion.tscn" id="2_qm52h"]
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="3_xlffo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjp3l"]
+
+[node name="Bomb" type="Node2D"]
+script = ExtResource("1_fa1fj")
+explosion_effect = ExtResource("2_qm52h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.234375, 0.234375)
+texture = ExtResource("3_xlffo")
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_fjp3l")

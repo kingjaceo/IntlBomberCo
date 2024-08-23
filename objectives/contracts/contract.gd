@@ -1,4 +1,4 @@
-class_name Contract
+class_name ContractDEPRECATED
 extends Resource
 
 @export var name: String

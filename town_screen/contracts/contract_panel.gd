@@ -39,6 +39,7 @@ func _load_contract():
 func _on_accept():
 	_show_accepted()
 	contract.accept()
+	Global.player_game_data.add_contract(contract)
 	button.pressed.disconnect(_on_accept)
 
 

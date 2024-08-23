@@ -1,98 +1,33 @@
-[gd_resource type="Resource" script_class="SettlementData" load_steps=23 format=3 uid="uid://ck1gtw12jeblh"]
+[gd_resource type="Resource" script_class="SettlementData" load_steps=10 format=3 uid="uid://ck1gtw12jeblh"]
 
 [ext_resource type="Script" path="res://objectives/objective.gd" id="1_8v5rb"]
 [ext_resource type="Script" path="res://objectives/contracts/cash_reward.gd" id="2_7g5wv"]
-[ext_resource type="Script" path="res://items/game_item.gd" id="2_224lu"]
+[ext_resource type="Script" path="res://inventory/game_item.gd" id="2_224lu"]
 [ext_resource type="Script" path="res://world/settlements/settlement_data.gd" id="3_b0go8"]
-[ext_resource type="Script" path="res://objectives/contracts/aid_contract.gd" id="3_o8603"]
-[ext_resource type="Script" path="res://objectives/aid_trigger.gd" id="4_yeagu"]
-[ext_resource type="Script" path="res://items/game_stat.gd" id="5_16hte"]
-[ext_resource type="Script" path="res://objectives/destruction_trigger.gd" id="5_ybtws"]
-[ext_resource type="Script" path="res://objectives/aid_place_trigger.gd" id="6_3lx2o"]
+[ext_resource type="Script" path="res://objectives/triggers/delivered_trigger.gd" id="3_utx7l"]
+[ext_resource type="Resource" uid="uid://bk3qqmr23wced" path="res://inventory/aid/aid_package.tres" id="8_xblqv"]
 
-[sub_resource type="Resource" id="Resource_655p8"]
+[sub_resource type="Resource" id="Resource_jhp8t"]
 script = ExtResource("2_7g5wv")
-amount = 5000.0
+amount = 2000.0
 
-[sub_resource type="Resource" id="Resource_b8i71"]
-script = ExtResource("4_yeagu")
-target_amount = 1
+[sub_resource type="Resource" id="Resource_jhqa5"]
+script = ExtResource("3_utx7l")
+target_place_names = Array[int]([1])
+target_item_types = Array[int]([0])
+target_amount = 1.0
 
-[sub_resource type="Resource" id="Resource_l0755"]
-script = ExtResource("2_7g5wv")
-amount = 1000.0
-
-[sub_resource type="Resource" id="Resource_4qamh"]
-script = ExtResource("3_o8603")
-target_amount = 0
-name = "Deliver aid to Vitok!"
-description = ""
-objective_type = 2
-upfront_reward = SubResource("Resource_l0755")
-completion_reward = SubResource("Resource_655p8")
-trigger = SubResource("Resource_b8i71")
-accepted = false
-completed = false
-
-[sub_resource type="Resource" id="Resource_r73kn"]
-script = ExtResource("2_7g5wv")
-amount = 10000.0
-
-[sub_resource type="Resource" id="Resource_oajdg"]
-script = ExtResource("5_ybtws")
-building_type = 0
-target_amount = 1
-
-[sub_resource type="Resource" id="Resource_3lnv5"]
-script = ExtResource("2_7g5wv")
-amount = 1000.0
-
-[sub_resource type="Resource" id="Resource_gl7li"]
+[sub_resource type="Resource" id="Resource_0lb3q"]
 script = ExtResource("1_8v5rb")
-name = "Destroy a building in Vitok!"
+name = "Deliver aid to Vitok."
 description = ""
-objective_type = 2
-upfront_reward = SubResource("Resource_3lnv5")
-completion_reward = SubResource("Resource_r73kn")
-trigger = SubResource("Resource_oajdg")
+completion_reward = SubResource("Resource_jhp8t")
+trigger = SubResource("Resource_jhqa5")
 accepted = false
 completed = false
-
-[sub_resource type="Resource" id="Resource_dpemi"]
-script = ExtResource("2_7g5wv")
-amount = 5000.0
-
-[sub_resource type="Resource" id="Resource_dbwi5"]
-script = ExtResource("6_3lx2o")
-target_place_name = 1
-target_amount = 1
-
-[sub_resource type="Resource" id="Resource_yw086"]
-script = ExtResource("2_7g5wv")
-amount = 1000.0
-
-[sub_resource type="Resource" id="Resource_f3gnp"]
-script = ExtResource("1_8v5rb")
-name = "Deliver aid to Vitok!"
-description = ""
-objective_type = 2
-upfront_reward = SubResource("Resource_yw086")
-completion_reward = SubResource("Resource_dpemi")
-trigger = SubResource("Resource_dbwi5")
-accepted = false
-completed = false
-
-[sub_resource type="Resource" id="Resource_w7djf"]
-script = ExtResource("2_224lu")
-name = "Aid Package"
-amount = 0.0
-capacity = inf
-cost = 1000.0
-item_stats = Array[ExtResource("5_16hte")]([])
-item_type = 0
 
 [resource]
 script = ExtResource("3_b0go8")
-settlement_name = "Daresh"
-contracts = Array[ExtResource("1_8v5rb")]([SubResource("Resource_4qamh"), SubResource("Resource_gl7li"), SubResource("Resource_f3gnp")])
-items = Array[ExtResource("2_224lu")]([SubResource("Resource_w7djf")])
+settlement_name = 0
+contracts = Array[ExtResource("1_8v5rb")]([SubResource("Resource_0lb3q")])
+items = Array[ExtResource("2_224lu")]([ExtResource("8_xblqv")])

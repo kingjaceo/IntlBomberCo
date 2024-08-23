@@ -1,4 +1,4 @@
-class_name AidContract
+class_name AidContractDEPRECATED
 extends Objective
 
 @export var target_amount: int

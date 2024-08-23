@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="GameData" load_steps=6 format=3 uid="uid://cajmqvggc7ygo"]
+
+[ext_resource type="Script" path="res://objectives/objective.gd" id="1_pdh2d"]
+[ext_resource type="Script" path="res://objectives/contracts/contract_template.gd" id="2_xeyx4"]
+[ext_resource type="Script" path="res://game_data/contract_generator_data.gd" id="3_6iuw3"]
+[ext_resource type="Script" path="res://game_data/game_data.gd" id="4_w41kk"]
+
+[sub_resource type="Resource" id="Resource_424hc"]
+script = ExtResource("3_6iuw3")
+contract_pool = Array[ExtResource("1_pdh2d")]([])
+contract_templates = Array[ExtResource("2_xeyx4")]([])
+
+[resource]
+script = ExtResource("4_w41kk")
+contracts = Array[ExtResource("1_pdh2d")]([])
+money = 29000
+tutorial_active = false
+contract_capacity = 2
+generator_data = SubResource("Resource_424hc")

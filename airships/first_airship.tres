@@ -1,6 +1,21 @@
-[gd_resource type="Resource" script_class="AirshipData" load_steps=2 format=3 uid="uid://bx57wvgdov4wo"]
+[gd_resource type="Resource" script_class="AirshipData" load_steps=5 format=3 uid="uid://bx57wvgdov4wo"]
 
+[ext_resource type="Script" path="res://inventory/game_item.gd" id="1_3p5ni"]
 [ext_resource type="Script" path="res://airships/airship_data.gd" id="1_70prm"]
+[ext_resource type="Script" path="res://inventory/game_stat.gd" id="3_lv3sk"]
+
+[sub_resource type="Resource" id="Resource_jyr1k"]
+script = ExtResource("3_lv3sk")
+name = ""
+value = 0.0
+max_value = inf
+step_size = 0.0
+step_cost = 0.0
 
 [resource]
 script = ExtResource("1_70prm")
+items = Array[ExtResource("1_3p5ni")]([])
+name = ""
+slots = SubResource("Resource_jyr1k")
+world_position = Vector2(0, 0)
+rotation = 0.0

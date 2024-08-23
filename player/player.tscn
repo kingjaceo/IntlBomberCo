@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://thons4d02mrv"]
+
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="1_3bt4v"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_l736k"]
+[ext_resource type="Resource" uid="uid://doblub01swjr4" path="res://airships/debug_airship.tres" id="2_d8ctq"]
+[ext_resource type="Script" path="res://buildings/dock_detector.gd" id="4_6whou"]
+[ext_resource type="PackedScene" uid="uid://dlo6uvbuoa4km" path="res://inventory/inventory_display.tscn" id="5_eurip"]
+[ext_resource type="Script" path="res://player/site_detector.gd" id="7_h1xul"]
+[ext_resource type="Script" path="res://player/player_camera_controller.gd" id="7_oyj27"]
+[ext_resource type="PackedScene" uid="uid://bmdf70uyv0uuv" path="res://inventory/inventory_slot.tscn" id="8_e61gr"]
+[ext_resource type="Script" path="res://player/player_movement_controller.gd" id="8_t657i"]
+[ext_resource type="PackedScene" uid="uid://dgego3mbqcfnu" path="res://inventory/item_icon.tscn" id="9_n6gnt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yca3l"]
+size = Vector2(58, 12)
+
+[node name="Player" type="Node2D"]
+z_index = 1
+script = ExtResource("1_l736k")
+current_airship = ExtResource("2_d8ctq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.09375, 0.453125)
+texture = ExtResource("1_3bt4v")
+
+[node name="CameraController" type="Camera2D" parent="."]
+script = ExtResource("7_oyj27")
+
+[node name="SiteDetector" type="Area2D" parent="."]
+collision_layer = 192
+collision_mask = 192
+script = ExtResource("7_h1xul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SiteDetector"]
+shape = SubResource("RectangleShape2D_yca3l")
+
+[node name="DockDetector" type="Area2D" parent="."]
+script = ExtResource("4_6whou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DockDetector"]
+shape = SubResource("RectangleShape2D_yca3l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryDisplay" parent="CanvasLayer" instance=ExtResource("5_eurip")]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = -13.0
+offset_right = 0.0
+offset_bottom = -13.0
+grow_vertical = 0
+
+[node name="InventorySlot" parent="CanvasLayer/InventoryDisplay" instance=ExtResource("8_e61gr")]
+layout_mode = 2
+
+[node name="Icon" parent="CanvasLayer/InventoryDisplay/InventorySlot" instance=ExtResource("9_n6gnt")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="InventorySlot2" parent="CanvasLayer/InventoryDisplay" instance=ExtResource("8_e61gr")]
+layout_mode = 2
+
+[node name="MovementController" type="Node" parent="."]
+script = ExtResource("8_t657i")
+
+[node name="Node2" type="Node" parent="."]
+
+[node name="Node3" type="Node" parent="."]
+
+[connection signal="area_entered" from="SiteDetector" to="CameraController" method="_on_site_entered"]
+[connection signal="area_entered" from="SiteDetector" to="MovementController" method="_cruising_speed" unbinds=1]
+[connection signal="area_exited" from="SiteDetector" to="CameraController" method="_on_site_exited"]
+[connection signal="area_entered" from="DockDetector" to="MovementController" method="_stop" unbinds=1]

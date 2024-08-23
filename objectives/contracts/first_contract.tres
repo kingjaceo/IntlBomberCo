@@ -1,14 +1,12 @@
-[gd_resource type="Resource" script_class="Objective" load_steps=9 format=3 uid="uid://civmkdmly4vpb"]
+[gd_resource type="Resource" script_class="Objective" load_steps=8 format=3 uid="uid://civmkdmly4vpb"]
 
-[ext_resource type="Resource" uid="uid://6y8ml2qk431i" path="res://airships/starter_plane.tres" id="1_vaxrm"]
 [ext_resource type="Script" path="res://objectives/contracts/plane_reward.gd" id="2_7q6h3"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="3_wst7n"]
-[ext_resource type="Script" path="res://objectives/item_purchase_trigger.gd" id="4_2j1g5"]
+[ext_resource type="Script" path="res://objectives/triggers/item_purchase_trigger.gd" id="4_2j1g5"]
 [ext_resource type="Script" path="res://objectives/contracts/cash_reward.gd" id="5_tup4t"]
 
 [sub_resource type="Resource" id="Resource_553pa"]
 script = ExtResource("2_7q6h3")
-airplane = ExtResource("1_vaxrm")
 
 [sub_resource type="Resource" id="Resource_d4jsf"]
 script = ExtResource("4_2j1g5")

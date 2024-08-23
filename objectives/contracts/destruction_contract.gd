@@ -1,5 +1,5 @@
-class_name DestructionContract
-extends Contract
+class_name DestructionContractDEPRECATED
+extends Objective
 
 @export var target: BuildingType
 @export var target_amount: int
@@ -16,7 +16,7 @@ func _on_building_destroyed(building_type: int):
 		current_amount += 1
 		if current_amount >= target_amount:
 			completed = true
-			condition_satisfied.emit()
+			objective_completed.emit()
 
 
 func get_progress():

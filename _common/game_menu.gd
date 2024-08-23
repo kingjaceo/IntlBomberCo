@@ -1,5 +1,5 @@
 class_name GameMenu
-extends CanvasItem
+extends GameScene
 
 
 func _load_world():

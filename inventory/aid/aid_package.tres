@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GameItem" load_steps=5 format=3 uid="uid://bk3qqmr23wced"]
+
+[ext_resource type="PackedScene" uid="uid://tkux0fjlpkgo" path="res://inventory/aid/aid_package.tscn" id="1_2gkkn"]
+[ext_resource type="Texture2D" uid="uid://s8nriuuigs5t" path="res://inventory/aid/aid_basket.png" id="1_63pab"]
+[ext_resource type="Script" path="res://inventory/game_stat.gd" id="2_hcx03"]
+[ext_resource type="Script" path="res://inventory/game_item.gd" id="3_khiby"]
+
+[resource]
+script = ExtResource("3_khiby")
+name = "Aid Package"
+type = 0
+amount = 0.0
+capacity = 10.0
+cost = 1000.0
+scene = ExtResource("1_2gkkn")
+icon = ExtResource("1_63pab")
+item_stats = Array[ExtResource("2_hcx03")]([])

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://qogj43l328gl"]
+
+[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://_common/main_theme.tres" id="1_fjnku"]
+[ext_resource type="Texture2D" uid="uid://s8nriuuigs5t" path="res://inventory/aid/aid_basket.png" id="2_xexkt"]
+[ext_resource type="Script" path="res://unused/inventory_button.gd" id="3_1v6wb"]
+
+[node name="InventoryButton" type="PanelContainer"]
+size_flags_horizontal = 4
+script = ExtResource("3_1v6wb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_fjnku")
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_xexkt")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_fjnku")
+text = "Aid Package (0)
+"
+horizontal_alignment = 1

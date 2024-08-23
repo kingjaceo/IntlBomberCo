@@ -1,5 +1,5 @@
-class_name TutorialContract
-extends Contract
+class_name TutorialContractDEPRECATED
+extends Objective
 
 
 func get_progress():

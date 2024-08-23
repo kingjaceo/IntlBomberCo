@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://world/settlements/settlement.gd" id="1_r0coc"]
 [ext_resource type="PackedScene" uid="uid://htv2xjxwl35t" path="res://buildings/apartment.tscn" id="4_rx346"]
-[ext_resource type="PackedScene" uid="uid://0sro2v6rx8so" path="res://buildings/factory.tscn" id="5_0dmav"]
+[ext_resource type="PackedScene" uid="uid://0sro2v6rx8so" path="res://buildings/airdock.tscn" id="5_0dmav"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_itwam"]
 radius = 374.12
@@ -41,6 +41,21 @@ position = Vector2(-135, -233)
 [node name="Bounds" type="Area2D" parent="."]
 visible = false
 collision_layer = 64
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
 shape = SubResource("CircleShape2D_itwam")
+
+[node name="Town Name" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 182.0
+offset_right = 87.0
+offset_bottom = 224.0
+grow_horizontal = 2
+text = "Town Name
+"
+
+[connection signal="area_entered" from="Bounds" to="." method="_on_area_detected"]

@@ -1,8 +1,8 @@
-class_name PlanePanel
+class_name PlanePanelDEPRECATED
 extends Control
 
 var game_data: GameData
-var plane: Airplane
+var plane: Node2D
 @onready var name_label: Label = %Name
 @onready var plane_stat_container: VBoxContainer = %PlaneStatContainer
 #@onready var stat_panel: StatPanel = %StatPanel
