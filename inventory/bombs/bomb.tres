@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="BombItem" load_steps=7 format=3 uid="uid://ddjlsmhf475qo"]
+[gd_resource type="Resource" script_class="BombItem" load_steps=8 format=3 uid="uid://ddjlsmhf475qo"]
 
 [ext_resource type="Script" path="res://inventory/bombs/bomb_item.gd" id="1_ojp60"]
 [ext_resource type="Script" path="res://inventory/item_stat.gd" id="1_rr5ce"]
 [ext_resource type="PackedScene" uid="uid://ctr041ayv5bfw" path="res://inventory/bombs/bomb.tscn" id="2_23oqy"]
+[ext_resource type="Texture2D" uid="uid://bdq0su0o7v2uj" path="res://inventory/bombs/small_stormbomb.png" id="2_nnb5f"]
 [ext_resource type="Script" path="res://inventory/game_stat.gd" id="3_esyo7"]
 
 [sub_resource type="Resource" id="Resource_ssmyb"]
@@ -26,9 +27,10 @@ script = ExtResource("1_ojp60")
 damage = SubResource("Resource_ssmyb")
 radius = SubResource("Resource_ua7pr")
 name = "Bomb"
+type = 1
 amount = 10.0
 capacity = 20.0
 cost = 100.0
-item_scene = ExtResource("2_23oqy")
+scene = ExtResource("2_23oqy")
+icon = ExtResource("2_nnb5f")
 item_stats = Array[ExtResource("3_esyo7")]([])
-item_type = 1

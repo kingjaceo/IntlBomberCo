@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://inventory/bombs/bomb.gd" id="1_fa1fj"]
 [ext_resource type="PackedScene" uid="uid://dwjeink4hu7ba" path="res://inventory/bombs/particle_explosion.tscn" id="2_qm52h"]
-[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="3_xlffo"]
+[ext_resource type="Texture2D" uid="uid://bdq0su0o7v2uj" path="res://inventory/bombs/small_stormbomb.png" id="3_xd6ln"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fjp3l"]
+radius = 24.1868
 
 [node name="Bomb" type="Node2D"]
 script = ExtResource("1_fa1fj")
@@ -13,11 +14,12 @@ explosion_effect = ExtResource("2_qm52h")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 scale = Vector2(0.234375, 0.234375)
-texture = ExtResource("3_xlffo")
+texture = ExtResource("3_xd6ln")
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 0
+collision_layer = 4
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true

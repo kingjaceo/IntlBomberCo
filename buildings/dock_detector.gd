@@ -9,11 +9,11 @@ var current_airship: AirshipData
 func _ready():
 	player = owner
 	current_airship = player.current_airship
-	area_entered.connect(_on_dock_detected)
+	area_entered.connect(_check_dock_detected)
 	area_exited.connect(_on_undock)
 
 
-func _on_dock_detected(dock: Dock):
+func _check_dock_detected(dock: Dock):
 	if not current_airship.docked:
 		current_airship.world_position = owner.position
 		current_airship.rotation = owner.rotation

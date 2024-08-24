@@ -1,4 +1,4 @@
-class_name BuildingType
+class_name BuildingTypeDEPRECATED
 extends Resource
 
 

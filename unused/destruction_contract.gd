@@ -1,7 +1,7 @@
 class_name DestructionContractDEPRECATED
 extends Objective
 
-@export var target: BuildingType
+@export var target: Global.BuildingType
 @export var target_amount: int
 var current_amount: int = 0
 

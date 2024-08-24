@@ -1,4 +1,4 @@
-class_name ContractGeneratorData
+class_name ContractGeneratorDataDEPRECATED
 extends Resource
 
 @export var contract_pool: Array[Objective]

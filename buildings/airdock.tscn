@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://0sro2v6rx8so"]
+[gd_scene load_steps=9 format=3 uid="uid://0sro2v6rx8so"]
 
 [ext_resource type="Shader" path="res://buildings/dotted_circle_outline.gdshader" id="1_jo2e5"]
 [ext_resource type="Script" path="res://buildings/building.gd" id="2_4tf0h"]
-[ext_resource type="Script" path="res://unused/building_type.gd" id="3_5hc5c"]
 [ext_resource type="Texture2D" uid="uid://s0jasky252cc" path="res://world/city_spritesheet_1028.png" id="4_5ix7x"]
 [ext_resource type="Script" path="res://buildings/dock.gd" id="5_va2pp"]
 
@@ -15,10 +14,6 @@ shader_parameter/frequency = 10.0
 shader_parameter/phase = 0.0
 shader_parameter/pulse_speed = 1.0
 shader_parameter/rotation_speed = 1.0
-
-[sub_resource type="Resource" id="Resource_sygn2"]
-script = ExtResource("3_5hc5c")
-building_type = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yntjg"]
 shader = ExtResource("1_jo2e5")
@@ -38,7 +33,7 @@ size = Vector2(64, 64)
 [node name="Airdock" type="Node2D" groups=["destructible"]]
 material = SubResource("ShaderMaterial_7jve0")
 script = ExtResource("2_4tf0h")
-building_type = SubResource("Resource_sygn2")
+building_type = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_yntjg")
@@ -62,6 +57,7 @@ region_enabled = true
 region_rect = Rect2(128, 128, 64, 64)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
 script = ExtResource("5_va2pp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

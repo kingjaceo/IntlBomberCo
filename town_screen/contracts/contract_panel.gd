@@ -34,6 +34,8 @@ func _load_contract():
 	if contract.completed:
 		_enable_complete()
 	contract.triggered.connect(_enable_complete)
+	contract.progress_changed.connect(_update_progress_label)
+	_update_progress_label()
 
 
 func _on_accept():
@@ -46,8 +48,11 @@ func _on_accept():
 func _show_accepted():
 	button.text = "Complete"
 	button.disabled = true
-	progress_label.text = contract.progress + "\n\n"
 	accepted.emit()
+
+
+func _update_progress_label():
+	progress_label.text = contract.progress + "\n\n"
 
 
 func _enable_complete():

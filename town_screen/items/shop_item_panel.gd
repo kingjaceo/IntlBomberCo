@@ -12,7 +12,6 @@ var item: GameItem
 @onready var panel_container = %PanelContainer
 
 
-
 func _ready():
 	game_data = Global.game_data
 	game_data.money_changed.connect(_toggle_button)

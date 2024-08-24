@@ -2,9 +2,10 @@ class_name InventoryDisplay
 extends BoxContainer
 
 var current_airship: AirshipData
-var inventory_slot_scene: PackedScene = load("res://inventory/inventory_slot.tscn")
+var slot_scene: PackedScene = load("res://inventory/item_slot.tscn")
 var icon_scene: PackedScene = load("res://inventory/item_icon.tscn")
 var items_to_icons: Dictionary # {GameItem: GameIcon}
+var active_item_icon: ItemIcon
 
 
 func _ready():
@@ -17,7 +18,7 @@ func _load_items():
 	for child in get_children():
 		child.free()
 	for slot in range(current_airship.slots.value):
-		var instance = inventory_slot_scene.instantiate()			
+		var instance = slot_scene.instantiate()			
 		add_child(instance)
 	for item in current_airship.items:
 		_create_add_icon(item)
@@ -33,7 +34,15 @@ func _create_add_icon(item: GameItem):
 		if not slot.icon:
 			var icon_instance = icon_scene.instantiate()
 			icon_instance.item = item
+			icon_instance.texture = item.icon
 			items_to_icons[item] = icon_instance
 			slot.icon = icon_instance
 			slot.add_child(icon_instance)
-			return
+			return	
+
+
+func _update_active_item_icon(active_item: GameItem):
+	for slot in get_children():
+		Global.stop_highlight(slot)
+		if slot.icon and active_item == slot.icon.item:
+			Global.highlight(slot)

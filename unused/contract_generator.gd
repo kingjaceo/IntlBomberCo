@@ -1,8 +1,8 @@
-class_name ContractGenerator
+class_name ContractGeneratorDEPRECATED
 extends Node
 
 var game_data: GameData
-var generator_data: ContractGeneratorData
+var generator_data: ContractGeneratorDataDEPRECATED
 
 
 func _ready():

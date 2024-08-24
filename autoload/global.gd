@@ -6,4 +6,23 @@ var player_airship_data: AirshipData = load("res://airships/debug_airship.tres")
 var current_settlement_data: SettlementData
 enum PlaceName {DARESH, VITOK, SABREK}
 enum ItemType {AID, BOMB, DRONE, OTHER}
-enum BuildingType {RESIDENTIAL = 1, COMMERCIAL = 2, INDUSTRIAL = 4, MILITARY = 8}
+enum BuildingType {RESIDENTIAL, COMMERCIAL, INDUSTRIAL, MILITARY}
+
+var c_to_tweens: Dictionary # {CanvasItem: Tween)
+
+func highlight(c: CanvasItem):
+	print(c.modulate.v)
+	var tween = get_tree().create_tween()
+	c_to_tweens[c] = tween
+	tween.set_loops()
+	while tween.is_running():
+		tween.tween_property(c, "self_modulate:v", 10, 0.5)
+		tween.tween_property(c, "self_modulate:v", 1, 0.5)
+		await tween.finished
+
+
+func stop_highlight(c: CanvasItem):
+	if c in c_to_tweens:
+		c_to_tweens[c].kill()
+		c_to_tweens.erase(c)
+		c.self_modulate.v = 1

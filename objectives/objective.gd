@@ -12,6 +12,7 @@ var progress: String:
 @export var completed: bool
 
 signal triggered
+signal progress_changed
 signal objective_completed
 
 
@@ -25,11 +26,12 @@ func accept(): # called when contract is accepted by player
 func activate(): # called when contract is loaded into memory or accepted
 	trigger.activate()
 	trigger.triggered.connect(_on_trigger)
+	trigger.progress_changed.connect(progress_changed.emit)
 
 
 func complete(): # called when the objective is "turned in" by the player
 	completion_reward.receive()
-	objective_completed.emit(self)
+	objective_completed.emit()
 
 
 func _on_trigger():

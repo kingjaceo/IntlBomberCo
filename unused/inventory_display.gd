@@ -2,8 +2,8 @@ class_name InventoryDisplayDEPRECATED
 extends Control
 
 var game_data: GameData
-var active_button: InventoryButton
-var buttons: Array[InventoryButton]
+var active_button: InventoryButtonDEPRECATED
+var buttons: Array[InventoryButtonDEPRECATED]
 var buttons_to_items: Dictionary # {InventoryButton: GameItem}
 
 var items: Array[GameItem]

@@ -2,17 +2,12 @@ class_name Settlement
 extends WorldLocation
 
 @export var data: SettlementData
-@onready var town_name = $"Town Name"
+@onready var town_name_label = $"Town Name"
 
 
 func _ready():
-	town_name.text = Global.PlaceName.keys()[data.settlement_name]
-	for contract in data.contracts:
-		contract.objective_completed.connect(_remove_contract)
-
-
-func _remove_contract(contract: Objective):
-	data.contracts.erase(contract)
+	town_name_label.text = Global.PlaceName.keys()[data.settlement_name]
+	data.connect_contracts()
 
 
 func _on_area_detected(area: Area2D):

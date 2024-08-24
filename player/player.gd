@@ -19,17 +19,3 @@ func _ready():
 	rotation = current_airship.rotation
 	width = get_node("SiteDetector/CollisionShape2D").shape.size.x
 	game_data = Global.game_data
-
-
-func drop_active_item():
-	if game_data.active_item and game_data.active_item.amount > 0:
-		game_data.active_item.amount -= 1
-		item_dropped.emit()
-		var new_item = game_data.active_item.instantiate()
-		get_parent().add_child(new_item)
-		new_item.position = position
-
-
-func _input(event):
-	if event.is_action_pressed("action"):
-		drop_active_item()

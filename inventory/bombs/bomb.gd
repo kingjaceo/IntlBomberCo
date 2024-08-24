@@ -5,16 +5,21 @@ extends Node2D
 @onready var area_2d = %Area2D
 @onready var shape = %CollisionShape2D
 @export var explosion_effect: PackedScene
-var item: BombItem
+@export var damage_amount: float = 10
+var _ready_to_explode: bool = false
+var _areas: Array[Area2D]
 
 
 func _ready():
-	shape.shape.radius = item.radius.value
+	area_2d.area_entered.connect(_building_detected)
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite_2d, "scale", Vector2(0.1, 0.1), 2)
 	await tween.finished
-	
-	_explode()
+	_explode.call_deferred()
+
+
+func _building_detected(area: Area2D):
+	_areas.append(area)
 
 
 func _explode():
@@ -22,10 +27,9 @@ func _explode():
 	get_parent().add_child(explosion)
 	explosion.position = position
 	explosion.emitting = true
-	var areas = area_2d.get_overlapping_areas()
 	
-	for area in areas:
+	for area in _areas:
 		var target = area.get_parent()
-		target.damage(item.damage.value)
+		target.damage(damage_amount)
 	
 	queue_free()

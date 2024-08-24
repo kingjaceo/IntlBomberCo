@@ -21,10 +21,10 @@ void fragment() {
   }
 
   float wave = 0.5 * sin(frequency * angle + phase + rotation_speed*TIME) + 0.5;
-  
+
 
   float ring = outer_circle - inner_circle;
   ring *= step(0.5, wave);
-  
+
   COLOR = vec4(color.rgb, ring * color.a);
 }

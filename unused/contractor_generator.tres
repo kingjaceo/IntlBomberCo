@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ContractGeneratorData" load_steps=2 format=3 uid="uid://cqtfub1fch8me"]
 
-[ext_resource type="Script" path="res://game_data/contract_generator_data.gd" id="1_8gifj"]
+[ext_resource type="Script" path="res://unused/contract_generator_data.gd" id="1_8gifj"]
 
 [resource]
 script = ExtResource("1_8gifj")

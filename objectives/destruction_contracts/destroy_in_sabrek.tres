@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Objective" load_steps=8 format=3 uid="uid://bw832th7kgmju"]
+
+[ext_resource type="Script" path="res://reputation/reputation.gd" id="1_6hg8t"]
+[ext_resource type="Script" path="res://objectives/triggers/destruction_trigger.gd" id="1_71nws"]
+[ext_resource type="Script" path="res://objectives/rewards/reputation_reward.gd" id="2_sge4i"]
+[ext_resource type="Script" path="res://objectives/objective.gd" id="3_qtcjw"]
+
+[sub_resource type="Resource" id="Resource_60ukr"]
+script = ExtResource("1_6hg8t")
+helpfulness = 0.0
+destructiveness = 1.0
+
+[sub_resource type="Resource" id="Resource_i1kid"]
+script = ExtResource("2_sge4i")
+reputation = SubResource("Resource_60ukr")
+
+[sub_resource type="Resource" id="Resource_i2ujj"]
+script = ExtResource("1_71nws")
+target_building_types = Array[int]([])
+target_place_names = Array[int]([0, 2])
+target_amount = 1
+
+[resource]
+script = ExtResource("3_qtcjw")
+name = "Destroy a building in Sabrek."
+description = ""
+completion_reward = SubResource("Resource_i1kid")
+trigger = SubResource("Resource_i2ujj")
+accepted = false
+completed = false

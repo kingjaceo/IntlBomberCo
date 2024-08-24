@@ -1,15 +1,17 @@
 class_name DeliveredTrigger
 extends Trigger
 
-
 @export var target_place_names: Array[Global.PlaceName]
 @export var target_item_types: Array[Global.ItemType]
 @export var target_amount: float
-var current_amount: float = 0
+var current_amount: float
 var active = false
 
+
 func activate():
+	current_amount = 0
 	active = true
+
 
 func try_deliver_item(item: GameItem):
 	var correct_place = true
@@ -27,7 +29,11 @@ func _deliver_item(item: GameItem):
 		var amount_to_take = min(item.amount, target_amount - current_amount)
 		current_amount += amount_to_take
 		item.amount -= current_amount
+		progress_changed.emit()
 		if current_amount >= target_amount:
 			triggered.emit()
 			active = false
-		
+
+
+func _get_progress():
+	return str(current_amount) + " / " + str(target_amount)

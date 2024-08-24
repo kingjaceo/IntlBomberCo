@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://5fk7lukuw2lg"]
 
 [ext_resource type="Script" path="res://_common/game_scene.gd" id="1_je5qp"]
-[ext_resource type="Script" path="res://objectives/contract_generator.gd" id="2_pd8m4"]
+[ext_resource type="Script" path="res://unused/contract_generator.gd" id="2_pd8m4"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://_common/main_theme.tres" id="3_sxbos"]
 [ext_resource type="PackedScene" uid="uid://bgxvmu2e7ns4u" path="res://town_screen/money/money_label.tscn" id="4_rbv5c"]
 [ext_resource type="PackedScene" uid="uid://bday68s44p2p" path="res://town_screen/items/shop_column.tscn" id="5_s3glg"]

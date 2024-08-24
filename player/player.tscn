@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://thons4d02mrv"]
+[gd_scene load_steps=13 format=3 uid="uid://thons4d02mrv"]
 
 [ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="1_3bt4v"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_l736k"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dlo6uvbuoa4km" path="res://inventory/inventory_display.tscn" id="5_eurip"]
 [ext_resource type="Script" path="res://player/site_detector.gd" id="7_h1xul"]
 [ext_resource type="Script" path="res://player/player_camera_controller.gd" id="7_oyj27"]
-[ext_resource type="PackedScene" uid="uid://bmdf70uyv0uuv" path="res://inventory/inventory_slot.tscn" id="8_e61gr"]
+[ext_resource type="PackedScene" uid="uid://bmdf70uyv0uuv" path="res://inventory/item_slot.tscn" id="8_e61gr"]
 [ext_resource type="Script" path="res://player/player_movement_controller.gd" id="8_t657i"]
 [ext_resource type="PackedScene" uid="uid://dgego3mbqcfnu" path="res://inventory/item_icon.tscn" id="9_n6gnt"]
+[ext_resource type="Script" path="res://player/player_item_dropper.gd" id="11_4rlhk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yca3l"]
 size = Vector2(58, 12)
@@ -28,14 +29,14 @@ texture = ExtResource("1_3bt4v")
 script = ExtResource("7_oyj27")
 
 [node name="SiteDetector" type="Area2D" parent="."]
-collision_layer = 192
-collision_mask = 192
+collision_mask = 8
 script = ExtResource("7_h1xul")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SiteDetector"]
 shape = SubResource("RectangleShape2D_yca3l")
 
 [node name="DockDetector" type="Area2D" parent="."]
+collision_mask = 16
 script = ExtResource("4_6whou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DockDetector"]
@@ -72,11 +73,11 @@ layout_mode = 2
 [node name="MovementController" type="Node" parent="."]
 script = ExtResource("8_t657i")
 
-[node name="Node2" type="Node" parent="."]
-
-[node name="Node3" type="Node" parent="."]
+[node name="ItemDropper" type="Node" parent="."]
+script = ExtResource("11_4rlhk")
 
 [connection signal="area_entered" from="SiteDetector" to="CameraController" method="_on_site_entered"]
 [connection signal="area_entered" from="SiteDetector" to="MovementController" method="_cruising_speed" unbinds=1]
 [connection signal="area_exited" from="SiteDetector" to="CameraController" method="_on_site_exited"]
 [connection signal="area_entered" from="DockDetector" to="MovementController" method="_stop" unbinds=1]
+[connection signal="active_item_changed" from="ItemDropper" to="CanvasLayer/InventoryDisplay" method="_update_active_item_icon"]
