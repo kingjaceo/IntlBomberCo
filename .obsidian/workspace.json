@@ -148,18 +148,19 @@
   },
   "active": "ba4d1afc46b75ff7",
   "lastOpenFiles": [
-    "town_screen/contracts/conF5C8.tmp",
-    "town_screen/towF36A.tmp",
-    "player/plaF277.tmp",
-    "world/worF174.tmp",
-    "objectives/objDF66.tmp",
-    "world/worDEE5.tmp",
-    "world/worACD7.tmp",
-    "world/settlements/set53DA.tmp",
-    "game_data/pla534B.tmp",
-    "world/wor5327.tmp",
-    "world/worBB0F.tmp",
-    "_devlog/Devlog 08-23-24.md",
-    "_devlog/gdd.md.md"
+    "objectives/conC01F.tmp",
+    "world/worBF7F.tmp",
+    "objectives/contract_tree.gd",
+    "_devlog/Devlog 08-24-24.md",
+    "world/settlements/set7C32.tmp",
+    "world/wor7B5E.tmp",
+    "world/settlements/set8D16.tmp",
+    "world/wor8CC4.tmp",
+    "world/wor9D43.tmp",
+    "world/wor7F25.tmp",
+    "objectives/generators/con7A05.tmp",
+    "objectives/generators/conC9AE.tmp",
+    "_devlog/gdd.md.md",
+    "_devlog/Devlog 08-23-24.md"
   ]
 }

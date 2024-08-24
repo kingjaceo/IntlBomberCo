@@ -1,9 +1,20 @@
 **Roadmap to v0.0.1**
+- v0.0.1 will be finished when:
+	- the first ContractTree system is implemented and each town gets its own short tree
+	- win/loss
+	- basic art/UI assets
+		- building
+		- dock
+		- ground
+		- panel
+		- button
+		- font
+	- game saving and loading
 - two different contract types, each evolving as you complete more and more of them (**est 3 days**)
 - a reputation system, enabling the evolution of contracts (**est 3 days**)
 - one upgrade category for the ship (cargo capacity) to enable more demanding contracts (unlocked at a certain reputation) (**est 3 days**)
 - basic art and UI assets (evocative placeholders) (**est 1 week**)
-- game saving and loading (**est 1 day**)
+- game saving and loading (including settlements) (**est 1 day**)
 - basic win/loss conditions and/or retirement, using contracts (**est 1 day**)
 **Roadmap to v0.1.0**
 1. Attractive/Dynamic Overworld

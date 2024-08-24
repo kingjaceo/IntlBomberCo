@@ -14,6 +14,7 @@ func highlight(c: CanvasItem):
 	print(c.modulate.v)
 	var tween = get_tree().create_tween()
 	c_to_tweens[c] = tween
+	tween.bind_node(c)
 	tween.set_loops()
 	while tween.is_running():
 		tween.tween_property(c, "self_modulate:v", 10, 0.5)

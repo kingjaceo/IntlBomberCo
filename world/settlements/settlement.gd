@@ -7,7 +7,7 @@ extends WorldLocation
 
 func _ready():
 	town_name_label.text = Global.PlaceName.keys()[data.settlement_name]
-	data.connect_contracts()
+	data.generate_contracts()
 
 
 func _on_area_detected(area: Area2D):

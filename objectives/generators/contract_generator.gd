@@ -4,6 +4,7 @@ extends Resource
 @export var contract_templates: Array[Objective]
 var current_index: int = 0
 
+
 func get_new_contract():
 	_check_update_templates()
 	if len(contract_templates) > 0:
@@ -14,7 +15,8 @@ func get_new_contract():
 
 func unlock_contract(type: String):
 	if type == "destruction":
-		var destruction_contract_template
+		var destruction_contract_template = load("res://objectives/destruction_contracts/destroy_in_sabrek.tres")
+		contract_templates.append(destruction_contract_template)
 
 
 func _check_update_templates():

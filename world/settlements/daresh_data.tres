@@ -1,17 +1,16 @@
-[gd_resource type="Resource" script_class="SettlementData" load_steps=10 format=3 uid="uid://ck1gtw12jeblh"]
+[gd_resource type="Resource" script_class="SettlementData" load_steps=9 format=3 uid="uid://ck1gtw12jeblh"]
 
 [ext_resource type="Resource" uid="uid://7hlv8atp4uma" path="res://objectives/delivery_contracts/aid_to_vitok.tres" id="1_4vrn4"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="1_8v5rb"]
 [ext_resource type="Script" path="res://inventory/game_item.gd" id="2_224lu"]
 [ext_resource type="Script" path="res://objectives/generators/contract_generator.gd" id="2_o0i4k"]
 [ext_resource type="Script" path="res://world/settlements/settlement_data.gd" id="3_b0go8"]
-[ext_resource type="Resource" uid="uid://bw832th7kgmju" path="res://objectives/destruction_contracts/destroy_in_sabrek.tres" id="3_semum"]
 [ext_resource type="Resource" uid="uid://ddjlsmhf475qo" path="res://inventory/bombs/bomb.tres" id="7_elp42"]
 [ext_resource type="Resource" uid="uid://bk3qqmr23wced" path="res://inventory/aid/aid_package.tres" id="8_xblqv"]
 
 [sub_resource type="Resource" id="Resource_oclag"]
 script = ExtResource("2_o0i4k")
-contract_templates = Array[ExtResource("1_8v5rb")]([ExtResource("1_4vrn4"), ExtResource("3_semum")])
+contract_templates = Array[ExtResource("1_8v5rb")]([ExtResource("1_4vrn4")])
 
 [resource]
 script = ExtResource("3_b0go8")
