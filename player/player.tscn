@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://thons4d02mrv"]
 
-[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="1_3bt4v"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_l736k"]
 [ext_resource type="Resource" uid="uid://doblub01swjr4" path="res://airships/debug_airship.tres" id="2_d8ctq"]
+[ext_resource type="Texture2D" uid="uid://c62ecurpnjkel" path="res://player/airship.png" id="3_6rv8v"]
 [ext_resource type="Script" path="res://buildings/dock_detector.gd" id="4_6whou"]
 [ext_resource type="PackedScene" uid="uid://dlo6uvbuoa4km" path="res://inventory/inventory_display.tscn" id="5_eurip"]
 [ext_resource type="Script" path="res://player/site_detector.gd" id="7_h1xul"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://player/player_item_dropper.gd" id="11_4rlhk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yca3l"]
-size = Vector2(58, 12)
+size = Vector2(355, 134)
 
 [node name="Player" type="Node2D"]
 z_index = 1
@@ -22,8 +22,7 @@ current_airship = ExtResource("2_d8ctq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-scale = Vector2(0.09375, 0.453125)
-texture = ExtResource("1_3bt4v")
+texture = ExtResource("3_6rv8v")
 
 [node name="CameraController" type="Camera2D" parent="."]
 script = ExtResource("7_oyj27")
@@ -32,14 +31,16 @@ script = ExtResource("7_oyj27")
 collision_mask = 8
 script = ExtResource("7_h1xul")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SiteDetector"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SiteDetector"]
+position = Vector2(8.5, 0)
 shape = SubResource("RectangleShape2D_yca3l")
 
 [node name="DockDetector" type="Area2D" parent="."]
 collision_mask = 16
 script = ExtResource("4_6whou")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DockDetector"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DockDetector"]
+position = Vector2(8.5, 0)
 shape = SubResource("RectangleShape2D_yca3l")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

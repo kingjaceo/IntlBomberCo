@@ -17,5 +17,4 @@ func _ready():
 		push_error("No AirshipData detected for player!")
 	position  = current_airship.world_position
 	rotation = current_airship.rotation
-	width = get_node("SiteDetector/CollisionShape2D").shape.size.x
 	game_data = Global.game_data
