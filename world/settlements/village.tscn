@@ -10,34 +10,43 @@ radius = 374.12
 [node name="Village" type="Node2D"]
 script = ExtResource("1_r0coc")
 
-[node name="Dock" parent="." instance=ExtResource("5_0dmav")]
-position = Vector2(30, 15)
-scale = Vector2(1.72, 1.72)
-building_type = 0
-
-[node name="Apartment" parent="." instance=ExtResource("4_rx346")]
-position = Vector2(-25, 164)
-
 [node name="Apartment2" parent="." instance=ExtResource("4_rx346")]
-position = Vector2(-144, 75)
+position = Vector2(-167, -343)
 
 [node name="Apartment3" parent="." instance=ExtResource("4_rx346")]
-position = Vector2(4, -175)
+position = Vector2(42, -311)
 
 [node name="Apartment4" parent="." instance=ExtResource("4_rx346")]
-position = Vector2(104, -108)
+position = Vector2(261, -243)
 
 [node name="Apartment5" parent="." instance=ExtResource("4_rx346")]
-position = Vector2(-109, -97)
+position = Vector2(-97, -232)
 
 [node name="Apartment6" parent="." instance=ExtResource("4_rx346")]
-position = Vector2(-109, -97)
+position = Vector2(-229, -151)
 
 [node name="Apartment7" parent="." instance=ExtResource("4_rx346")]
-position = Vector2(-272, -66)
+position = Vector2(-403, -292)
 
 [node name="Apartment8" parent="." instance=ExtResource("4_rx346")]
-position = Vector2(-135, -233)
+position = Vector2(-314, -61)
+
+[node name="Apartment9" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(413, -183)
+
+[node name="Apartment10" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(132, -162)
+
+[node name="Apartment11" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(344, -73)
+
+[node name="Apartment12" parent="." instance=ExtResource("4_rx346")]
+position = Vector2(24, -94)
+
+[node name="Dock" parent="." instance=ExtResource("5_0dmav")]
+position = Vector2(-146, 221)
+scale = Vector2(1.72, 1.72)
+building_type = 0
 
 [node name="Bounds" type="Area2D" parent="."]
 visible = false

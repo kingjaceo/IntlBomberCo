@@ -1,2 +1,0 @@
-class_name ContractTree
-extends Resource

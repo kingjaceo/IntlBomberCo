@@ -2,10 +2,10 @@ extends Camera2D
 
 var player: Player
 var current_airship: AirshipData
-@export var start_zoom: Vector2 = Vector2(1.5, 1.5)
+@export var start_zoom: Vector2 = Vector2(0.75, 0.75)
 var target_zoom: Vector2
 var zoom_speed: float = 3
-var zoom_factor: float = 4
+@export var zoom_factor: float = 3
 var scale_factor: float = 4
 var tolerance: float = 0.01
 
