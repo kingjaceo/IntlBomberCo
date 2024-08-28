@@ -1,4 +1,3 @@
-@tool
 class_name ObjectiveTreeEditor
 extends Control
 
@@ -7,13 +6,10 @@ extends Control
 		objective_tree = value
 		_draw_tree(objective_tree)
 var cursor_position: Vector2 = Vector2.ZERO
-var objective_editor_scene: PackedScene = load("res://objectives/objective_editor_panel.tscn")
-var objective_gate_scene: PackedScene = load("res://objectives/objective_tree_gate.tscn")
-@export var redraw: bool:
-	set(value):
-		redraw = false
-		_redraw()
-
+var objective_editor_scene: PackedScene = load("res://objectives/objective_trees/objective_editor_panel.tscn")
+var objective_gate_scene: PackedScene = load("res://objectives/objective_trees/objective_tree_gate.tscn")
+@export var pad: int = 30
+var last_made_element: Control
 
 func _draw_tree(tree: ObjectiveTree):
 	_make_editor_panel(tree.objective)
@@ -21,18 +17,21 @@ func _draw_tree(tree: ObjectiveTree):
 	_make_rightgate(tree.rightgate)
 	var old_cursor_position = cursor_position
 	if tree.downtree:
-		cursor_position = old_cursor_position + Vector2(0, 250)
+		cursor_position.y = old_cursor_position.y + last_made_element.size.y + pad
 		_draw_tree(tree.downtree)
+	cursor_position = old_cursor_position
 	if tree.righttree:
-		cursor_position = old_cursor_position + Vector2(250, 0)
+		cursor_position.x = old_cursor_position.x + last_made_element.size.x + pad
 		_draw_tree(tree.righttree)
 	cursor_position = old_cursor_position
 
 
 func _make_editor_panel(objective: Objective):
 	var new_panel = objective_editor_scene.instantiate()
+	new_panel.objective = objective
 	new_panel.position = cursor_position
 	add_child(new_panel)
+	last_made_element = new_panel
 
 
 func _make_downgate(gate: ObjectiveTreeGate):

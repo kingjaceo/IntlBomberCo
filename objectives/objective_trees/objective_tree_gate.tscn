@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ppaula6nk4fh"]
 
-[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="1_wbew4"]
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="1_k2es0"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -25,5 +25,5 @@ offset_right = 64.0
 offset_bottom = 1.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_wbew4")
+texture = ExtResource("1_k2es0")
 expand_mode = 1
