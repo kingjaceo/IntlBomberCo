@@ -6,7 +6,7 @@ extends WorldLocation
 
 
 func _ready():
-	town_name_label.text = Global.PlaceName.keys()[data.settlement_name]
+	town_name_label.text = Enums.PlaceName.keys()[data.settlement_name]
 	data.generate_contracts()
 
 

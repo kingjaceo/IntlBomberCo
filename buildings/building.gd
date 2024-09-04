@@ -5,7 +5,7 @@ extends Node2D
 var health: float = 100
 var width: float = 0
 var height: float = 0
-@export var building_type: Global.BuildingType
+@export var building_type: Enums.BuildingType
 var destroyed: bool
 @onready var area_2d = $Area2D
 

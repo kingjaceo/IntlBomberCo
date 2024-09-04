@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://do87r44nctpeq"]
+
+[ext_resource type="Script" path="res://objectives/objective_trees/reward_selector.gd" id="1_turnm"]
+
+[node name="RewardSelector" type="HBoxContainer"]
+script = ExtResource("1_turnm")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Upfront:"
+
+[node name="Reward" type="OptionButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+selected = 0
+item_count = 2
+popup/item_0/text = "REPUTATION"
+popup/item_1/text = "VICTORY"
+popup/item_1/id = 1
+
+[connection signal="item_selected" from="Reward" to="." method="_on_reward_selected"]

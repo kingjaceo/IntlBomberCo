@@ -2,7 +2,7 @@ class_name GameItem
 extends Resource
 
 @export var name: String
-@export var type: Global.ItemType
+@export var type: Enums.ItemType
 @export var amount: float:
 	set(value):
 		amount = min(capacity, value)

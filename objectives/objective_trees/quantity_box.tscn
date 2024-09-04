@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cycjtmcqc3r4f"]
+
+[ext_resource type="Script" path="res://objectives/objective_trees/quantity_box.gd" id="1_a8o0u"]
+
+[node name="QuantityBox" type="VBoxContainer"]
+offset_right = 67.0625
+offset_bottom = 42.0
+size_flags_horizontal = 4
+alignment = 1
+script = ExtResource("1_a8o0u")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "100"
+alignment = 1
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LABEL"
+
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]

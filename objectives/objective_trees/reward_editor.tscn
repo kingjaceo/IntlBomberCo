@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://7vtyug2h5vr3"]
+
+[ext_resource type="Script" path="res://objectives/objective_trees/reward_editor.gd" id="1_ud66d"]
+
+[node name="RewardEditor" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ud66d")

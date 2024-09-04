@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://md3hlvn0d74t"]
+
+[ext_resource type="Script" path="res://objectives/objective_trees/objective_tree.gd" id="1_ljyjx"]
+[ext_resource type="PackedScene" uid="uid://bi63a3dx3rqug" path="res://objectives/objective_trees/objective_editor.tscn" id="2_si5sm"]
+
+[node name="ObjectiveTree" type="GridContainer"]
+offset_right = 3240.0
+offset_bottom = 1766.0
+columns = 2
+script = ExtResource("1_ljyjx")
+
+[node name="ObjectiveEditor" parent="." instance=ExtResource("2_si5sm")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ObjectiveTree2" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+script = ExtResource("1_ljyjx")
+
+[node name="ObjectiveEditor" parent="ObjectiveTree2" instance=ExtResource("2_si5sm")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ObjectiveTree4" type="GridContainer" parent="ObjectiveTree2"]
+layout_mode = 2
+columns = 2
+script = ExtResource("1_ljyjx")
+
+[node name="ObjectiveEditor" parent="ObjectiveTree2/ObjectiveTree4" instance=ExtResource("2_si5sm")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ObjectiveTree5" type="GridContainer" parent="ObjectiveTree2"]
+layout_mode = 2
+columns = 2
+script = ExtResource("1_ljyjx")
+
+[node name="ObjectiveEditor" parent="ObjectiveTree2/ObjectiveTree5" instance=ExtResource("2_si5sm")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ObjectiveTree6" type="GridContainer" parent="ObjectiveTree2/ObjectiveTree5"]
+layout_mode = 2
+columns = 2
+script = ExtResource("1_ljyjx")
+
+[node name="ObjectiveEditor" parent="ObjectiveTree2/ObjectiveTree5/ObjectiveTree6" instance=ExtResource("2_si5sm")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ObjectiveTree3" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+script = ExtResource("1_ljyjx")
+
+[node name="ObjectiveEditor" parent="ObjectiveTree3" instance=ExtResource("2_si5sm")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0

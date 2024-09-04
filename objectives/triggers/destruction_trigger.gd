@@ -1,7 +1,7 @@
 class_name DestructionTrigger
 extends Trigger
-@export var target_building_types: Array[Global.BuildingType]
-@export var target_place_names: Array[Global.PlaceName]
+@export var target_building_types: Array[Enums.BuildingType]
+@export var target_place_names: Array[Enums.PlaceName]
 @export var target_amount: int
 var current_amount = 0
 

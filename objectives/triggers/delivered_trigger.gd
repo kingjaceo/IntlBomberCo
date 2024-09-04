@@ -1,8 +1,8 @@
 class_name DeliveredTrigger
 extends Trigger
 
-@export var target_place_names: Array[Global.PlaceName]
-@export var target_item_types: Array[Global.ItemType]
+@export var target_place_names: Array[Enums.PlaceName]
+@export var target_item_types: Array[Enums.ItemType]
 @export var target_amount: float
 var current_amount: float
 var active = false

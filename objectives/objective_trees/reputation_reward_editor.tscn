@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgpm00yikqx2d"]
+
+[ext_resource type="Script" path="res://objectives/objective_trees/reputation_reward_editor.gd" id="1_7lkqn"]
+[ext_resource type="PackedScene" uid="uid://cycjtmcqc3r4f" path="res://objectives/objective_trees/quantity_box.tscn" id="1_p6jjn"]
+
+[node name="ReputationRewardEditor" type="HBoxContainer"]
+script = ExtResource("1_7lkqn")
+
+[node name="QuantityBox" parent="." instance=ExtResource("1_p6jjn")]
+layout_mode = 2
+
+[node name="QuantityBox2" parent="." instance=ExtResource("1_p6jjn")]
+layout_mode = 2

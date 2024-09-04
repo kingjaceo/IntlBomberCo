@@ -25,12 +25,12 @@ func _to_string():
 	return name
 
 
-func try_get_item(item_type: Global.ItemType):
+func try_get_item(item_type: Enums.ItemType):
 	if item_type in items_dict:
 		return items_dict[item_type]
 
 
-func try_get_item_amount(item_type: Global.ItemType):
+func try_get_item_amount(item_type: Enums.ItemType):
 	if item_type in items_dict:
 		return items_dict[item_type].amount
 	else:

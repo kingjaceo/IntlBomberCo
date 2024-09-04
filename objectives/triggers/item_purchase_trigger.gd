@@ -2,7 +2,7 @@ class_name ItemPurchaseTrigger
 extends Trigger
 
 @export var target_amount: int
-@export var target_type: Global.ItemType
+@export var target_type: Enums.ItemType
 var current_amount = 0
 
 
@@ -10,7 +10,7 @@ func activate():
 	Events.item_purchased.connect(_on_item_purchased)
 
 
-func _on_item_purchased(item_type: Global.ItemType):
+func _on_item_purchased(item_type: Enums.ItemType):
 	if item_type == target_type:
 		current_amount += 1
 		if current_amount >= target_amount:

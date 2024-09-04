@@ -3,6 +3,7 @@ extends Resource
 
 @export var name: String
 @export var description: String
+@export var flavor_text: String
 @export var upfront_reward: Reward
 @export var completion_reward: Reward
 @export var trigger: Trigger
@@ -10,6 +11,13 @@ var progress: String:
 	get = _get_progress
 @export var accepted: bool
 @export var completed: bool
+
+## defines an ObjectiveTree data structure
+@export var down_trigger: Trigger
+@export var down_objective: Objective
+@export var right_trigger: Trigger
+@export var right_objective: Objective
+
 
 signal triggered
 signal progress_changed

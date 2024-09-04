@@ -1,7 +1,7 @@
 class_name SettlementData
 extends Resource
 
-@export var settlement_name: Global.PlaceName
+@export var settlement_name: Enums.PlaceName
 @export var contracts: Array[Objective]
 @export var max_contracts: int = 1
 @export var items: Array[GameItem]
