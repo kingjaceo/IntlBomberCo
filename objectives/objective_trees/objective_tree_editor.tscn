@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqij8fua2runi"]
+[gd_scene load_steps=5 format=3 uid="uid://bqij8fua2runi"]
 
 [ext_resource type="Script" path="res://objectives/objective_trees/objective_tree_editor.gd" id="1_yfunk"]
 [ext_resource type="PackedScene" uid="uid://md3hlvn0d74t" path="res://objectives/objective_trees/objective_tree.tscn" id="4_t4qxg"]
-[ext_resource type="Resource" uid="uid://dl3va8p3qov33" path="res://test_objective_tree.tres" id="5_q1c0s"]
 [ext_resource type="Script" path="res://objectives/movement_controller.gd" id="6_v3ut1"]
 [ext_resource type="Script" path="res://objectives/zoom_controller.gd" id="7_jt6at"]
 
@@ -25,7 +24,6 @@ script = ExtResource("7_jt6at")
 
 [node name="ObjectiveTree" parent="." instance=ExtResource("4_t4qxg")]
 layout_mode = 0
-objective = ExtResource("5_q1c0s")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

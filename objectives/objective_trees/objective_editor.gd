@@ -4,10 +4,17 @@ extends Control
 @onready var objective_name: TextEdit = %ObjectiveName
 @onready var description: TextEdit = %Description
 @onready var flavor_text: TextEdit = %FlavorText
-@export var objective: Objective:
-	set(value):
-		objective = value
-		_populate_fields()
+var objective: Objective#:
+	#set(value):
+		#objective = value
+		#_populate_fields()
+
+
+var rewards: Dictionary = {
+	Enums.RewardType.NONE: false,
+	Enums.RewardType.REPUTATION: Reputation,
+	Enums.RewardType.VICTORY: Reward,
+}
 
 signal rightlink_pressed
 signal downlink_pressed
@@ -70,3 +77,9 @@ func _on_rightlink_pressed() -> void:
 
 func _on_downlink_pressed() -> void:
 	downlink_pressed.emit()
+
+
+func _on_upfront_reward_selected(index: int) -> void:
+	objective.upfront_reward = rewards[index].new()
+	%UpfrontRewardEditor.reward = objective.upfront_reward
+	%UpfrontRewardEditor.create_add_editor(objective.upfront_reward.reward_type)

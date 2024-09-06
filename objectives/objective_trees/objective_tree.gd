@@ -14,18 +14,17 @@ var objective_tree_scene: PackedScene = load("res://objectives/objective_trees/o
 var objective_editor: ObjectiveEditor
 
 func _ready():
-	for child in get_children():
-		child.free()
-	if not objective: # if there isn't an Objective
-		objective = Objective.new() # make an empty one
-	# instantiate elements
-	_create_add_editor() # must get added first
-	if objective.right_objective:
-		_create_righttree() # must get added second
-	else:
-		add_child(Control.new()) # to fill a dummy slot in the grid
-	if objective.down_objective:
-		_create_downtree() # must get added third
+	if objective:
+		for child in get_children():
+			child.free()
+		# instantiate elements
+		_create_add_editor() # must get added first
+		if objective.right_objective:
+			_create_righttree() # must get added second
+		else:
+			add_child(Control.new()) # to fill a dummy slot in the grid
+		if objective.down_objective:
+			_create_downtree() # must get added third
 
 
 func _create_add_editor():
@@ -55,7 +54,11 @@ func _create_righttree():
 	if get_child_count() > 1:
 		get_child(1).free()
 	var new_tree = objective_tree_scene.instantiate()
-	new_tree.objective = objective.right_objective
+	if objective.right_objective:
+		new_tree.objective = objective.right_objective
+	else:
+		new_tree.objective = Objective.new()
+		objective.right_objective = new_tree.objective
 	add_child(new_tree)
 	move_child(new_tree, 1)
 
@@ -63,7 +66,11 @@ func _create_righttree():
 func _create_downtree():
 	objective_editor.disable_downlink()
 	var new_tree = objective_tree_scene.instantiate()
-	new_tree.objective = objective.down_objective
+	if objective.down_objective:
+		new_tree.objective = objective.down_objective
+	else:
+		new_tree.objective = Objective.new()
+		objective.down_objective = new_tree.objective
 	add_child(new_tree)
 
 

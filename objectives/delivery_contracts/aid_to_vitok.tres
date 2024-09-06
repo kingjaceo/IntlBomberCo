@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Objective" load_steps=8 format=3 uid="uid://7hlv8atp4uma"]
 
 [ext_resource type="Script" path="res://reputation/reputation.gd" id="1_1u3c2"]
-[ext_resource type="Script" path="res://objectives/rewards/reputation_reward.gd" id="2_mcoc5"]
+[ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="2_mcoc5"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="3_qf4wf"]
 [ext_resource type="Script" path="res://objectives/triggers/delivered_trigger.gd" id="4_dfjar"]
 

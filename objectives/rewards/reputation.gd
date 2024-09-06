@@ -1,7 +1,7 @@
 class_name Reputation
 extends Reward
 
-var amounts: Dictionary # {ReputationType: int}
+@export var amounts: Dictionary # {ReputationType: int}
 
 signal reputation_changed
 

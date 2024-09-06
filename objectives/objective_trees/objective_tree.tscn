@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://md3hlvn0d74t"]
+[gd_scene load_steps=4 format=3 uid="uid://md3hlvn0d74t"]
 
 [ext_resource type="Script" path="res://objectives/objective_trees/objective_tree.gd" id="1_ljyjx"]
+[ext_resource type="Resource" uid="uid://dl3va8p3qov33" path="res://test_objective_tree.tres" id="2_ieph1"]
 [ext_resource type="PackedScene" uid="uid://bi63a3dx3rqug" path="res://objectives/objective_trees/objective_editor.tscn" id="2_si5sm"]
 
 [node name="ObjectiveTree" type="GridContainer"]
@@ -8,6 +9,7 @@ offset_right = 3240.0
 offset_bottom = 1766.0
 columns = 2
 script = ExtResource("1_ljyjx")
+objective = ExtResource("2_ieph1")
 
 [node name="ObjectiveEditor" parent="." instance=ExtResource("2_si5sm")]
 layout_mode = 2

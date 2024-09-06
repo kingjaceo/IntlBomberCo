@@ -132,7 +132,7 @@ size_flags_vertical = 4
 [connection signal="text_changed" from="Objective/ObjectiveName" to="." method="_on_objective_name_text_changed"]
 [connection signal="text_changed" from="Objective/Description" to="." method="_on_description_text_changed"]
 [connection signal="text_changed" from="Objective/FlavorText" to="." method="_on_flavor_text_text_changed"]
-[connection signal="item_selected" from="Objective/Rewards/UpfrontReward" to="Objective/Rewards/UpfrontRewardEditor" method="_on_reward_selected"]
+[connection signal="item_selected" from="Objective/Rewards/UpfrontReward" to="." method="_on_upfront_reward_selected"]
 [connection signal="item_selected" from="Objective/Rewards/CompletionReward" to="Objective/Rewards/CompletionRewardEditor" method="_on_reward_selected"]
 [connection signal="item_selected" from="Objective/TriggerSelector/Trigger" to="Objective/TriggerSelector/TriggerEditor" method="_on_trigger_selected"]
 [connection signal="pressed" from="Rightlink" to="." method="_on_rightlink_pressed"]
