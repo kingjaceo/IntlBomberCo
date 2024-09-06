@@ -1,4 +1,4 @@
-class_name Reputation
+class_name ReputationDEPRECATED
 extends Resource
 
 @export var helpfulness: float

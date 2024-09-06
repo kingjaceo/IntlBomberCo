@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1ulke52bxnqb"]
+
+[ext_resource type="Script" path="res://delivered_trigger_editor.gd" id="1_1abul"]
+[ext_resource type="PackedScene" uid="uid://310g5yncd3ea" path="res://objectives/objective_trees/multiselector.tscn" id="2_ssb4y"]
+[ext_resource type="PackedScene" uid="uid://cycjtmcqc3r4f" path="res://objectives/objective_trees/quantity_box.tscn" id="2_ynf8r"]
+
+[node name="DeliveredTriggerEditor" type="HBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -68.0
+offset_right = 133.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1abul")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Places" parent="VBoxContainer" instance=ExtResource("2_ssb4y")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Where" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "WHERE"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Items" parent="VBoxContainer2" instance=ExtResource("2_ssb4y")]
+unique_name_in_owner = true
+layout_mode = 2
+selection = 1
+
+[node name="What" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "WHAT"
+
+[node name="Amount" parent="." instance=ExtResource("2_ynf8r")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+label_text = "AMT"
+
+[connection signal="item_changed" from="VBoxContainer/Places" to="." method="_on_place_changed"]
+[connection signal="item_changed" from="VBoxContainer2/Items" to="." method="_on_item_changed"]
+[connection signal="quantity_changed" from="Amount" to="." method="_on_amount_changed"]

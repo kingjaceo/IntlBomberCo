@@ -1,74 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bqij8fua2runi"]
+[gd_scene load_steps=6 format=3 uid="uid://bqij8fua2runi"]
 
 [ext_resource type="Script" path="res://objectives/objective_trees/objective_tree_editor.gd" id="1_yfunk"]
 [ext_resource type="PackedScene" uid="uid://md3hlvn0d74t" path="res://objectives/objective_trees/objective_tree.tscn" id="4_t4qxg"]
-[ext_resource type="Script" path="res://reputation/reputation.gd" id="5_dfm5w"]
-[ext_resource type="Script" path="res://objectives/rewards/reputation_reward.gd" id="5_hvya0"]
-[ext_resource type="Script" path="res://objectives/objective.gd" id="6_5oy7l"]
+[ext_resource type="Resource" uid="uid://dl3va8p3qov33" path="res://test_objective_tree.tres" id="5_q1c0s"]
 [ext_resource type="Script" path="res://objectives/movement_controller.gd" id="6_v3ut1"]
-[ext_resource type="Script" path="res://objectives/triggers/delivered_trigger.gd" id="7_3267y"]
 [ext_resource type="Script" path="res://objectives/zoom_controller.gd" id="7_jt6at"]
-[ext_resource type="Script" path="res://objectives/triggers/destruction_trigger.gd" id="8_phgfo"]
-
-[sub_resource type="Resource" id="Resource_qhna7"]
-script = ExtResource("5_dfm5w")
-helpfulness = 0.0
-destructiveness = 0.0
-
-[sub_resource type="Resource" id="Resource_n7p6c"]
-script = ExtResource("5_hvya0")
-reputation = SubResource("Resource_qhna7")
-
-[sub_resource type="Resource" id="Resource_pg7sg"]
-script = ExtResource("5_dfm5w")
-helpfulness = 0.0
-destructiveness = 0.0
-
-[sub_resource type="Resource" id="Resource_lwqeh"]
-script = ExtResource("5_hvya0")
-reputation = SubResource("Resource_pg7sg")
-
-[sub_resource type="Resource" id="Resource_01vtj"]
-script = ExtResource("8_phgfo")
-target_building_types = Array[int]([])
-target_place_names = Array[int]([])
-target_amount = 0
-
-[sub_resource type="Resource" id="Resource_gdptr"]
-script = ExtResource("6_5oy7l")
-name = "Destroy any building in "
-description = ""
-flavor_text = ""
-completion_reward = SubResource("Resource_lwqeh")
-trigger = SubResource("Resource_01vtj")
-accepted = false
-completed = false
-
-[sub_resource type="Resource" id="Resource_osdpy"]
-script = ExtResource("6_5oy7l")
-name = "Deliver aid to Vitok."
-description = "You can do even more to help our siblings."
-flavor_text = "Be a hero."
-accepted = false
-completed = false
-
-[sub_resource type="Resource" id="Resource_2wlw1"]
-script = ExtResource("7_3267y")
-target_place_names = Array[int]([])
-target_item_types = Array[int]([])
-target_amount = 0.0
-
-[sub_resource type="Resource" id="Resource_w1fc4"]
-script = ExtResource("6_5oy7l")
-name = "Deliver aid to Vitok"
-description = "Our siblings there need food and medicine. Help them!"
-flavor_text = "Be a hero."
-completion_reward = SubResource("Resource_n7p6c")
-trigger = SubResource("Resource_2wlw1")
-accepted = false
-completed = false
-down_objective = SubResource("Resource_gdptr")
-right_objective = SubResource("Resource_osdpy")
 
 [node name="ObjectiveTreeEditor" type="Control"]
 layout_mode = 3
@@ -80,7 +16,6 @@ grow_vertical = 2
 script = ExtResource("1_yfunk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1000, 1000)
 
 [node name="MovementController" type="Node" parent="Camera2D"]
 script = ExtResource("6_v3ut1")
@@ -88,9 +23,13 @@ script = ExtResource("6_v3ut1")
 [node name="ZoomController" type="Node" parent="Camera2D"]
 script = ExtResource("7_jt6at")
 
-[node name="Button" type="Button" parent="."]
-visible = false
-layout_mode = 1
+[node name="ObjectiveTree" parent="." instance=ExtResource("4_t4qxg")]
+layout_mode = 0
+objective = ExtResource("5_q1c0s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -101,10 +40,6 @@ offset_top = -50.0
 offset_right = 59.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Redraw"
+text = "Save"
 
-[node name="ObjectiveTree" parent="." instance=ExtResource("4_t4qxg")]
-layout_mode = 0
-objective = SubResource("Resource_w1fc4")
-
-[connection signal="pressed" from="Button" to="." method="_redraw"]
+[connection signal="pressed" from="CanvasLayer/Button" to="ObjectiveTree" method="_save"]

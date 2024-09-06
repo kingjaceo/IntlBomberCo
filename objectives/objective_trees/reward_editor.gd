@@ -10,10 +10,10 @@ var reward_editors: Dictionary = {
 }
 var rewards: Dictionary = {
 	Enums.RewardType.NONE: false,
-	Enums.RewardType.REPUTATION: ReputationReward.new(),
-	Enums.RewardType.VICTORY: Reward.new(),
+	Enums.RewardType.REPUTATION: Reputation,
+	Enums.RewardType.VICTORY: Reward,
 }
-var current_editor: Node
+var current_editor: RewardEditor
 
 
 func _ready():
@@ -22,10 +22,16 @@ func _ready():
 
 
 func _on_reward_selected(index: int) -> void:
+	create_add_editor(index)
+
+
+func create_add_editor(which: Enums.RewardType):
 	if current_editor:
 		remove_child(current_editor)
-	var new_editor = reward_editors[index]
+	var new_editor = reward_editors[which]
 	if new_editor:
 		current_editor = new_editor.instantiate()
-		current_editor.reward = rewards[index]
+		if not reward:
+			reward = rewards[which].new()
+		current_editor.reward = reward
 		add_child(current_editor)

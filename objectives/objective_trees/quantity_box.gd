@@ -28,3 +28,4 @@ func _on_line_edit_text_changed(new_text):
 	else:
 		line_edit.text = oldtext
 	line_edit.set_caret_column(line_edit.text.length())
+	quantity_changed.emit(int(line_edit.text))

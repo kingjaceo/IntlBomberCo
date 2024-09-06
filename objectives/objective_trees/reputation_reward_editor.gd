@@ -4,6 +4,10 @@ extends RewardEditor
 var quantity_box: PackedScene = load("res://objectives/objective_trees/quantity_box.tscn")
 
 
+func _init():
+	var reward: Reputation
+
+
 func _ready():
 	if reward:
 		for child in get_children():
@@ -18,6 +22,8 @@ func _add_quantity_box(reputation_type):
 	new_quantity_box.label_text = reputation_type
 	new_quantity_box.quantity_changed.connect(_reputation_value_changed)
 	add_child(new_quantity_box)
+	if reward:
+		new_quantity_box.line_edit.text = str(reward.amounts[reputation_type])
 
 
 func _reputation_value_changed(reputation_type, amount):

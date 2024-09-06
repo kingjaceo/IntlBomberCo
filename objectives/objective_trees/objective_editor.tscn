@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi63a3dx3rqug"]
+[gd_scene load_steps=7 format=3 uid="uid://bi63a3dx3rqug"]
 
 [ext_resource type="Script" path="res://objectives/objective_trees/objective_editor.gd" id="1_vrivh"]
 [ext_resource type="Script" path="res://objectives/objective_trees/reward_selector.gd" id="2_76fne"]
 [ext_resource type="PackedScene" uid="uid://7vtyug2h5vr3" path="res://objectives/objective_trees/reward_editor.tscn" id="2_do7ha"]
 [ext_resource type="PackedScene" uid="uid://ppaula6nk4fh" path="res://objectives/objective_trees/objective_tree_gate.tscn" id="3_cx1os"]
+[ext_resource type="Script" path="res://objectives/objective_trees/trigger_selector.gd" id="4_cg0bb"]
+[ext_resource type="PackedScene" uid="uid://0dwxsmod6xea" path="res://objectives/triggers/trigger_editor.tscn" id="4_pyv0t"]
 
 [node name="ObjectiveEditor" type="GridContainer"]
 anchors_preset = 8
@@ -11,10 +13,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -399.0
-offset_top = -226.0
-offset_right = 399.0
-offset_bottom = 226.0
+offset_left = -254.0
+offset_top = -199.0
+offset_right = 254.0
+offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
@@ -66,6 +68,7 @@ popup/item_1/id = 1
 script = ExtResource("2_76fne")
 
 [node name="UpfrontRewardEditor" parent="Objective/Rewards" instance=ExtResource("2_do7ha")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Completion" type="Label" parent="Objective/Rewards"]
@@ -86,36 +89,51 @@ popup/item_1/id = 1
 script = ExtResource("2_76fne")
 
 [node name="CompletionRewardEditor" parent="Objective/Rewards" instance=ExtResource("2_do7ha")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TriggerSelector" type="HBoxContainer" parent="Objective"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Objective/TriggerSelector"]
+[node name="TriggerLabel" type="Label" parent="Objective/TriggerSelector"]
 layout_mode = 2
 text = "Trigger:"
 
 [node name="Trigger" type="OptionButton" parent="Objective/TriggerSelector"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 4
 selected = 0
-item_count = 2
-popup/item_0/text = "None"
-popup/item_1/text = "Reputation"
-popup/item_1/id = 1
+item_count = 1
+popup/item_0/text = "DELIVERED"
+script = ExtResource("4_cg0bb")
+
+[node name="TriggerEditor" parent="Objective/TriggerSelector" instance=ExtResource("4_pyv0t")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Save" type="Button" parent="Objective"]
+visible = false
 layout_mode = 2
 text = "Save"
 
 [node name="Rightlink" parent="." instance=ExtResource("3_cx1os")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Downlink" parent="." instance=ExtResource("3_cx1os")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[connection signal="text_changed" from="Objective/ObjectiveName" to="." method="_on_objective_name_text_changed"]
+[connection signal="text_changed" from="Objective/Description" to="." method="_on_description_text_changed"]
+[connection signal="text_changed" from="Objective/FlavorText" to="." method="_on_flavor_text_text_changed"]
 [connection signal="item_selected" from="Objective/Rewards/UpfrontReward" to="Objective/Rewards/UpfrontRewardEditor" method="_on_reward_selected"]
 [connection signal="item_selected" from="Objective/Rewards/CompletionReward" to="Objective/Rewards/CompletionRewardEditor" method="_on_reward_selected"]
+[connection signal="item_selected" from="Objective/TriggerSelector/Trigger" to="Objective/TriggerSelector/TriggerEditor" method="_on_trigger_selected"]
+[connection signal="pressed" from="Rightlink" to="." method="_on_rightlink_pressed"]
+[connection signal="pressed" from="Downlink" to="." method="_on_downlink_pressed"]

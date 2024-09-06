@@ -7,6 +7,7 @@ Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/constants/outline_size = 4
 Button/font_sizes/font_size = 30
 Button/styles/focus = SubResource("StyleBoxEmpty_1wtta")
+CheckBox/font_sizes/font_size = 12
 GridContainer/constants/h_separation = 16
 GridContainer/constants/v_separation = 4
 Label/colors/font_outline_color = Color(0, 0, 0, 1)

@@ -3,7 +3,9 @@ extends Resource
 
 var progress: String:
 	get = _get_progress
-	
+var trigger_type: Enums.TriggerType
+
+
 signal triggered
 signal progress_changed
 

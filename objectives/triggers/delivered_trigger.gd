@@ -8,6 +8,10 @@ var current_amount: float
 var active = false
 
 
+func _init():
+	trigger_type = Enums.TriggerType.DELIVERED
+
+
 func activate():
 	current_amount = 0
 	active = true
