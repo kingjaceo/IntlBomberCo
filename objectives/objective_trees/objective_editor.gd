@@ -15,6 +15,10 @@ var rewards: Dictionary = {
 	Enums.RewardType.REPUTATION: Reputation,
 	Enums.RewardType.VICTORY: Reward,
 }
+var triggers: Dictionary = {
+	Enums.TriggerType.NONE: false,
+	Enums.TriggerType.DELIVERED: DeliveredTrigger,
+}
 
 signal rightlink_pressed
 signal downlink_pressed
@@ -82,4 +86,16 @@ func _on_downlink_pressed() -> void:
 func _on_upfront_reward_selected(index: int) -> void:
 	objective.upfront_reward = rewards[index].new()
 	%UpfrontRewardEditor.reward = objective.upfront_reward
-	%UpfrontRewardEditor.create_add_editor(objective.upfront_reward.reward_type)
+	%UpfrontRewardEditor.create_add_editor(index)
+
+
+func _on_completion_reward_selected(index: int) -> void:
+	objective.completion_reward = rewards[index].new()
+	%CompletionRewardEditor.reward = objective.completion_reward
+	%CompletionRewardEditor.create_add_editor(index)
+
+
+func _on_trigger_selected(index: int) -> void:
+	objective.trigger = triggers[index].new()
+	%TriggerEditor.trigger = objective.trigger
+	%TriggerEditor.create_add_editor(index)

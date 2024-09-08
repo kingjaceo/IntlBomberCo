@@ -11,5 +11,5 @@ enum PlaceName {DARESH, VITOK, SABREK}
 enum ItemType {AID, BOMB, DRONE, OTHER}
 enum BuildingType {RESIDENTIAL, COMMERCIAL, INDUSTRIAL, MILITARY}
 enum RewardType {NONE, REPUTATION, VICTORY}
-enum TriggerType {NONE, DELIVERED, REPUTATION}
+enum TriggerType {NONE, DELIVERED}
 enum ReputationType {HELP, HURT}

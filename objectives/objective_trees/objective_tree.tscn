@@ -1,67 +1,68 @@
 [gd_scene load_steps=4 format=3 uid="uid://md3hlvn0d74t"]
 
+[ext_resource type="Script" path="res://objectives/objective_trees/objective_grid.gd" id="1_5uaal"]
 [ext_resource type="Script" path="res://objectives/objective_trees/objective_tree.gd" id="1_ljyjx"]
-[ext_resource type="Resource" uid="uid://dl3va8p3qov33" path="res://test_objective_tree.tres" id="2_ieph1"]
 [ext_resource type="PackedScene" uid="uid://bi63a3dx3rqug" path="res://objectives/objective_trees/objective_editor.tscn" id="2_si5sm"]
 
-[node name="ObjectiveTree" type="GridContainer"]
+[node name="ObjectiveGrid" type="GridContainer"]
 offset_right = 3240.0
 offset_bottom = 1766.0
 columns = 2
-script = ExtResource("1_ljyjx")
-objective = ExtResource("2_ieph1")
+script = ExtResource("1_5uaal")
 
 [node name="ObjectiveEditor" parent="." instance=ExtResource("2_si5sm")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="ObjectiveTree2" type="GridContainer" parent="."]
+[node name="RightObjectiveGrid" type="GridContainer" parent="."]
+visible = false
 layout_mode = 2
 columns = 2
 script = ExtResource("1_ljyjx")
 
-[node name="ObjectiveEditor" parent="ObjectiveTree2" instance=ExtResource("2_si5sm")]
+[node name="ObjectiveEditor" parent="RightObjectiveGrid" instance=ExtResource("2_si5sm")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="ObjectiveTree4" type="GridContainer" parent="ObjectiveTree2"]
+[node name="ObjectiveTree4" type="GridContainer" parent="RightObjectiveGrid"]
 layout_mode = 2
 columns = 2
 script = ExtResource("1_ljyjx")
 
-[node name="ObjectiveEditor" parent="ObjectiveTree2/ObjectiveTree4" instance=ExtResource("2_si5sm")]
+[node name="ObjectiveEditor" parent="RightObjectiveGrid/ObjectiveTree4" instance=ExtResource("2_si5sm")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="ObjectiveTree5" type="GridContainer" parent="ObjectiveTree2"]
+[node name="ObjectiveTree5" type="GridContainer" parent="RightObjectiveGrid"]
 layout_mode = 2
 columns = 2
 script = ExtResource("1_ljyjx")
 
-[node name="ObjectiveEditor" parent="ObjectiveTree2/ObjectiveTree5" instance=ExtResource("2_si5sm")]
+[node name="ObjectiveEditor" parent="RightObjectiveGrid/ObjectiveTree5" instance=ExtResource("2_si5sm")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="ObjectiveTree6" type="GridContainer" parent="ObjectiveTree2/ObjectiveTree5"]
+[node name="ObjectiveTree6" type="GridContainer" parent="RightObjectiveGrid/ObjectiveTree5"]
 layout_mode = 2
 columns = 2
 script = ExtResource("1_ljyjx")
 
-[node name="ObjectiveEditor" parent="ObjectiveTree2/ObjectiveTree5/ObjectiveTree6" instance=ExtResource("2_si5sm")]
+[node name="ObjectiveEditor" parent="RightObjectiveGrid/ObjectiveTree5/ObjectiveTree6" instance=ExtResource("2_si5sm")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="ObjectiveTree3" type="GridContainer" parent="."]
+[node name="DownObjectiveGrid" type="GridContainer" parent="."]
+visible = false
 layout_mode = 2
 columns = 2
 script = ExtResource("1_ljyjx")
 
-[node name="ObjectiveEditor" parent="ObjectiveTree3" instance=ExtResource("2_si5sm")]
+[node name="ObjectiveEditor" parent="DownObjectiveGrid" instance=ExtResource("2_si5sm")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

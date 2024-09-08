@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqij8fua2runi"]
+[gd_scene load_steps=7 format=3 uid="uid://bqij8fua2runi"]
 
 [ext_resource type="Script" path="res://objectives/objective_trees/objective_tree_editor.gd" id="1_yfunk"]
-[ext_resource type="PackedScene" uid="uid://md3hlvn0d74t" path="res://objectives/objective_trees/objective_tree.tscn" id="4_t4qxg"]
+[ext_resource type="PackedScene" uid="uid://dwf8mte7fdl3j" path="res://objectives/objective_trees/objective_grid.tscn" id="5_270yt"]
+[ext_resource type="Resource" uid="uid://dl3va8p3qov33" path="res://test_objective_tree.tres" id="5_q1c0s"]
+[ext_resource type="Resource" uid="uid://yvegwqkdgr54" path="res://test_objective_grid.tres" id="6_1c4r7"]
 [ext_resource type="Script" path="res://objectives/movement_controller.gd" id="6_v3ut1"]
 [ext_resource type="Script" path="res://objectives/zoom_controller.gd" id="7_jt6at"]
 
@@ -22,12 +24,14 @@ script = ExtResource("6_v3ut1")
 [node name="ZoomController" type="Node" parent="Camera2D"]
 script = ExtResource("7_jt6at")
 
-[node name="ObjectiveTree" parent="." instance=ExtResource("4_t4qxg")]
+[node name="ObjectiveGrid" parent="." instance=ExtResource("5_270yt")]
 layout_mode = 0
+objective_grid = ExtResource("6_1c4r7")
+objective = ExtResource("5_q1c0s")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="Save" type="Button" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -40,4 +44,18 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Save"
 
-[connection signal="pressed" from="CanvasLayer/Button" to="ObjectiveTree" method="_save"]
+[node name="Reset" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 77.0
+offset_top = -50.0
+offset_right = 195.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Reset"
+
+[connection signal="pressed" from="CanvasLayer/Save" to="ObjectiveGrid" method="_save"]
+[connection signal="pressed" from="CanvasLayer/Reset" to="ObjectiveGrid" method="_ready"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwf8mte7fdl3j"]
+
+[ext_resource type="Script" path="res://objectives/objective_trees/objective_grid.gd" id="1_uvp7m"]
+
+[node name="ObjectiveGrid" type="GridContainer"]
+offset_right = 3240.0
+offset_bottom = 1766.0
+columns = 2
+script = ExtResource("1_uvp7m")

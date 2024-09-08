@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://objectives/objective.gd" id="1_7uncv"]
+[ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="1_55vqf"]
+[ext_resource type="Script" path="res://objectives/objective_trees/objective_matrix.gd" id="2_8c0ej"]
+[ext_resource type="Script" path="res://objectives/triggers/delivered_trigger.gd" id="3_ate7y"]
+
+[sub_resource type="Resource" id="Resource_jkmqm"]
+script = ExtResource("1_55vqf")
+amounts = {
+"HELP": 1,
+"HURT": 0
+}
+
+[sub_resource type="Resource" id="Resource_gyx3s"]
+script = ExtResource("3_ate7y")
+target_place_names = Array[int]([1])
+target_item_types = Array[int]([0])
+target_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_ukecr"]
+script = ExtResource("1_7uncv")
+name = "Deliver aid to Vitok."
+description = "The people there need you."
+flavor_text = "Be a hero."
+completion_reward = SubResource("Resource_jkmqm")
+trigger = SubResource("Resource_gyx3s")
+accepted = false
+completed = false
+
+[sub_resource type="Resource" id="Resource_vfeaj"]
+script = ExtResource("1_7uncv")
+name = ""
+description = ""
+flavor_text = ""
+accepted = false
+completed = false
+
+[sub_resource type="Resource" id="Resource_xbk23"]
+script = ExtResource("1_55vqf")
+amounts = {
+"HELP": 3,
+"HURT": 0
+}
+
+[sub_resource type="Resource" id="Resource_30wxg"]
+script = ExtResource("3_ate7y")
+target_place_names = Array[int]([1])
+target_item_types = Array[int]([0])
+target_amount = 3.0
+
+[sub_resource type="Resource" id="Resource_gt55s"]
+script = ExtResource("1_7uncv")
+name = "Deliver more aid to Vitok"
+description = "The people there need you."
+flavor_text = "Be a hero."
+completion_reward = SubResource("Resource_xbk23")
+trigger = SubResource("Resource_30wxg")
+accepted = false
+completed = false
+
+[sub_resource type="Resource" id="Resource_cfmfo"]
+script = ExtResource("1_55vqf")
+amounts = {
+"HELP": 0,
+"HURT": 1
+}
+
+[sub_resource type="Resource" id="Resource_typy4"]
+script = ExtResource("1_7uncv")
+name = "Destroy a building in Sabrek."
+description = "Quell the rebels."
+flavor_text = "A storm is gathering..."
+completion_reward = SubResource("Resource_cfmfo")
+accepted = false
+completed = false
+
+[resource]
+script = ExtResource("2_8c0ej")
+rows = 2
+columns = 2
+grid = {
+Vector2i(0, 0): SubResource("Resource_ukecr"),
+Vector2i(0, 1): SubResource("Resource_vfeaj"),
+Vector2i(1, 0): SubResource("Resource_gt55s"),
+Vector2i(1, 1): SubResource("Resource_typy4")
+}
