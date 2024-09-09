@@ -77,10 +77,5 @@ Vector2i(0, 1): SubResource("Resource_gdnar"),
 Vector2i(1, 0): SubResource("Resource_gt55s"),
 Vector2i(1, 1): SubResource("Resource_qm5we")
 }
-right_adjacency = {
-Vector2i(0, 0): true
-}
-down_adjacency = {
-Vector2i(0, 0): true,
-Vector2i(1, 0): true
-}
+rightlinks = {}
+downlinks = {}

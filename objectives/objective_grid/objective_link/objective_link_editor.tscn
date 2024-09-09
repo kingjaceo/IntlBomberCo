@@ -23,22 +23,26 @@ script = ExtResource("1_607ra")
 
 [node name="Link" type="Button" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 text = "+"
 icon_alignment = 1
 
-[node name="Unlink" type="Button" parent="."]
+[node name="Remove" type="Button" parent="."]
 unique_name_in_owner = true
-visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+text = "x"
+
+[node name="Relink" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "x"
 icon = ExtResource("2_t2ln2")
 
 [node name="Container" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -57,4 +61,5 @@ script = ExtResource("3_wsyb6")
 unique_name_in_owner = true
 layout_mode = 2
 
+[connection signal="pressed" from="Remove" to="." method="_on_remove_pressed"]
 [connection signal="item_selected" from="Container/Trigger" to="Container/TriggerEditor" method="_on_trigger_selected"]

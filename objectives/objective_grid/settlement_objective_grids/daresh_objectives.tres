@@ -1,9 +1,20 @@
-[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=13 format=3]
+[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=18 format=3 uid="uid://c52x0sn8psdg2"]
 
 [ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="1_d0uyv"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="2_cisiy"]
 [ext_resource type="Script" path="res://objectives/triggers/delivered_trigger.gd" id="3_m4up1"]
 [ext_resource type="Script" path="res://objectives/objective_grid/objective_grid.gd" id="4_1d2lw"]
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_link/objective_grid_link.gd" id="4_wnbme"]
+
+[sub_resource type="Resource" id="Resource_jylv2"]
+script = ExtResource("4_wnbme")
+to = Vector2i(0, 0)
+from = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="Resource_oygim"]
+script = ExtResource("4_wnbme")
+to = Vector2i(0, 0)
+from = Vector2i(0, 0)
 
 [sub_resource type="Resource" id="Resource_jkmqm"]
 script = ExtResource("1_d0uyv")
@@ -28,7 +39,7 @@ trigger = SubResource("Resource_gyx3s")
 accepted = false
 completed = false
 
-[sub_resource type="Resource" id="Resource_gdnar"]
+[sub_resource type="Resource" id="Resource_3c8od"]
 script = ExtResource("2_cisiy")
 name = ""
 description = ""
@@ -67,20 +78,31 @@ flavor_text = ""
 accepted = false
 completed = false
 
+[sub_resource type="Resource" id="Resource_uxrmh"]
+script = ExtResource("4_wnbme")
+to = Vector2i(0, 0)
+from = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="Resource_1vq5e"]
+script = ExtResource("4_wnbme")
+to = Vector2i(0, 0)
+from = Vector2i(0, 0)
+
 [resource]
 script = ExtResource("4_1d2lw")
 rows = 2
 columns = 2
 grid = {
 Vector2i(0, 0): SubResource("Resource_ukecr"),
-Vector2i(0, 1): SubResource("Resource_gdnar"),
+Vector2i(0, 1): SubResource("Resource_3c8od"),
 Vector2i(1, 0): SubResource("Resource_gt55s"),
 Vector2i(1, 1): SubResource("Resource_qm5we")
 }
-right_adjacency = {
-Vector2i(0, 0): true
+rightlinks = {
+Vector2i(0, 0): SubResource("Resource_uxrmh"),
+Vector2i(0, 1): SubResource("Resource_1vq5e")
 }
-down_adjacency = {
-Vector2i(0, 0): true,
-Vector2i(1, 0): true
+downlinks = {
+Vector2i(0, 0): SubResource("Resource_jylv2"),
+Vector2i(1, 0): SubResource("Resource_oygim")
 }

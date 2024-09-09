@@ -5,17 +5,9 @@ extends Resource
 @export var rows: int = 1
 @export var columns: int = 1
 @export var grid: Dictionary # {Vector2i: Objective}
-@export var right_adjacency: Dictionary # {Vector2i: bool}
-@export var down_adjacency: Dictionary # {Vector2i: bool}
+@export var rightlinks: Dictionary # {Vector2i: ObjectiveGridLink}
+@export var downlinks: Dictionary # {Vector2i: ObjectiveGridLink}
 
-
-#func _init():
-	#if len(grid) == 0:
-		#grid[Vector2i.ZERO] = Objective.new()
-		#rows = 1
-		#columns = 1
-	#else: # set the rows and columns correctly
-		#pass
 
 
 func add_objective(location: Vector2i, objective: Objective):
@@ -25,13 +17,28 @@ func add_objective(location: Vector2i, objective: Objective):
 		rows = location.y + 1
 	grid[location] = objective
 
+func get_objective(location: Vector2i):
+	return grid.get(location)
 
-func get_right_adjacency(location: Vector2i) -> bool:
-	if right_adjacency.get(location):
-		return true
-	return false
+func remove_objective(location: Vector2i):
+	grid.erase(location)
 
-func get_down_adjacency(location: Vector2i) -> bool:
-	if down_adjacency.get(location):
-		return true
-	return false
+
+func add_rightlink(location: Vector2i, link: ObjectiveGridLink):
+	rightlinks[location] = link
+
+func get_rightlink(location: Vector2i) -> ObjectiveGridLink:
+	return rightlinks.get(location)
+
+func remove_rightlink(location: Vector2i):
+	rightlinks.erase(location)
+
+
+func add_downlink(location: Vector2i, link: ObjectiveGridLink):
+	downlinks[location] = link
+
+func get_downlink(location: Vector2i) -> ObjectiveGridLink:
+	return downlinks.get(location)
+
+func remove_downlink(location: Vector2i):
+	downlinks.erase(location)

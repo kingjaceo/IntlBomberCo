@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=13 format=3]
+[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=13 format=3 uid="uid://6gwsg4fj2gde"]
 
 [ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="1_obvmg"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="2_kigq8"]

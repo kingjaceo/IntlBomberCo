@@ -5,8 +5,6 @@ extends Control
 @onready var description: TextEdit = %Description
 @onready var flavor_text: TextEdit = %FlavorText
 var objective: Objective
-
-
 var rewards: Dictionary = {
 	Enums.RewardType.NONE: false,
 	Enums.RewardType.REPUTATION: Reputation,
@@ -17,6 +15,7 @@ var rewards: Dictionary = {
 	#Enums.TriggerType.DELIVERED: DeliveredTrigger,
 #}
 
+signal removed
 signal rightlink_pressed
 signal downlink_pressed
 
@@ -84,3 +83,7 @@ func _on_completion_reward_selected(index: int) -> void:
 		#objective.trigger = triggers[index]
 	#%TriggerEditor.trigger = objective.trigger
 	#%TriggerEditor.create_add_editor(index)
+
+
+func _on_remove_pressed() -> void:
+	removed.emit()
