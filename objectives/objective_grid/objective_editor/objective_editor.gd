@@ -4,10 +4,7 @@ extends Control
 @onready var objective_name: TextEdit = %ObjectiveName
 @onready var description: TextEdit = %Description
 @onready var flavor_text: TextEdit = %FlavorText
-var objective: Objective#:
-	#set(value):
-		#objective = value
-		#_populate_fields()
+var objective: Objective
 
 
 var rewards: Dictionary = {
@@ -15,10 +12,10 @@ var rewards: Dictionary = {
 	Enums.RewardType.REPUTATION: Reputation,
 	Enums.RewardType.VICTORY: Reward,
 }
-var triggers: Dictionary = {
-	Enums.TriggerType.NONE: false,
-	Enums.TriggerType.DELIVERED: DeliveredTrigger,
-}
+#var triggers: Dictionary = {
+	#Enums.TriggerType.NONE: false,
+	#Enums.TriggerType.DELIVERED: DeliveredTrigger,
+#}
 
 signal rightlink_pressed
 signal downlink_pressed
@@ -27,13 +24,6 @@ signal downlink_pressed
 func _ready():
 	if objective:
 		_populate_fields()
-
-
-func disable_rightlink():
-	%Rightlink.disabled = true
-
-func disable_downlink():
-	%Downlink.disabled = true
 
 
 func _populate_fields():
@@ -75,14 +65,6 @@ func _on_flavor_text_text_changed() -> void:
 	objective.flavor_text = flavor_text.text
 
 
-func _on_rightlink_pressed() -> void:
-	rightlink_pressed.emit()
-
-
-func _on_downlink_pressed() -> void:
-	downlink_pressed.emit()
-
-
 func _on_upfront_reward_selected(index: int) -> void:
 	objective.upfront_reward = rewards[index].new()
 	%UpfrontRewardEditor.reward = objective.upfront_reward
@@ -95,7 +77,10 @@ func _on_completion_reward_selected(index: int) -> void:
 	%CompletionRewardEditor.create_add_editor(index)
 
 
-func _on_trigger_selected(index: int) -> void:
-	objective.trigger = triggers[index].new()
-	%TriggerEditor.trigger = objective.trigger
-	%TriggerEditor.create_add_editor(index)
+#func _on_trigger_selected(index: int) -> void:
+	#if triggers[index]:
+		#objective.trigger = triggers[index].new()
+	#else:
+		#objective.trigger = triggers[index]
+	#%TriggerEditor.trigger = objective.trigger
+	#%TriggerEditor.create_add_editor(index)

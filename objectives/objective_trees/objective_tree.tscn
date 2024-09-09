@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://md3hlvn0d74t"]
 
-[ext_resource type="Script" path="res://objectives/objective_trees/objective_grid.gd" id="1_5uaal"]
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_grid_editor.gd" id="1_5uaal"]
 [ext_resource type="Script" path="res://objectives/objective_trees/objective_tree.gd" id="1_ljyjx"]
-[ext_resource type="PackedScene" uid="uid://bi63a3dx3rqug" path="res://objectives/objective_trees/objective_editor.tscn" id="2_si5sm"]
+[ext_resource type="PackedScene" uid="uid://bi63a3dx3rqug" path="res://objectives/objective_grid/objective_editor/objective_editor.tscn" id="2_si5sm"]
 
 [node name="ObjectiveGrid" type="GridContainer"]
 offset_right = 3240.0

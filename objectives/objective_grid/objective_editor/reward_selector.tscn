@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://do87r44nctpeq"]
 
-[ext_resource type="Script" path="res://objectives/objective_trees/reward_selector.gd" id="1_turnm"]
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_editor/reward_selector.gd" id="1_turnm"]
 
 [node name="RewardSelector" type="HBoxContainer"]
 script = ExtResource("1_turnm")

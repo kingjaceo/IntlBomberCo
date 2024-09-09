@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://be5c348rnagmp"]
+
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_link/objective_link_editor.gd" id="1_607ra"]
+[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="2_t2ln2"]
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_editor/trigger_selector.gd" id="3_wsyb6"]
+[ext_resource type="PackedScene" uid="uid://0dwxsmod6xea" path="res://objectives/triggers/trigger_editor.tscn" id="4_vl2cq"]
+
+[node name="ObjectiveLinkEditor" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -25.0
+offset_right = 12.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_607ra")
+
+[node name="Link" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+text = "+"
+icon_alignment = 1
+
+[node name="Unlink" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "x"
+icon = ExtResource("2_t2ln2")
+
+[node name="Container" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Trigger" type="OptionButton" parent="Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+selected = 0
+item_count = 1
+popup/item_0/text = "DELIVERED"
+script = ExtResource("3_wsyb6")
+
+[node name="TriggerEditor" parent="Container" instance=ExtResource("4_vl2cq")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="item_selected" from="Container/Trigger" to="Container/TriggerEditor" method="_on_trigger_selected"]

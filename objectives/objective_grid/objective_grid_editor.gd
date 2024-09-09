@@ -1,35 +1,40 @@
 class_name ObjectiveGridEditor
 extends GridContainer
 
-@export var objective_grid: ObjectiveGrid
-@export var objective: Objective
-var objective_editor_scene: PackedScene = load("res://objectives/objective_trees/objective_editor.tscn")
-var objective_link_scene: PackedScene = load("res://objectives/objective_trees/objective_tree_gate.tscn")
+var objective_grid: ObjectiveGrid
+var objective_editor_scene: PackedScene = load("res://objectives/objective_grid/objective_editor/objective_editor.tscn")
+var objective_link_scene: PackedScene = load("res://objectives/objective_grid/objective_link/objective_link_editor.tscn")
 var objective_grid_copy: ObjectiveGrid
 
 
 func _ready() -> void:
 	for child in get_children():
 		child.free()
-	if not objective_grid:
-		objective_grid = ObjectiveGrid.new()
-	objective_grid_copy = objective_grid.duplicate()
-	_populate()
+	if objective_grid:
+		objective_grid_copy = objective_grid.duplicate()
+		_populate()
+
+
+func set_objective_grid(new_grid: ObjectiveGrid):
+	objective_grid = new_grid
+	_ready()
 
 
 func _populate():
 	columns = objective_grid_copy.columns * 2
 	for r in range(objective_grid_copy.rows):
-		_pad(r)
-		_pad(r+1)
+		_pad(2*r)
+		#_pad(2*r+1)
 		for c in range(objective_grid_copy.columns):
 			var location = Vector2i(c, r)
 			var child_index = _get_child_index(location)
 			var objective = objective_grid_copy.grid.get(location)
 			if objective:
 				_create_editor(child_index, objective)
-				_create_rightlink(child_index + 1)
-				_create_downlink(child_index + columns)
+				#var right_location = location + Vector2i(1, 0)
+				#var rightlink_active = location + Vector2i(1, 0) in objective_grid_copy.adjacency[location]
+				_create_rightlink(child_index + 1, objective_grid_copy.get_right_adjacency(location))
+				_create_downlink(child_index + columns, objective_grid_copy.get_down_adjacency(location))
 
 
 func _create_editor(index: int, objective: Objective):
@@ -42,33 +47,42 @@ func _create_editor(index: int, objective: Objective):
 	move_child(new_editor, index)
 
 
-func _create_rightlink(index: int):
+func _create_rightlink(index: int, active: bool = false):
 	get_child(index).free() # we can assume there is a dummy here
 	var objective_link = objective_link_scene.instantiate()
 	var location = _get_index_location(index)
-	objective_link.pressed.connect(_right_link_pressed.bind(location))
-	objective_link.text = "R" + str(_get_index_location(index))
+	objective_link.add_link_pressed.connect(_right_link_pressed.bind(location))
+	#objective_link.text = "R" + str(_get_index_location(index))
+	objective_link.active = active
 	add_child(objective_link)
 	move_child(objective_link, index)
 
 
-func _create_downlink(index: int):
+func _create_downlink(index: int, active: bool = false):
 	get_child(index).free() # we can assume there is a dummy here
 	var objective_link = objective_link_scene.instantiate()
 	var location = _get_index_location(index)
-	objective_link.pressed.connect(_down_link_pressed.bind(location))
-	objective_link.text = "D" + str(_get_index_location(index))
+	objective_link.add_link_pressed.connect(_down_link_pressed.bind(location))
+	#objective_link.text = "D" + str(_get_index_location(index))
+	objective_link.active = active
 	add_child(objective_link)
 	move_child(objective_link, index)
 
 
 func _pad(row: int, from: int = 0, to: int = columns):
 	var child_index = _get_child_index(Vector2i(0, row))# columns * row + x
+	var num_children = len(get_children())
 	for x in range(from, to): # pads interval with dummies
 		var c1 = Control.new()
 		add_child(c1)
-		move_child(c1, child_index)
+		if child_index < num_children:
+			move_child(c1, child_index)
 		child_index += 1
+		var c2 = Control.new()
+		add_child(c2)
+		if child_index < num_children:
+			move_child(c2, child_index)
+		child_index += columns + 1
 
 
 func _vpad(column: int):
@@ -88,17 +102,15 @@ func _vpad(column: int):
 
 func _right_link_pressed(location: Vector2i):
 	location.x += 1
-	#var index = _get_child_index(location)
 	var column = location.x * 2
 	if column >= columns:
 		_vpad(column)
-		#_vpad(column + 1)
 		columns += 2
-		#column = _get_column(index)
 	var index = _get_child_index(location)
-	_create_editor(index, Objective.new())
-	_create_rightlink(index + 1)
-	_create_downlink(index + columns)
+	if location not in objective_grid.grid:
+		_create_editor(index, Objective.new())
+		_create_rightlink(index + 1)
+		_create_downlink(index + columns)
 
 
 func _down_link_pressed(location: Vector2i):
@@ -134,4 +146,4 @@ func _get_column(index: int) -> int:
 
 
 func _save():
-	ResourceSaver.save(objective_grid_copy, "test_objective_grid.tres")
+	ResourceSaver.save(objective_grid_copy, objective_grid.resource_path)

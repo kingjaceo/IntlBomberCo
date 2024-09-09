@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bi63a3dx3rqug"]
 
-[ext_resource type="Script" path="res://objectives/objective_trees/objective_editor.gd" id="1_vrivh"]
-[ext_resource type="Script" path="res://objectives/objective_trees/reward_selector.gd" id="2_76fne"]
-[ext_resource type="PackedScene" uid="uid://7vtyug2h5vr3" path="res://objectives/objective_trees/reward_editor.tscn" id="2_do7ha"]
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_editor/objective_editor.gd" id="1_vrivh"]
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_editor/reward_selector.gd" id="2_76fne"]
+[ext_resource type="PackedScene" uid="uid://7vtyug2h5vr3" path="res://objectives/objective_grid/objective_editor/reward_editor.tscn" id="2_do7ha"]
 [ext_resource type="PackedScene" uid="uid://ppaula6nk4fh" path="res://objectives/objective_trees/objective_tree_gate.tscn" id="3_cx1os"]
-[ext_resource type="Script" path="res://objectives/objective_trees/trigger_selector.gd" id="4_cg0bb"]
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_editor/trigger_selector.gd" id="4_cg0bb"]
 [ext_resource type="PackedScene" uid="uid://0dwxsmod6xea" path="res://objectives/triggers/trigger_editor.tscn" id="4_pyv0t"]
 
 [node name="ObjectiveEditor" type="GridContainer"]
@@ -19,6 +19,8 @@ offset_right = 254.0
 offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 2
 script = ExtResource("1_vrivh")
 
@@ -136,6 +138,6 @@ size_flags_vertical = 4
 [connection signal="text_changed" from="Objective/FlavorText" to="." method="_on_flavor_text_text_changed"]
 [connection signal="item_selected" from="Objective/Rewards/UpfrontReward" to="." method="_on_upfront_reward_selected"]
 [connection signal="item_selected" from="Objective/Rewards/CompletionReward" to="." method="_on_completion_reward_selected"]
-[connection signal="item_selected" from="Objective/TriggerSelector/Trigger" to="." method="_on_trigger_selected"]
+[connection signal="item_selected" from="Objective/TriggerSelector/Trigger" to="Objective/TriggerSelector/TriggerEditor" method="_on_trigger_selected"]
 [connection signal="pressed" from="Rightlink" to="." method="_on_rightlink_pressed"]
 [connection signal="pressed" from="Downlink" to="." method="_on_downlink_pressed"]

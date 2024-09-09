@@ -7,10 +7,10 @@ var trigger_editors: Dictionary = {
 	Enums.TriggerType.NONE: false,
 	Enums.TriggerType.DELIVERED: load("res://objectives/triggers/delivered_trigger_editor.tscn")
 }
-#var triggers: Dictionary = {
-	#Enums.TriggerType.NONE: false,
-	#Enums.TriggerType.DELIVERED: DeliveredTrigger,
-#}
+var triggers: Dictionary = {
+	Enums.TriggerType.NONE: false,
+	Enums.TriggerType.DELIVERED: DeliveredTrigger,
+}
 var current_editor: TriggerEditor
 
 
@@ -24,6 +24,10 @@ func _on_trigger_selected(index: int) -> void:
 
 
 func create_add_editor(which: Enums.RewardType):
+	if triggers[which]:
+		trigger = triggers[which].new()
+	else:
+		trigger = null
 	if current_editor:
 		remove_child(current_editor)
 	var new_editor = trigger_editors[which]

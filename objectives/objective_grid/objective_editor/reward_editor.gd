@@ -5,8 +5,8 @@ extends Control
 @export var reward: Reward
 var reward_editors: Dictionary = {
 	Enums.RewardType.NONE: false,
-	Enums.RewardType.REPUTATION: load("res://objectives/objective_trees/reputation_reward_editor.tscn"),
-	Enums.RewardType.VICTORY: load("res://objectives/objective_trees/reward_editor.tscn"),
+	Enums.RewardType.REPUTATION: load("res://objectives/objective_grid/objective_editor/reputation_reward_editor.tscn"),
+	Enums.RewardType.VICTORY: load("res://objectives/objective_grid/objective_editor/reward_editor.tscn"),
 }
 var current_editor: RewardEditor
 

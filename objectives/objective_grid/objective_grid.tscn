@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqij8fua2runi"]
+
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_grid_scene.gd" id="1_x1bcf"]
+[ext_resource type="PackedScene" uid="uid://dwf8mte7fdl3j" path="res://objectives/objective_grid/objective_grid_editor.tscn" id="2_r4cx3"]
+[ext_resource type="Script" path="res://objectives/triggers/movement_controller.gd" id="3_voa3e"]
+[ext_resource type="Script" path="res://objectives/objective_grid/zoom_controller.gd" id="4_37sle"]
+[ext_resource type="Script" path="res://objectives/objective_trees/enum_selector.gd" id="5_dtvig"]
+
+[node name="ObjectiveGridScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x1bcf")
+
+[node name="ObjectiveGridEditor" parent="." instance=ExtResource("2_r4cx3")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = -1.0
+offset_bottom = 1765.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(736, 457)
+
+[node name="MovementController" type="Node" parent="Camera2D"]
+script = ExtResource("3_voa3e")
+
+[node name="ZoomController" type="Node" parent="Camera2D"]
+script = ExtResource("4_37sle")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -70.0
+offset_right = 160.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Save" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="Reset" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Reset"
+
+[node name="SettlementSelector" type="OptionButton" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "DARESH"
+script = ExtResource("5_dtvig")
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Save" to="ObjectiveGridEditor" method="_save"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Reset" to="ObjectiveGridEditor" method="_ready"]
+[connection signal="item_selected" from="CanvasLayer/HBoxContainer/SettlementSelector" to="." method="_settlement_selected"]

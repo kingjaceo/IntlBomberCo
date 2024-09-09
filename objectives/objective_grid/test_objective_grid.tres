@@ -1,25 +1,25 @@
-[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=13 format=3]
+[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=13 format=3 uid="uid://cny5md4n4oy7"]
 
-[ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="1_obvmg"]
-[ext_resource type="Script" path="res://objectives/objective.gd" id="2_kigq8"]
-[ext_resource type="Script" path="res://objectives/triggers/delivered_trigger.gd" id="3_s06o2"]
-[ext_resource type="Script" path="res://objectives/objective_grid/objective_grid.gd" id="4_i2xcu"]
+[ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="1_y8l88"]
+[ext_resource type="Script" path="res://objectives/objective.gd" id="2_6jai1"]
+[ext_resource type="Script" path="res://objectives/triggers/delivered_trigger.gd" id="3_bwhij"]
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_grid.gd" id="4_31ai3"]
 
 [sub_resource type="Resource" id="Resource_jkmqm"]
-script = ExtResource("1_obvmg")
+script = ExtResource("1_y8l88")
 amounts = {
 "HELP": 1,
 "HURT": 0
 }
 
 [sub_resource type="Resource" id="Resource_gyx3s"]
-script = ExtResource("3_s06o2")
+script = ExtResource("3_bwhij")
 target_place_names = Array[int]([1])
 target_item_types = Array[int]([0])
 target_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_ukecr"]
-script = ExtResource("2_kigq8")
+script = ExtResource("2_6jai1")
 name = "Deliver aid to Vitok."
 description = "The people there need you."
 flavor_text = "Be a hero."
@@ -29,7 +29,7 @@ accepted = false
 completed = false
 
 [sub_resource type="Resource" id="Resource_gdnar"]
-script = ExtResource("2_kigq8")
+script = ExtResource("2_6jai1")
 name = ""
 description = ""
 flavor_text = ""
@@ -37,20 +37,20 @@ accepted = false
 completed = false
 
 [sub_resource type="Resource" id="Resource_xbk23"]
-script = ExtResource("1_obvmg")
+script = ExtResource("1_y8l88")
 amounts = {
 "HELP": 3,
 "HURT": 0
 }
 
 [sub_resource type="Resource" id="Resource_30wxg"]
-script = ExtResource("3_s06o2")
+script = ExtResource("3_bwhij")
 target_place_names = Array[int]([1])
 target_item_types = Array[int]([0])
 target_amount = 3.0
 
 [sub_resource type="Resource" id="Resource_gt55s"]
-script = ExtResource("2_kigq8")
+script = ExtResource("2_6jai1")
 name = "Deliver more aid to Vitok"
 description = "The people there need you."
 flavor_text = "Be a hero."
@@ -60,7 +60,7 @@ accepted = false
 completed = false
 
 [sub_resource type="Resource" id="Resource_qm5we"]
-script = ExtResource("2_kigq8")
+script = ExtResource("2_6jai1")
 name = ""
 description = ""
 flavor_text = ""
@@ -68,7 +68,7 @@ accepted = false
 completed = false
 
 [resource]
-script = ExtResource("4_i2xcu")
+script = ExtResource("4_31ai3")
 rows = 2
 columns = 2
 grid = {

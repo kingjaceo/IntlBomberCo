@@ -1,7 +1,7 @@
 class_name ReputationRewardEditor
 extends RewardEditor
 
-var quantity_box: PackedScene = load("res://objectives/objective_trees/quantity_box.tscn")
+var quantity_box: PackedScene = load("res://objectives/objective_grid/objective_editor/quantity_box.tscn")
 var reputation_quantities: Dictionary # {ReputationType: QuantityBox}
 
 

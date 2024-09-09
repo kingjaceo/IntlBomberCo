@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0dwxsmod6xea"]
 
-[ext_resource type="Script" path="res://objectives/objective_trees/trigger_editor.gd" id="1_pyn3s"]
+[ext_resource type="Script" path="res://objectives/triggers/trigger_editor.gd" id="1_pyn3s"]
 
 [node name="TriggerEditor" type="PanelContainer"]
 script = ExtResource("1_pyn3s")

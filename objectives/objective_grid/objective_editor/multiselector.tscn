@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://310g5yncd3ea"]
 
-[ext_resource type="Script" path="res://objectives/triggers/multi_selector.gd" id="1_h43hq"]
+[ext_resource type="Script" path="res://objectives/objective_grid/objective_editor/multi_selector.gd" id="1_h43hq"]
 
 [node name="Multiselector" type="ScrollContainer"]
 custom_minimum_size = Vector2(0, 80)
