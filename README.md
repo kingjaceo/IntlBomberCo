@@ -8,7 +8,7 @@ These are the steps you should follow if you want to access the "objective grid 
 
 
 
-Here are some tips for editing the ojbective grid:
+Here are some tips for editing the objective grid:
 - There is a camera with zoom and WASD movement. Unfortunately, it takes inputs even as you type in text fields. :)
 - The camera can "sprint" with Shift.
 - "Upfront" is what the player gets for "Accepting" a contract.
