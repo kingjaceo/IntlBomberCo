@@ -63,6 +63,7 @@ func _create_rightlink(index: int):
 	var location = _get_index_location(index)
 	objective_link_editor.objective_link = objective_grid.get_rightlink(location)
 	objective_link_editor.add_link_pressed.connect(_right_link_pressed.bind(location))
+	objective_link_editor.orientation = ObjectiveLinkEditor.Orientation.RIGHT
 	objective_link_editor.removed.connect(objective_grid.remove_rightlink.bind(location))
 	#objective_link_editor.removed.connect(_create_rightlink.bind(index))
 	#objective_link.trigger_changed.connect(_link_trigger_changed.bind(location))
@@ -79,6 +80,7 @@ func _create_downlink(index: int):
 	objective_link_editor.removed.connect(objective_grid.remove_downlink.bind(location))
 	objective_link_editor.objective_link = objective_grid.get_downlink(location)
 	objective_link_editor.add_link_pressed.connect(_down_link_pressed.bind(location))
+	objective_link_editor.orientation = ObjectiveLinkEditor.Orientation.DOWN
 	#objective_link_editor.removed.connect(_make_placeholder.bind(index))
 	#objective_link.text = "D" + str(_get_index_location(index))
 	add_child(objective_link_editor)

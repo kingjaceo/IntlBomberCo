@@ -7,7 +7,7 @@ var contract_panel_scene: PackedScene = load("res://town_screen/contracts/contra
 
 func _ready():
 	if Global.current_settlement_data:
-		contracts = Global.current_settlement_data.contracts
+		contracts = Global.current_settlement_data.get_objectives()
 		Global.current_settlement_data.contract_added.connect(_create_add_panel)
 		for child in get_children():
 			child.queue_free()

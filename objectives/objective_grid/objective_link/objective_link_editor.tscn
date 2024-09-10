@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://be5c348rnagmp"]
 
 [ext_resource type="Script" path="res://objectives/objective_grid/objective_link/objective_link_editor.gd" id="1_607ra"]
-[ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="2_t2ln2"]
+[ext_resource type="Texture2D" uid="uid://cd55xee1lgrmw" path="res://objectives/objective_grid/objective_link/downlink.png" id="2_8om6p"]
 [ext_resource type="Script" path="res://objectives/objective_grid/objective_editor/trigger_selector.gd" id="3_wsyb6"]
 [ext_resource type="PackedScene" uid="uid://0dwxsmod6xea" path="res://objectives/triggers/trigger_editor.tscn" id="4_vl2cq"]
 
@@ -39,7 +39,8 @@ text = "x"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-icon = ExtResource("2_t2ln2")
+icon = ExtResource("2_8om6p")
+flat = true
 
 [node name="Container" type="VBoxContainer" parent="."]
 unique_name_in_owner = true

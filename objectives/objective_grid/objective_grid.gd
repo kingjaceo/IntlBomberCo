@@ -9,7 +9,6 @@ extends Resource
 @export var downlinks: Dictionary # {Vector2i: ObjectiveGridLink}
 
 
-
 func add_objective(location: Vector2i, objective: Objective):
 	if location.x >= columns:
 		columns = location.x + 1
@@ -42,3 +41,7 @@ func get_downlink(location: Vector2i) -> ObjectiveGridLink:
 
 func remove_downlink(location: Vector2i):
 	downlinks.erase(location)
+
+
+func frontier() -> Array[Objective]:
+	return [grid[Vector2i.ZERO]]

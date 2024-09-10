@@ -1,15 +1,8 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=8 format=3 uid="uid://mrnelixwcvbm"]
+[gd_resource type="Resource" script_class="GameData" load_steps=5 format=3 uid="uid://mrnelixwcvbm"]
 
 [ext_resource type="Script" path="res://game_data/game_data.gd" id="1_bbd2x"]
-[ext_resource type="Script" path="res://unused/contract_generator_data.gd" id="2_574h1"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="2_cpqls"]
 [ext_resource type="Script" path="res://reputation/reputation.gd" id="4_ruc1j"]
-[ext_resource type="Script" path="res://unused/contract_template.gd" id="6_grfet"]
-
-[sub_resource type="Resource" id="Resource_424hc"]
-script = ExtResource("2_574h1")
-contract_pool = Array[ExtResource("2_cpqls")]([])
-contract_templates = Array[ExtResource("6_grfet")]([])
 
 [sub_resource type="Resource" id="Resource_ml0o5"]
 script = ExtResource("4_ruc1j")
@@ -22,5 +15,4 @@ contracts = Array[ExtResource("2_cpqls")]([])
 money = 29000
 tutorial_active = false
 contract_capacity = 2
-generator_data = SubResource("Resource_424hc")
 reputation = SubResource("Resource_ml0o5")

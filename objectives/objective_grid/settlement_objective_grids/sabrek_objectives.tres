@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=13 format=3 uid="uid://cph8qoi8u7y6d"]
+[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=9 format=3 uid="uid://cph8qoi8u7y6d"]
 
 [ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="1_lcpwm"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="2_mouk7"]
@@ -36,46 +36,13 @@ flavor_text = ""
 accepted = false
 completed = false
 
-[sub_resource type="Resource" id="Resource_xbk23"]
-script = ExtResource("1_lcpwm")
-amounts = {
-"HELP": 3,
-"HURT": 0
-}
-
-[sub_resource type="Resource" id="Resource_30wxg"]
-script = ExtResource("3_uis1d")
-target_place_names = Array[int]([1])
-target_item_types = Array[int]([0])
-target_amount = 3.0
-
-[sub_resource type="Resource" id="Resource_gt55s"]
-script = ExtResource("2_mouk7")
-name = ""
-description = ""
-flavor_text = ""
-completion_reward = SubResource("Resource_xbk23")
-trigger = SubResource("Resource_30wxg")
-accepted = false
-completed = false
-
-[sub_resource type="Resource" id="Resource_qm5we"]
-script = ExtResource("2_mouk7")
-name = ""
-description = ""
-flavor_text = ""
-accepted = false
-completed = false
-
 [resource]
 script = ExtResource("4_rlfqw")
 rows = 2
 columns = 2
 grid = {
 Vector2i(0, 0): SubResource("Resource_ukecr"),
-Vector2i(0, 1): SubResource("Resource_gdnar"),
-Vector2i(1, 0): SubResource("Resource_gt55s"),
-Vector2i(1, 1): SubResource("Resource_qm5we")
+Vector2i(0, 1): SubResource("Resource_gdnar")
 }
 rightlinks = {}
 downlinks = {}

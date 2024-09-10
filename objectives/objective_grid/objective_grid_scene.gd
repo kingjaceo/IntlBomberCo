@@ -1,5 +1,5 @@
 class_name ObjectiveGridScene
-extends Control
+extends GameMenu
 
 @onready var editor: ObjectiveGridEditor = %ObjectiveGridEditor
 var objective_grids: Dictionary = { # {PlaceName: ObjectiveGrid}

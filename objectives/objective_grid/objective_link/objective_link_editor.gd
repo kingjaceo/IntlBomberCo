@@ -8,8 +8,8 @@ var objective_link: ObjectiveGridLink
 @onready var relink: Button = %Relink
 @onready var remove: Button = %Remove
 @onready var container: Container = %Container
-var down_icon: Texture2D = load("res://icon.svg")
-var right_icon: Texture2D = load("res://icon.svg")
+var down_icon: Texture2D = load("res://objectives/objective_grid/objective_link/downlink.png")
+var right_icon: Texture2D = load("res://objectives/objective_grid/objective_link/rightlink.png")
 var active: bool = false
 
 signal add_link_pressed

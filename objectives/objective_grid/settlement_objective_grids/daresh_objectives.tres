@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=18 format=3 uid="uid://c52x0sn8psdg2"]
+[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=15 format=3 uid="uid://c52x0sn8psdg2"]
 
 [ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="1_d0uyv"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="2_cisiy"]
@@ -7,11 +7,6 @@
 [ext_resource type="Script" path="res://objectives/objective_grid/objective_link/objective_grid_link.gd" id="4_wnbme"]
 
 [sub_resource type="Resource" id="Resource_jylv2"]
-script = ExtResource("4_wnbme")
-to = Vector2i(0, 0)
-from = Vector2i(0, 0)
-
-[sub_resource type="Resource" id="Resource_oygim"]
 script = ExtResource("4_wnbme")
 to = Vector2i(0, 0)
 from = Vector2i(0, 0)
@@ -31,7 +26,7 @@ target_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_ukecr"]
 script = ExtResource("2_cisiy")
-name = "Deliver aid to Vitok."
+name = "Deliver aid to Vitok. NOW"
 description = "The people there need you."
 flavor_text = "Be a hero."
 completion_reward = SubResource("Resource_jkmqm")
@@ -70,20 +65,7 @@ trigger = SubResource("Resource_30wxg")
 accepted = false
 completed = false
 
-[sub_resource type="Resource" id="Resource_qm5we"]
-script = ExtResource("2_cisiy")
-name = ""
-description = ""
-flavor_text = ""
-accepted = false
-completed = false
-
 [sub_resource type="Resource" id="Resource_uxrmh"]
-script = ExtResource("4_wnbme")
-to = Vector2i(0, 0)
-from = Vector2i(0, 0)
-
-[sub_resource type="Resource" id="Resource_1vq5e"]
 script = ExtResource("4_wnbme")
 to = Vector2i(0, 0)
 from = Vector2i(0, 0)
@@ -95,14 +77,11 @@ columns = 2
 grid = {
 Vector2i(0, 0): SubResource("Resource_ukecr"),
 Vector2i(0, 1): SubResource("Resource_3c8od"),
-Vector2i(1, 0): SubResource("Resource_gt55s"),
-Vector2i(1, 1): SubResource("Resource_qm5we")
+Vector2i(1, 0): SubResource("Resource_gt55s")
 }
 rightlinks = {
-Vector2i(0, 0): SubResource("Resource_uxrmh"),
-Vector2i(0, 1): SubResource("Resource_1vq5e")
+Vector2i(0, 0): SubResource("Resource_uxrmh")
 }
 downlinks = {
-Vector2i(0, 0): SubResource("Resource_jylv2"),
-Vector2i(1, 0): SubResource("Resource_oygim")
+Vector2i(0, 0): SubResource("Resource_jylv2")
 }

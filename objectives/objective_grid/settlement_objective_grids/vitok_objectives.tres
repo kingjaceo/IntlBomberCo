@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=13 format=3 uid="uid://bupov32imavca"]
+[gd_resource type="Resource" script_class="ObjectiveGrid" load_steps=11 format=3 uid="uid://bupov32imavca"]
 
 [ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="1_sxyvo"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="2_2pqhq"]
@@ -28,14 +28,6 @@ trigger = SubResource("Resource_gyx3s")
 accepted = false
 completed = false
 
-[sub_resource type="Resource" id="Resource_gdnar"]
-script = ExtResource("2_2pqhq")
-name = ""
-description = ""
-flavor_text = ""
-accepted = false
-completed = false
-
 [sub_resource type="Resource" id="Resource_xbk23"]
 script = ExtResource("1_sxyvo")
 amounts = {
@@ -59,23 +51,13 @@ trigger = SubResource("Resource_30wxg")
 accepted = false
 completed = false
 
-[sub_resource type="Resource" id="Resource_qm5we"]
-script = ExtResource("2_2pqhq")
-name = ""
-description = ""
-flavor_text = ""
-accepted = false
-completed = false
-
 [resource]
 script = ExtResource("4_e0a5d")
 rows = 2
 columns = 2
 grid = {
 Vector2i(0, 0): SubResource("Resource_ukecr"),
-Vector2i(0, 1): SubResource("Resource_gdnar"),
-Vector2i(1, 0): SubResource("Resource_gt55s"),
-Vector2i(1, 1): SubResource("Resource_qm5we")
+Vector2i(1, 0): SubResource("Resource_gt55s")
 }
 rightlinks = {}
 downlinks = {}

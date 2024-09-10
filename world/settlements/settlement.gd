@@ -7,7 +7,6 @@ extends WorldLocation
 
 func _ready():
 	town_name_label.text = Enums.PlaceName.keys()[data.settlement_name]
-	data.generate_contracts()
 
 
 func _on_area_detected(area: Area2D):

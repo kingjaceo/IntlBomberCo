@@ -9,8 +9,8 @@ signal active_item_changed(item: GameItem)
 
 func _ready():
 	player = owner
-	if Enums.player_airship_data:
-		items = Enums.player_airship_data.items	
+	if Global.player_airship_data:
+		items = Global.player_airship_data.items	
 
 
 func _input(event):

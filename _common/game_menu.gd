@@ -17,3 +17,7 @@ func _back_to_main():
 
 func _exit_game():
 	get_tree().quit()
+
+
+func _load_objective_grid_editor() -> void:
+	SceneManager.load_objective_tree_editor()

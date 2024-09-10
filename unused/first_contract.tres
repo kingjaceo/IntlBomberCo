@@ -21,6 +21,7 @@ amount = 1000.0
 script = ExtResource("3_wst7n")
 name = "Buy an Aid Package."
 description = "We can help out the folks in the rural villages."
+flavor_text = ""
 upfront_reward = SubResource("Resource_jaoaj")
 completion_reward = SubResource("Resource_553pa")
 trigger = SubResource("Resource_d4jsf")

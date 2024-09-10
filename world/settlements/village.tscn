@@ -44,7 +44,7 @@ position = Vector2(344, -73)
 position = Vector2(24, -94)
 
 [node name="Dock" parent="." instance=ExtResource("5_0dmav")]
-position = Vector2(-146, 221)
+position = Vector2(-116, 36)
 scale = Vector2(1.72, 1.72)
 building_type = 0
 

@@ -6,6 +6,7 @@ var victory_screen: PackedScene = load("res://_common/victory_screen.tscn")
 var game_over_screen: PackedScene = load("res://_common/game_over_screen.tscn")
 var world: PackedScene = load("res://world/world.tscn")
 var town_menu: PackedScene = load("res://town_screen/town_screen.tscn")
+var objective_grid_editor: PackedScene = load("res://objectives/objective_grid/objective_grid.tscn")
 var menus: CanvasLayer
 var blackscreen
 var current_scene
@@ -38,7 +39,7 @@ func _load_scene(scene:PackedScene) -> void:
 	if current_scene:
 		current_scene.queue_free()
 	
-	var scene_instance: GameScene = scene.instantiate()
+	var scene_instance: Node = scene.instantiate()
 	get_tree().root.call_deferred("add_child",scene_instance)
 	get_tree().set_deferred("current_scene",scene_instance)
 	current_scene = scene_instance
@@ -78,3 +79,7 @@ func game_over():
 
 func victory():
 	transition_to(victory_screen)
+
+
+func load_objective_tree_editor():
+	transition_to(objective_grid_editor)
