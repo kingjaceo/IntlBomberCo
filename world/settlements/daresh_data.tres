@@ -1,13 +1,11 @@
-[gd_resource type="Resource" script_class="SettlementData" load_steps=6 format=3 uid="uid://ck1gtw12jeblh"]
+[gd_resource type="Resource" script_class="SettlementData" load_steps=5 format=3 uid="uid://ck1gtw12jeblh"]
 
 [ext_resource type="Script" path="res://inventory/game_item.gd" id="2_224lu"]
 [ext_resource type="Script" path="res://world/settlements/settlement_data.gd" id="3_b0go8"]
-[ext_resource type="Resource" uid="uid://c52x0sn8psdg2" path="res://objectives/objective_grid/settlement_objective_grids/daresh_objectives.tres" id="4_k613v"]
 [ext_resource type="Resource" uid="uid://ddjlsmhf475qo" path="res://inventory/bombs/bomb.tres" id="7_elp42"]
 [ext_resource type="Resource" uid="uid://bk3qqmr23wced" path="res://inventory/aid/aid_package.tres" id="8_xblqv"]
 
 [resource]
 script = ExtResource("3_b0go8")
 settlement_name = 0
-objective_grid = ExtResource("4_k613v")
 items = Array[ExtResource("2_224lu")]([ExtResource("8_xblqv"), ExtResource("7_elp42")])

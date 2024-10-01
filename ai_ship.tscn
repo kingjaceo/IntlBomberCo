@@ -1,0 +1,229 @@
+[gd_scene load_steps=31 format=3 uid="uid://b53mv24s6skjf"]
+
+[ext_resource type="Script" path="res://airship.gd" id="1_0pcb0"]
+[ext_resource type="Texture2D" uid="uid://sbon6eujnn3c" path="res://player/airship_low_detail.png" id="2_otj4a"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_w2g6q"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="3_qq2m7"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="4_gxy04"]
+[ext_resource type="Script" path="res://power_bar.gd" id="5_llwec"]
+[ext_resource type="Script" path="res://behaviors/turn_toward.gd" id="8_sttla"]
+[ext_resource type="Script" path="res://behaviors/move.gd" id="9_i5ovs"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/failer.gd" id="13_600in"]
+[ext_resource type="Script" path="res://behaviors/turn_away.gd" id="14_cjvcb"]
+[ext_resource type="Script" path="res://behaviors/target_debugger.gd" id="16_knfby"]
+[ext_resource type="Script" path="res://behaviors/direction_debugger.gd" id="16_o1b4k"]
+[ext_resource type="Script" path="res://behaviors/path_debugger.gd" id="17_yusyw"]
+[ext_resource type="Script" path="res://behaviors/attack_radius_debugger.gd" id="18_7hakr"]
+[ext_resource type="Script" path="res://behaviors/chase_radius_debugger.gd" id="18_cxyd4"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/inverter.gd" id="18_jgc1w"]
+[ext_resource type="Script" path="res://within_range.gd" id="18_xf7cb"]
+[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://_common/main_theme.tres" id="20_h4y2w"]
+[ext_resource type="Script" path="res://health_bar.gd" id="20_kcyd3"]
+[ext_resource type="PackedScene" uid="uid://r06qamuktmtd" path="res://lightning_strike.tscn" id="23_17brf"]
+[ext_resource type="Script" path="res://ship_ui.gd" id="23_gyrvj"]
+[ext_resource type="Script" path="res://behaviors/update_target.gd" id="24_w7ad2"]
+[ext_resource type="Script" path="res://behaviors/has_dangerous_threat.gd" id="25_a0yb1"]
+[ext_resource type="Script" path="res://behaviors/power_system.gd" id="26_p54pn"]
+[ext_resource type="Script" path="res://has_easy_target.gd" id="27_17i3h"]
+[ext_resource type="Script" path="res://behaviors/power_down.gd" id="29_fexfb"]
+[ext_resource type="Script" path="res://behaviors/turn_left.gd" id="30_7oj1s"]
+[ext_resource type="Script" path="res://lightning_striker.gd" id="31_rvtni"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0qgsg"]
+radius = 202.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b50vw"]
+radius = 1024.0
+
+[node name="AIShip_andCrew" type="Node2D"]
+script = ExtResource("1_0pcb0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_otj4a")
+
+[node name="Body" type="Area2D" parent="."]
+visible = false
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+shape = SubResource("CircleShape2D_0qgsg")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(6.54337, 6.54337)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_b50vw")
+
+[node name="Debuggers" type="Node2D" parent="."]
+
+[node name="TargetDebugger" type="Node2D" parent="Debuggers"]
+script = ExtResource("16_knfby")
+
+[node name="DirectionDebugger" type="Node2D" parent="Debuggers"]
+script = ExtResource("16_o1b4k")
+
+[node name="ChaseRadiusDebugger" type="Node2D" parent="Debuggers"]
+script = ExtResource("18_cxyd4")
+
+[node name="AttackRadiusDebugger" type="Node2D" parent="Debuggers" node_paths=PackedStringArray("radius_object")]
+script = ExtResource("18_7hakr")
+radius_object = NodePath("../../LightningStriker")
+
+[node name="PathDebugger" type="Node2D" parent="Debuggers"]
+visible = false
+script = ExtResource("17_yusyw")
+
+[node name="BehaviorTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("2_w2g6q")
+blackboard = NodePath("@Node@68110")
+actor = NodePath("..")
+
+[node name="SelectorComposite" type="Node" parent="BehaviorTree"]
+script = ExtResource("3_qq2m7")
+
+[node name="MustChooseAStrategy(Succeed)" type="Node" parent="BehaviorTree/SelectorComposite"]
+script = ExtResource("13_600in")
+
+[node name="SetTarget" type="Node" parent="BehaviorTree/SelectorComposite/MustChooseAStrategy(Succeed)"]
+script = ExtResource("24_w7ad2")
+
+[node name="Survival" type="Node" parent="BehaviorTree/SelectorComposite"]
+script = ExtResource("4_gxy04")
+
+[node name="DangerousThreat?" type="Node" parent="BehaviorTree/SelectorComposite/Survival"]
+script = ExtResource("25_a0yb1")
+
+[node name="PowerWind" type="Node" parent="BehaviorTree/SelectorComposite/Survival"]
+script = ExtResource("26_p54pn")
+system = "wind"
+amount = 100
+
+[node name="TurnAway" type="Node" parent="BehaviorTree/SelectorComposite/Survival"]
+script = ExtResource("14_cjvcb")
+
+[node name="Move" type="Node" parent="BehaviorTree/SelectorComposite/Survival"]
+script = ExtResource("9_i5ovs")
+
+[node name="Combat" type="Node" parent="BehaviorTree/SelectorComposite"]
+script = ExtResource("4_gxy04")
+
+[node name="EasyTarget?" type="Node" parent="BehaviorTree/SelectorComposite/Combat"]
+script = ExtResource("27_17i3h")
+
+[node name="DistributePower" type="Node" parent="BehaviorTree/SelectorComposite/Combat"]
+script = ExtResource("3_qq2m7")
+
+[node name="FullSpeed" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower"]
+script = ExtResource("4_gxy04")
+
+[node name="InverterDecorator" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower/FullSpeed"]
+script = ExtResource("18_jgc1w")
+
+[node name="TargetWithinRange?" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower/FullSpeed/InverterDecorator"]
+script = ExtResource("18_xf7cb")
+fraction = 1.0
+
+[node name="PowerWind" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower/FullSpeed"]
+script = ExtResource("26_p54pn")
+system = "wind"
+amount = 100
+
+[node name="HighAttack" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower"]
+script = ExtResource("4_gxy04")
+
+[node name="TargetWithinRange?" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower/HighAttack"]
+script = ExtResource("18_xf7cb")
+
+[node name="PowerLightning" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower/HighAttack"]
+script = ExtResource("26_p54pn")
+system = "lightning"
+amount = 100
+
+[node name="LowAttack" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower"]
+script = ExtResource("4_gxy04")
+
+[node name="TargetWithinRange?" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower/LowAttack"]
+script = ExtResource("18_xf7cb")
+fraction = 1.0
+
+[node name="PowerWind" type="Node" parent="BehaviorTree/SelectorComposite/Combat/DistributePower/LowAttack"]
+script = ExtResource("26_p54pn")
+system = "wind"
+amount = 2
+
+[node name="TurnToward" type="Node" parent="BehaviorTree/SelectorComposite/Combat"]
+script = ExtResource("8_sttla")
+
+[node name="Move" type="Node" parent="BehaviorTree/SelectorComposite/Combat"]
+script = ExtResource("9_i5ovs")
+
+[node name="DefaultBehavior_debug" type="Node" parent="BehaviorTree/SelectorComposite"]
+script = ExtResource("4_gxy04")
+
+[node name="PowerDown" type="Node" parent="BehaviorTree/SelectorComposite/DefaultBehavior_debug"]
+script = ExtResource("29_fexfb")
+
+[node name="TurnLeft" type="Node" parent="BehaviorTree/SelectorComposite/DefaultBehavior_debug"]
+script = ExtResource("30_7oj1s")
+
+[node name="LightningStriker" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("31_rvtni")
+damage = 5.0
+recharge_time = 1.0
+range = 1200
+
+[node name="LightningStrike" parent="LightningStriker" instance=ExtResource("23_17brf")]
+unique_name_in_owner = true
+
+[node name="Displays" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_gyrvj")
+
+[node name="Health" type="ProgressBar" parent="Displays"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 88.0
+offset_right = 80.0
+offset_bottom = 115.0
+grow_horizontal = 2
+theme = ExtResource("20_h4y2w")
+value = 100.0
+show_percentage = false
+script = ExtResource("20_kcyd3")
+
+[node name="WindPower" type="ProgressBar" parent="Displays"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = -97.0
+offset_top = 129.0
+offset_right = 103.0
+offset_bottom = 152.0
+max_value = 30.0
+step = 1.0
+show_percentage = false
+script = ExtResource("5_llwec")
+system = "wind"
+
+[node name="LightningPower" type="ProgressBar" parent="Displays"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = -97.0
+offset_top = 168.0
+offset_right = 103.0
+offset_bottom = 191.0
+max_value = 30.0
+step = 1.0
+show_percentage = false
+script = ExtResource("5_llwec")
+system = "lightning"
