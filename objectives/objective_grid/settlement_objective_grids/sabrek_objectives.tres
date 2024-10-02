@@ -25,6 +25,7 @@ description = "The people there suck."
 flavor_text = "Be our hero."
 completion_reward = SubResource("Resource_jkmqm")
 trigger = SubResource("Resource_gyx3s")
+available = true
 accepted = false
 completed = false
 
@@ -33,6 +34,7 @@ script = ExtResource("2_mouk7")
 name = ""
 description = ""
 flavor_text = ""
+available = false
 accepted = false
 completed = false
 

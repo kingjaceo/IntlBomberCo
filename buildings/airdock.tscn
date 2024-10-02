@@ -66,4 +66,4 @@ position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_ykveo")
 
 [node name="Dockpoint" type="Node2D" parent="Area2D"]
-position = Vector2(0, 156)
+position = Vector2(0, 177)

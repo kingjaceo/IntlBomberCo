@@ -25,5 +25,6 @@ flavor_text = ""
 upfront_reward = SubResource("Resource_jaoaj")
 completion_reward = SubResource("Resource_553pa")
 trigger = SubResource("Resource_d4jsf")
+available = false
 accepted = false
 completed = false

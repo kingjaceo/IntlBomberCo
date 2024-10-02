@@ -15,7 +15,7 @@ func _ready() -> void:
 		_populate()
 
 
-func set_objective_grid(new_grid: ObjectiveGrid):
+func set_objective_grid(new_grid: ObjectiveGrid): 
 	last_objective_grid = new_grid
 	_ready()
 

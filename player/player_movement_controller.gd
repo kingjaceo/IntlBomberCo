@@ -16,17 +16,23 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("up"):
-		forward_speed += current_airship.forward_speed.step_size
-		forward_speed = min(forward_speed, current_airship.forward_speed.max_value)
+		player.power_levels["wind"] = min(player.power_levels["wind"] + 1, player.max_power_level)
 	if Input.is_action_just_pressed("down"):
-		forward_speed -= current_airship.forward_speed.step_size
-		forward_speed = max(forward_speed, 0)
-	player.position += player.transform.x * forward_speed * delta
-	check_update_rotation(delta)
+		player.power_levels["wind"] = max(player.power_levels["wind"] - 1, 0)
+	player.power_levels["lightning"] = player.max_power_level - player.power_levels["wind"]
+	_move(delta)
+	_check_update_rotation(delta)
 
 
-func check_update_rotation(delta: float):
-	var rotation_change = rotation_speed * delta
+func _move(delta):
+	var actual_speed = player.forward_speed * player.actual_power_levels['wind']
+	var position_change = player.transform.x * actual_speed * delta
+	player.position += position_change
+
+
+func _check_update_rotation(delta: float):
+	var actual_rotation_speed = player.rotation_speed * player.actual_power_levels['wind']
+	var rotation_change = delta * actual_rotation_speed
 	if Input.is_action_pressed("left"):
 		player.rotation_degrees -= rotation_change
 	if Input.is_action_pressed("right"):

@@ -9,15 +9,9 @@ extends Resource
 @export var trigger: Trigger
 var progress: String:
 	get = _get_progress
+@export var available: bool = false
 @export var accepted: bool
 @export var completed: bool
-
-## defines an ObjectiveTree data structure
-@export var down_trigger: Trigger
-@export var down_objective: Objective
-@export var right_trigger: Trigger
-@export var right_objective: Objective
-
 
 signal triggered
 signal progress_changed

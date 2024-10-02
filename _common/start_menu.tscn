@@ -29,15 +29,19 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="GridContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-columns = 2
 
 [node name="StartGame" type="Button" parent="CanvasLayer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Start Game"
+
+[node name="Battleground" type="Button" parent="CanvasLayer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Battleground"
 
 [node name="EditObjectives" type="Button" parent="CanvasLayer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -69,5 +73,6 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/GridContainer/StartGame" to="." method="_load_world"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/GridContainer/Battleground" to="." method="_load_battleground"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/GridContainer/EditObjectives" to="." method="_load_objective_grid_editor"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/GridContainer/Exit" to="." method="_exit_game"]

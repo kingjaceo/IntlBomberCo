@@ -1,3 +1,4 @@
+class_name Ship
 extends Node2D
 
 
@@ -6,7 +7,6 @@ var health
 @export var chase_radius = 2000
 @export var forward_speed: float = 100 # pixels/units per second
 @export var rotation_speed: float = 10 # degrees per second
-@onready var detection_area: Area2D = %DetectionArea
 @export var threat_level: int = 10
 @export var max_power_level: int = 3# total amount of combined power
 @export var power_levels: Dictionary # {String name : int level}
@@ -37,7 +37,6 @@ func _adjust_actual_power_levels(delta):
 func damage(amount: float):
 	health -= amount
 	if health <= 0:
-		print("I'm dead!")
 		queue_free()
 
 

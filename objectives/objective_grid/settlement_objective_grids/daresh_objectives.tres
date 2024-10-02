@@ -31,6 +31,7 @@ description = "The people there need you."
 flavor_text = "Be a hero."
 completion_reward = SubResource("Resource_jkmqm")
 trigger = SubResource("Resource_gyx3s")
+available = true
 accepted = false
 completed = false
 
@@ -39,6 +40,7 @@ script = ExtResource("2_cisiy")
 name = ""
 description = ""
 flavor_text = ""
+available = true
 accepted = false
 completed = false
 
@@ -62,6 +64,7 @@ description = "The people there need you."
 flavor_text = "Be a hero."
 completion_reward = SubResource("Resource_xbk23")
 trigger = SubResource("Resource_30wxg")
+available = true
 accepted = false
 completed = false
 

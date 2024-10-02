@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://b53mv24s6skjf"]
+[gd_scene load_steps=34 format=3 uid="uid://b53mv24s6skjf"]
 
 [ext_resource type="Script" path="res://airship.gd" id="1_0pcb0"]
 [ext_resource type="Texture2D" uid="uid://sbon6eujnn3c" path="res://player/airship_low_detail.png" id="2_otj4a"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_w2g6q"]
+[ext_resource type="Shader" path="res://buildings/dotted_circle_outline.gdshader" id="3_5vnn4"]
+[ext_resource type="Script" path="res://target_selector.gd" id="3_ic0cr"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="3_qq2m7"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="4_gxy04"]
 [ext_resource type="Script" path="res://power_bar.gd" id="5_llwec"]
@@ -32,6 +34,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qgsg"]
 radius = 202.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmftk"]
+shader = ExtResource("3_5vnn4")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/diameter = 0.95
+shader_parameter/thickness = 0.02
+shader_parameter/frequency = 16.0
+shader_parameter/phase = 0.0
+shader_parameter/pulse_speed = 5.0
+shader_parameter/rotation_speed = 10.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_b50vw"]
 radius = 1024.0
 
@@ -43,21 +55,37 @@ rotation = 1.5708
 texture = ExtResource("2_otj4a")
 
 [node name="Body" type="Area2D" parent="."]
-visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CircleShape2D_0qgsg")
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Body"]
+visible = false
+material = SubResource("ShaderMaterial_wmftk")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ic0cr")
+
+[node name="ShipDetector" type="Area2D" parent="."]
 unique_name_in_owner = true
 scale = Vector2(6.54337, 6.54337)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipDetector"]
 shape = SubResource("CircleShape2D_b50vw")
 
 [node name="Debuggers" type="Node2D" parent="."]
+visible = false
 
 [node name="TargetDebugger" type="Node2D" parent="Debuggers"]
 script = ExtResource("16_knfby")
@@ -78,7 +106,7 @@ script = ExtResource("17_yusyw")
 
 [node name="BehaviorTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_w2g6q")
-blackboard = NodePath("@Node@68110")
+blackboard = NodePath("@Node@17268")
 actor = NodePath("..")
 
 [node name="SelectorComposite" type="Node" parent="BehaviorTree"]
@@ -87,8 +115,9 @@ script = ExtResource("3_qq2m7")
 [node name="MustChooseAStrategy(Succeed)" type="Node" parent="BehaviorTree/SelectorComposite"]
 script = ExtResource("13_600in")
 
-[node name="SetTarget" type="Node" parent="BehaviorTree/SelectorComposite/MustChooseAStrategy(Succeed)"]
+[node name="SetTarget" type="Node" parent="BehaviorTree/SelectorComposite/MustChooseAStrategy(Succeed)" node_paths=PackedStringArray("detection_area")]
 script = ExtResource("24_w7ad2")
+detection_area = NodePath("../../../../ShipDetector")
 
 [node name="Survival" type="Node" parent="BehaviorTree/SelectorComposite"]
 script = ExtResource("4_gxy04")
@@ -227,3 +256,6 @@ step = 1.0
 show_percentage = false
 script = ExtResource("5_llwec")
 system = "lightning"
+
+[connection signal="mouse_entered" from="Body" to="Body/ColorRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Body" to="Body/ColorRect" method="_on_mouse_exited"]

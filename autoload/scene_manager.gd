@@ -7,6 +7,7 @@ var game_over_screen: PackedScene = load("res://_common/game_over_screen.tscn")
 var world: PackedScene = load("res://world/world.tscn")
 var town_menu: PackedScene = load("res://town_screen/town_screen.tscn")
 var objective_grid_editor: PackedScene = load("res://objectives/objective_grid/objective_grid.tscn")
+var battleground: PackedScene = load("res://battleground.tscn")
 var menus: CanvasLayer
 var blackscreen
 var current_scene
@@ -18,6 +19,19 @@ func transition_to(scene: PackedScene):
 	await _load_scene(scene)
 	await get_tree().create_timer(0.1).timeout
 	#_toggle_blackscreen()
+
+
+func show_menu(scene: PackedScene):
+	if is_instance_valid(current_scene):
+		var scene_instance: Node = scene.instantiate()
+		current_scene.call_deferred("add_child",scene_instance)
+	#get_tree().set_deferred("current_scene",scene_instance)
+	#current_scene = scene_instance
+	#await scene_instance.scene_ready
+
+
+func reload_current_scene():
+	get_tree().reload_current_scene()
 
 
 func _fade_in_out(length: float):
@@ -74,12 +88,18 @@ func load_credit_screen():
 
 
 func game_over():
-	transition_to(game_over_screen)
+	if is_instance_valid(current_scene):
+		current_scene.show_game_over()
 
 
 func victory():
-	transition_to(victory_screen)
+	if is_instance_valid(current_scene):
+		current_scene.show_victory()
 
 
 func load_objective_tree_editor():
 	transition_to(objective_grid_editor)
+
+
+func load_battleground():
+	transition_to(battleground)

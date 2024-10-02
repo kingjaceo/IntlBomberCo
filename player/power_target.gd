@@ -4,4 +4,4 @@ extends Range
 
 
 func _process(delta):
-	value = owner.actual_power_levels[system] * 10
+	value = owner.power_levels[system] * 10

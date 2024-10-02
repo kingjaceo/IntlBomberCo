@@ -4,11 +4,7 @@
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_pr208")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -31,7 +27,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "BUMMER!!!
-YOU WERE EATEN!!!"
+YOU BLEW UP!"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
@@ -42,5 +38,5 @@ text = "Try Again"
 layout_mode = 2
 text = "Back to Main Menu"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_retry"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_reload"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button2" to="." method="_back_to_main"]

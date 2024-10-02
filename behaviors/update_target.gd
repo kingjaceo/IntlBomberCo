@@ -1,11 +1,12 @@
 extends ActionLeaf
 
+@export var detection_area: Area2D
 
 ## TODO: for efficiency, this node should figure out how to CACHE
 ## a target and listen for conditions that it should check again
 ## explicitly checking for overlapping areas each frame is ok for now
 func tick(actor, blackboard: Blackboard):
-	var targets = actor.detection_area.get_overlapping_areas()
+	var targets = detection_area.get_overlapping_areas()
 	if len(targets) < 2:
 		return FAILURE
 	var target = _choose_target(actor, targets)

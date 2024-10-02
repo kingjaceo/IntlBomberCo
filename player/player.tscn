@@ -1,16 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://thons4d02mrv"]
+[gd_scene load_steps=25 format=3 uid="uid://thons4d02mrv"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_l736k"]
 [ext_resource type="Resource" uid="uid://doblub01swjr4" path="res://airships/debug_airship.tres" id="2_d8ctq"]
 [ext_resource type="Texture2D" uid="uid://c62ecurpnjkel" path="res://player/airship.png" id="3_6rv8v"]
 [ext_resource type="Script" path="res://buildings/dock_detector.gd" id="4_6whou"]
 [ext_resource type="PackedScene" uid="uid://dlo6uvbuoa4km" path="res://inventory/inventory_display.tscn" id="5_eurip"]
+[ext_resource type="Script" path="res://objectives/objective_grid/zoom_controller.gd" id="5_mg74g"]
 [ext_resource type="Script" path="res://player/site_detector.gd" id="7_h1xul"]
 [ext_resource type="Script" path="res://player/player_camera_controller.gd" id="7_oyj27"]
 [ext_resource type="PackedScene" uid="uid://bmdf70uyv0uuv" path="res://inventory/item_slot.tscn" id="8_e61gr"]
 [ext_resource type="Script" path="res://player/player_movement_controller.gd" id="8_t657i"]
 [ext_resource type="PackedScene" uid="uid://dgego3mbqcfnu" path="res://inventory/item_icon.tscn" id="9_n6gnt"]
 [ext_resource type="Script" path="res://player/player_item_dropper.gd" id="11_4rlhk"]
+[ext_resource type="Script" path="res://lightning_striker.gd" id="12_kf47h"]
+[ext_resource type="PackedScene" uid="uid://r06qamuktmtd" path="res://lightning_strike.tscn" id="13_on5bd"]
+[ext_resource type="Texture2D" uid="uid://cg1mgnnp5e8tw" path="res://empty_power_bar.png" id="14_bkdrf"]
+[ext_resource type="Texture2D" uid="uid://dcggyrve7e5ho" path="res://charging_power_bar.png" id="15_0w64s"]
+[ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://_common/main_theme.tres" id="15_8djw0"]
+[ext_resource type="Script" path="res://health_bar.gd" id="16_8gdlg"]
+[ext_resource type="Script" path="res://player/power_target.gd" id="16_uh3a6"]
+[ext_resource type="Script" path="res://power_bar.gd" id="17_ct0qq"]
+[ext_resource type="Texture2D" uid="uid://cl7k68qjwk1x0" path="res://full_power_bar.png" id="17_f0csl"]
+[ext_resource type="Script" path="res://behaviors/target_debugger.gd" id="22_blecf"]
+[ext_resource type="Script" path="res://behaviors/attack_radius_debugger.gd" id="23_ddv4k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yca3l"]
 size = Vector2(355, 134)
@@ -28,7 +40,11 @@ texture = ExtResource("3_6rv8v")
 script = ExtResource("7_oyj27")
 start_zoom = Vector2(0.5, 0.5)
 
+[node name="ZoomController" type="Node" parent="CameraController"]
+script = ExtResource("5_mg74g")
+
 [node name="SiteDetector" type="Area2D" parent="."]
+visible = false
 collision_mask = 8
 script = ExtResource("7_h1xul")
 
@@ -37,6 +53,7 @@ position = Vector2(8.5, 0)
 shape = SubResource("RectangleShape2D_yca3l")
 
 [node name="DockDetector" type="Area2D" parent="."]
+visible = false
 collision_mask = 16
 script = ExtResource("4_6whou")
 
@@ -72,11 +89,150 @@ grow_vertical = 1
 [node name="InventorySlot2" parent="CanvasLayer/InventoryDisplay" instance=ExtResource("8_e61gr")]
 layout_mode = 2
 
+[node name="StatDisplays" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Health" type="ProgressBar" parent="CanvasLayer/StatDisplays"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -196.0
+offset_right = 224.0
+offset_bottom = -127.0
+grow_vertical = 0
+theme = ExtResource("15_8djw0")
+value = 100.0
+show_percentage = false
+script = ExtResource("16_8gdlg")
+
+[node name="Label" type="Label" parent="CanvasLayer/StatDisplays/Health"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 42.0
+text = "Health"
+
+[node name="WindPowerTarget" type="TextureProgressBar" parent="CanvasLayer/StatDisplays"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -99.0
+offset_right = 212.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 30.0
+value = 15.0
+nine_patch_stretch = true
+texture_under = ExtResource("14_bkdrf")
+texture_progress = ExtResource("15_0w64s")
+script = ExtResource("16_uh3a6")
+system = "wind"
+
+[node name="WindPowerActual" type="TextureProgressBar" parent="CanvasLayer/StatDisplays"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -99.0
+offset_right = 212.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 30.0
+value = 10.0
+nine_patch_stretch = true
+texture_progress = ExtResource("17_f0csl")
+script = ExtResource("17_ct0qq")
+system = "wind"
+
+[node name="Label" type="Label" parent="CanvasLayer/StatDisplays/WindPowerActual"]
+layout_mode = 1
+offset_right = 74.0
+offset_bottom = 42.0
+text = "Wind
+"
+
+[node name="LightningPowerTarget" type="TextureProgressBar" parent="CanvasLayer/StatDisplays"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -72.0
+offset_right = 232.0
+offset_bottom = -32.0
+grow_vertical = 0
+max_value = 30.0
+value = 15.0
+nine_patch_stretch = true
+texture_under = ExtResource("14_bkdrf")
+texture_progress = ExtResource("15_0w64s")
+script = ExtResource("16_uh3a6")
+system = "lightning"
+
+[node name="LightningPowerActual" type="TextureProgressBar" parent="CanvasLayer/StatDisplays"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -72.0
+offset_right = 232.0
+offset_bottom = -32.0
+grow_vertical = 0
+max_value = 30.0
+value = 10.0
+nine_patch_stretch = true
+texture_progress = ExtResource("17_f0csl")
+script = ExtResource("17_ct0qq")
+system = "lightning"
+
+[node name="Label" type="Label" parent="CanvasLayer/StatDisplays/LightningPowerActual"]
+layout_mode = 1
+offset_right = 74.0
+offset_bottom = 42.0
+text = "Lightning"
+
 [node name="MovementController" type="Node" parent="."]
 script = ExtResource("8_t657i")
 
 [node name="ItemDropper" type="Node" parent="."]
 script = ExtResource("11_4rlhk")
+
+[node name="LightningStriker" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("12_kf47h")
+damage = 5.0
+recharge_time = 1.0
+range = 1200
+
+[node name="LightningStrike" parent="LightningStriker" instance=ExtResource("13_on5bd")]
+unique_name_in_owner = true
+
+[node name="Debuggers" type="Node2D" parent="."]
+
+[node name="TargetDebugger" type="Node2D" parent="Debuggers"]
+script = ExtResource("22_blecf")
+
+[node name="AttackRadiusDebugger" type="Node2D" parent="Debuggers" node_paths=PackedStringArray("radius_object")]
+script = ExtResource("23_ddv4k")
+radius_object = NodePath("../../LightningStriker")
 
 [connection signal="area_entered" from="SiteDetector" to="CameraController" method="_on_site_entered"]
 [connection signal="area_entered" from="SiteDetector" to="MovementController" method="_cruising_speed" unbinds=1]

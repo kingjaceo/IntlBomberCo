@@ -7,7 +7,7 @@ func _load_world():
 
 
 func _reload():
-	get_tree().reload_current_scene()
+	SceneManager.reload_current_scene()
 	queue_free()
 
 
@@ -21,3 +21,7 @@ func _exit_game():
 
 func _load_objective_grid_editor() -> void:
 	SceneManager.load_objective_tree_editor()
+
+
+func _load_battleground() -> void:
+	SceneManager.load_battleground()

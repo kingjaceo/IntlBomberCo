@@ -9,6 +9,7 @@ var zoom_speed: float = 3
 var scale_factor: float = 4
 var tolerance: float = 0.01
 
+
 func _ready():
 	target_zoom = start_zoom
 	zoom = start_zoom

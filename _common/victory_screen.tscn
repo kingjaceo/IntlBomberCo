@@ -42,5 +42,5 @@ text = "Try Again"
 layout_mode = 2
 text = "Back to Main Menu"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_retry"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_reload"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button2" to="." method="_back_to_main"]
