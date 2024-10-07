@@ -1,22 +1,8 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=8 format=3 uid="uid://bw04mqbcds5s"]
+[gd_resource type="Resource" script_class="GameData" load_steps=4 format=3 uid="uid://bw04mqbcds5s"]
 
 [ext_resource type="Script" path="res://game_data/game_data.gd" id="1_5k4ke"]
 [ext_resource type="Resource" uid="uid://civmkdmly4vpb" path="res://unused/first_contract.tres" id="1_jja26"]
-[ext_resource type="Script" path="res://unused/contract_template.gd" id="3_etehv"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="3_eugah"]
-[ext_resource type="Script" path="res://unused/contract_generator_data.gd" id="6_66tah"]
-
-[sub_resource type="Resource" id="Resource_4t6f1"]
-script = ExtResource("3_eugah")
-name = "Deliver an Aid Package."
-description = "You can help! DroFeed the people! Launch the mission, then drop the aid package."
-accepted = false
-completed = false
-
-[sub_resource type="Resource" id="Resource_c84b4"]
-script = ExtResource("6_66tah")
-contract_pool = Array[ExtResource("3_eugah")]([SubResource("Resource_4t6f1")])
-contract_templates = Array[ExtResource("3_etehv")]([])
 
 [resource]
 script = ExtResource("1_5k4ke")
@@ -24,4 +10,3 @@ contracts = Array[ExtResource("3_eugah")]([ExtResource("1_jja26")])
 money = 0
 tutorial_active = true
 contract_capacity = 1
-generator_data = SubResource("Resource_c84b4")

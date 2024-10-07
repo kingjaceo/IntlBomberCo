@@ -1,15 +1,26 @@
 class_name Reputation
 extends Reward
 
-@export var amounts: Dictionary # {ReputationType: int}
+@export var amounts: Dictionary ={# {ReputationType: int} 
+		Enums.ReputationType.HELP: 0,
+		Enums.ReputationType.HURT: 0
+	}
 
 signal reputation_changed
 
 
-func _init():
-	reward_type = Enums.RewardType.REPUTATION
-	for reputation_type in Enums.ReputationType:
-		amounts[reputation_type] = 0
+#func new(help: float, hurt: float):
+	#amounts[Enums.ReputationType.HELP] = help
+	#amounts[Enums.ReputationType.HURT] = hurt
+
+
+#func _init(help: float = 0, hurt: float = 0):
+	#reward_type = Enums.RewardType.REPUTATION
+	#for reputation_type in Enums.ReputationType.keys():
+		#amounts[reputation_type] = 0
+	#amounts[Enums.ReputationType.HELP] = help
+	#amounts[Enums.ReputationType.HURT] = hurt
+
 
 
 func receive():

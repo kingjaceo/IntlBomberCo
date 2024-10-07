@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Resources" load_steps=2 format=3 uid="uid://ejxhs3ha6ujw"]
+
+[ext_resource type="Script" path="res://game_scenes/world/settlements/resources.gd" id="1_q5pd1"]
+
+[resource]
+script = ExtResource("1_q5pd1")
+resources = {}
+capacities = {}

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Objective" load_steps=6 format=3 uid="uid://cpdm0vfhp645u"]
+
+[ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="1_b8gf2"]
+[ext_resource type="Script" path="res://objectives/objective.gd" id="2_o24n1"]
+[ext_resource type="Script" path="res://objectives/triggers/resource_delivered_trigger.gd" id="3_cjox0"]
+
+[sub_resource type="Resource" id="Resource_wgk2g"]
+script = ExtResource("1_b8gf2")
+amounts = {
+0: 1,
+1: 0
+}
+
+[sub_resource type="Resource" id="Resource_v0gpn"]
+script = ExtResource("3_cjox0")
+target_place_names = Array[int]([])
+target_resource_type = 0
+target_amount = 0.0
+
+[resource]
+script = ExtResource("2_o24n1")
+name = "Deliver aid to Vitok."
+description = ""
+flavor_text = ""
+completion_reward = SubResource("Resource_wgk2g")
+trigger = SubResource("Resource_v0gpn")
+available = false
+accepted = false
+completed = false

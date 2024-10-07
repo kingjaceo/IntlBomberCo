@@ -1,16 +1,16 @@
 extends Node
 
-var main_menu: PackedScene = load("res://_common/start_menu.tscn")
+var current_scene: PackedScene
+var current_scene_instance
+
+var main_menu: PackedScene = load("res://_common/start_screen.tscn")
 var credit_screen: PackedScene = load("res://_common/credit_screen.tscn")
-var victory_screen: PackedScene = load("res://_common/victory_screen.tscn")
-var game_over_screen: PackedScene = load("res://_common/game_over_screen.tscn")
-var world: PackedScene = load("res://world/world.tscn")
-var town_menu: PackedScene = load("res://town_screen/town_screen.tscn")
+var world: PackedScene = load("res://game_scenes/world/world.tscn")
+var town_menu: PackedScene = load("res://game_scenes/town_screen/town_screen.tscn")
 var objective_grid_editor: PackedScene = load("res://objectives/objective_grid/objective_grid.tscn")
-var battleground: PackedScene = load("res://battleground.tscn")
+var battleground: PackedScene = load("res://game_scenes/battleground.tscn")
 var menus: CanvasLayer
 var blackscreen
-var current_scene
 
 
 func transition_to(scene: PackedScene):
@@ -22,16 +22,17 @@ func transition_to(scene: PackedScene):
 
 
 func show_menu(scene: PackedScene):
-	if is_instance_valid(current_scene):
-		var scene_instance: Node = scene.instantiate()
-		current_scene.call_deferred("add_child",scene_instance)
+	pass
+	#if is_instance_valid(current_scene_instance):
+		#var scene_instance: Node = scene.instantiate()
+		#current_scene.call_deferred("add_child",scene_instance)
 	#get_tree().set_deferred("current_scene",scene_instance)
 	#current_scene = scene_instance
 	#await scene_instance.scene_ready
 
 
 func reload_current_scene():
-	get_tree().reload_current_scene()
+	_load_scene(current_scene)
 
 
 func _fade_in_out(length: float):
@@ -43,20 +44,22 @@ func _fade_in_out(length: float):
 	tween.tween_property(blackscreen, "modulate:a", 0, 0.1)
 	await tween.finished
 	blackscreen.visible = false
-	
+
+
 func _toggle_blackscreen():
 	if blackscreen:
 		blackscreen.visible = not blackscreen.visible
 
 
 func _load_scene(scene:PackedScene) -> void:
-	if current_scene:
-		current_scene.queue_free()
+	if current_scene_instance:
+		current_scene_instance.queue_free()
 	
 	var scene_instance: Node = scene.instantiate()
 	get_tree().root.call_deferred("add_child",scene_instance)
 	get_tree().set_deferred("current_scene",scene_instance)
-	current_scene = scene_instance
+	current_scene_instance = scene_instance
+	current_scene = scene
 	await scene_instance.scene_ready
 	#var loader = ResourceLoader.load_threaded_request(scene)
 	#if not ResourceLoader.exists(content_path) or loader == null:

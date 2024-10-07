@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b6lxy3mobi8c3"]
 
-[ext_resource type="Texture2D" uid="uid://s0jasky252cc" path="res://world/city_spritesheet_1028.png" id="1_sd28t"]
+[ext_resource type="Texture2D" uid="uid://s0jasky252cc" path="res://game_scenes/world/city_spritesheet_1028.png" id="1_sd28t"]
 [ext_resource type="PackedScene" uid="uid://bvkec04d0511w" path="res://buildings/military_base.tscn" id="2_loa2u"]
 [ext_resource type="PackedScene" uid="uid://bjklxnkld1mvx" path="res://buildings/shops.tscn" id="3_c2xt6"]
 [ext_resource type="PackedScene" uid="uid://htv2xjxwl35t" path="res://buildings/apartment.tscn" id="4_48031"]

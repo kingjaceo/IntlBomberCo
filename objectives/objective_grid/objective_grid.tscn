@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://objectives/objective_grid/objective_grid_scene.gd" id="1_x1bcf"]
 [ext_resource type="PackedScene" uid="uid://dwf8mte7fdl3j" path="res://objectives/objective_grid/objective_grid_editor.tscn" id="2_r4cx3"]
-[ext_resource type="Script" path="res://objectives/triggers/movement_controller.gd" id="3_voa3e"]
-[ext_resource type="Script" path="res://objectives/objective_grid/zoom_controller.gd" id="4_37sle"]
+[ext_resource type="Script" path="res://controllers/movement_controller.gd" id="3_voa3e"]
+[ext_resource type="Script" path="res://controllers/zoom_controller.gd" id="4_37sle"]
 [ext_resource type="Script" path="res://unused/objective_trees/enum_selector.gd" id="5_dtvig"]
 
 [node name="ObjectiveGridScene" type="Control"]

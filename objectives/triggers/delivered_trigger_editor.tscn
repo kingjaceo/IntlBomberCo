@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1ulke52bxnqb"]
 
-[ext_resource type="Script" path="res://delivered_trigger_editor.gd" id="1_1abul"]
+[ext_resource type="Script" path="res://objectives/objective_grid/delivered_trigger_editor.gd" id="1_1abul"]
 [ext_resource type="PackedScene" uid="uid://310g5yncd3ea" path="res://objectives/objective_grid/objective_editor/multiselector.tscn" id="2_ssb4y"]
 [ext_resource type="PackedScene" uid="uid://cycjtmcqc3r4f" path="res://objectives/objective_grid/objective_editor/quantity_box.tscn" id="2_ynf8r"]
 

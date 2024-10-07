@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgxvmu2e7ns4u"]
-
-[ext_resource type="Script" path="res://town_screen/money/money_label.gd" id="1_jmdde"]
-
-[node name="Money" type="Label"]
-text = "Money: $0"
-horizontal_alignment = 1
-script = ExtResource("1_jmdde")

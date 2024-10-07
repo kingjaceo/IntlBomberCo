@@ -31,6 +31,13 @@ func activate(): # called when contract is loaded into memory or accepted
 	trigger.progress_changed.connect(progress_changed.emit)
 
 
+func try_complete(ship: Ship, location: Settlement) -> bool:
+	if trigger.try_complete(ship, location):
+		ship.complete(self)
+		return true
+	return false
+
+
 func complete(): # called when the objective is "turned in" by the player
 	completion_reward.receive()
 	objective_completed.emit()

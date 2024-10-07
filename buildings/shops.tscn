@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://buildings/building.gd" id="1_380lv"]
 [ext_resource type="Script" path="res://unused/building_type.gd" id="2_14d7y"]
-[ext_resource type="Texture2D" uid="uid://s0jasky252cc" path="res://world/city_spritesheet_1028.png" id="3_r186b"]
+[ext_resource type="Texture2D" uid="uid://s0jasky252cc" path="res://game_scenes/world/city_spritesheet_1028.png" id="3_r186b"]
 
 [sub_resource type="Resource" id="Resource_sygn2"]
 script = ExtResource("2_14d7y")

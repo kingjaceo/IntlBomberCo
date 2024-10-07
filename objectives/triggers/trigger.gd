@@ -14,5 +14,9 @@ func activate():
 	pass
 
 
+func check():
+	return false
+
+
 func _get_progress() -> String:
 	return "Abstract Trigger has no Progress."

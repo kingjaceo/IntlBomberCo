@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ga8f51p6gb5q"]
+
+[ext_resource type="Script" path="res://game_scenes/world/settlements/resources_display.gd" id="1_go1j7"]
+[ext_resource type="PackedScene" uid="uid://bu22suvuhodrk" path="res://game_scenes/world/settlements/resource_display.tscn" id="2_jk2d1"]
+
+[node name="ResourcesDisplay" type="HBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -388.0
+offset_top = -151.0
+offset_right = 388.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_go1j7")
+
+[node name="ResourceDisplay" parent="." instance=ExtResource("2_jk2d1")]
+layout_mode = 2
+
+[node name="ResourceDisplay2" parent="." instance=ExtResource("2_jk2d1")]
+layout_mode = 2
+
+[node name="ResourceDisplay3" parent="." instance=ExtResource("2_jk2d1")]
+layout_mode = 2

@@ -13,3 +13,4 @@ enum BuildingType {RESIDENTIAL, COMMERCIAL, INDUSTRIAL, MILITARY}
 enum RewardType {NONE, REPUTATION, VICTORY}
 enum TriggerType {NONE, DELIVERED}
 enum ReputationType {HELP, HURT}
+enum ResourceType {POPULATION, STONE, FOOD, BRONZE}

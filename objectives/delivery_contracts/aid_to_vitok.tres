@@ -1,18 +1,12 @@
-[gd_resource type="Resource" script_class="Objective" load_steps=8 format=3 uid="uid://7hlv8atp4uma"]
+[gd_resource type="Resource" script_class="Objective" load_steps=6 format=3 uid="uid://7hlv8atp4uma"]
 
-[ext_resource type="Script" path="res://reputation/reputation.gd" id="1_1u3c2"]
 [ext_resource type="Script" path="res://objectives/rewards/reputation.gd" id="2_mcoc5"]
 [ext_resource type="Script" path="res://objectives/objective.gd" id="3_qf4wf"]
 [ext_resource type="Script" path="res://objectives/triggers/delivered_trigger.gd" id="4_dfjar"]
 
-[sub_resource type="Resource" id="Resource_rti35"]
-script = ExtResource("1_1u3c2")
-helpfulness = 1.0
-destructiveness = 0.0
-
-[sub_resource type="Resource" id="Resource_4hg2q"]
+[sub_resource type="Resource" id="Resource_5kdd8"]
 script = ExtResource("2_mcoc5")
-reputation = SubResource("Resource_rti35")
+amounts = {}
 
 [sub_resource type="Resource" id="Resource_jhqa5"]
 script = ExtResource("4_dfjar")
@@ -22,9 +16,11 @@ target_amount = 1.0
 
 [resource]
 script = ExtResource("3_qf4wf")
-name = "Deliver aid to Vitok."
+name = "Distribute"
 description = ""
-completion_reward = SubResource("Resource_4hg2q")
+flavor_text = ""
+completion_reward = SubResource("Resource_5kdd8")
 trigger = SubResource("Resource_jhqa5")
+available = false
 accepted = false
 completed = false
