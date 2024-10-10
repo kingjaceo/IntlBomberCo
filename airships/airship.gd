@@ -18,7 +18,7 @@ var actual_power_levels: Dictionary # {String name: float level}
 
 var location: Enums.PlaceName
 
-var hold: Hold
+@export var hold: Hold
 
 var active_contracts: Array[Objective]
 var contract_limit: int = 1 # >= len(objectives)
@@ -54,14 +54,15 @@ func damage(amount: float):
 		queue_free()
 
 
-func deliver(resource_type, amount, location):
-	# transfer resources to settlement
-	pass
+func deliver(resource_type: String, amount: int, location: Settlement):
+	var amount_delivered = hold.remove(resource_type, amount)
+	location.receive(resource_type, amount_delivered)
 
 
 func complete(objective: Objective):
 	# give self completion reward
-	pass
+	print("I'm finished with an objective!")
+	active_contracts.erase(objective)
 
 
 func get_blackboard() -> Blackboard:
@@ -102,5 +103,7 @@ func _update_destination():
 
 
 func activate(contract: Objective, settlement: Settlement):
-		if contract.trigger is ResourceDeliveredTrigger:
-			settlement.request(contract.trigger.target_resource_type, contract.trigger.target_amount, hold)
+	if contract.trigger is ResourceDeliveredTrigger:
+		var amount_requested = hold.room_for(contract.trigger.target_resource_type)
+		var amount_taken = settlement.request(contract.trigger.target_resource_type, amount_requested)
+		hold.add(contract.trigger.target_resource_type, amount_taken)

@@ -54,6 +54,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Battleground"
 
+[node name="Observer" type="Button" parent="CanvasLayer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Observer"
+
 [node name="EditObjectives" type="Button" parent="CanvasLayer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -114,5 +119,6 @@ metadata/_edit_group_ = true
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/GridContainer/StartGame" to="." method="_load_world"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/GridContainer/Battleground" to="." method="_load_battleground"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/GridContainer/Observer" to="." method="_load_observer_world"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/GridContainer/EditObjectives" to="." method="_load_objective_grid_editor"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/GridContainer/Exit" to="." method="_exit_game"]

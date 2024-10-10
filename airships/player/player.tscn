@@ -79,7 +79,7 @@ grow_vertical = 0
 [node name="InventorySlot" parent="CanvasLayer/InventoryDisplay" instance=ExtResource("8_e61gr")]
 layout_mode = 2
 
-[node name="Icon" parent="CanvasLayer/InventoryDisplay/InventorySlot" instance=ExtResource("9_n6gnt")]
+[node name="Icon2" parent="CanvasLayer/InventoryDisplay/InventorySlot" instance=ExtResource("9_n6gnt")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0

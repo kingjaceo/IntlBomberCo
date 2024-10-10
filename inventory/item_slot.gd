@@ -1,10 +1,19 @@
 class_name ItemSlot
 extends Panel
 
-var icon: ItemIcon
+@onready var icon = %Icon
+@onready var label = %Label
+var amount: int:
+	set(value):
+		amount = value
+		label.text = str(amount)
 
 signal item_added(item: GameItem)
 signal item_removed(item: GameItem)
+
+
+func set_icon(texture: Texture):
+	icon.texture = texture
 
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://b53mv24s6skjf"]
+[gd_scene load_steps=39 format=3 uid="uid://b53mv24s6skjf"]
 
 [ext_resource type="Script" path="res://airships/airship.gd" id="1_0pcb0"]
+[ext_resource type="Script" path="res://airships/hold.gd" id="2_5wiqn"]
 [ext_resource type="Texture2D" uid="uid://sbon6eujnn3c" path="res://airships/player/airship_low_detail.png" id="2_otj4a"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_w2g6q"]
 [ext_resource type="Shader" path="res://buildings/dotted_circle_outline.gdshader" id="3_5vnn4"]
@@ -30,6 +31,14 @@
 [ext_resource type="Script" path="res://airships/behaviors/power_down.gd" id="29_fexfb"]
 [ext_resource type="Script" path="res://airships/behaviors/turn_left.gd" id="30_7oj1s"]
 [ext_resource type="Script" path="res://airships/lightning_striker.gd" id="31_rvtni"]
+[ext_resource type="PackedScene" uid="uid://dlo6uvbuoa4km" path="res://inventory/inventory_display.tscn" id="32_vje3j"]
+[ext_resource type="Script" path="res://inventory/hold_display.gd" id="33_8wnxh"]
+[ext_resource type="PackedScene" uid="uid://bmdf70uyv0uuv" path="res://inventory/item_slot.tscn" id="33_55u23"]
+
+[sub_resource type="Resource" id="Resource_kl8d6"]
+script = ExtResource("2_5wiqn")
+hold_slots = 2
+slot_capacity = 30
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0qgsg"]
 radius = 202.0
@@ -49,6 +58,7 @@ radius = 1024.0
 
 [node name="AIShip_andCrew" type="Node2D"]
 script = ExtResource("1_0pcb0")
+hold = SubResource("Resource_kl8d6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -107,7 +117,7 @@ script = ExtResource("17_yusyw")
 
 [node name="BehaviorTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_w2g6q")
-blackboard = NodePath("@Node@17266")
+blackboard = NodePath("@Node@137267")
 actor = NodePath("..")
 
 [node name="SelectorComposite" type="Node" parent="BehaviorTree"]
@@ -288,6 +298,20 @@ step = 1.0
 show_percentage = false
 script = ExtResource("5_llwec")
 system = "lightning"
+
+[node name="HoldDisplay" parent="Displays" instance=ExtResource("32_vje3j")]
+layout_mode = 1
+offset_left = -152.0
+offset_top = 184.0
+offset_right = 108.0
+offset_bottom = 312.0
+script = ExtResource("33_8wnxh")
+
+[node name="InventorySlot" parent="Displays/HoldDisplay" instance=ExtResource("33_55u23")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Displays/HoldDisplay" instance=ExtResource("33_55u23")]
+layout_mode = 2
 
 [connection signal="area_entered" from="Body" to="." method="_dock"]
 [connection signal="mouse_entered" from="Body" to="Body/ColorRect" method="_on_mouse_entered"]

@@ -5,53 +5,62 @@ extends Node
 @export var surplus_threshold: float = 0.75
 # percentage below critical shortage threshold triggers acquisition
 @export var critical_shortage_threshold: float = 0.10
-var resources: Dictionary
-var capacities: Dictionary
+var resources: Resources
+var capacities: Resources
 var distribution_contract: Objective = load("res://objectives/delivery_contracts/distribution_contract.tres")
 
 
-func _ready():
-	if not owner.data.resources_data:
-		owner.data.resources_data = Resources.new()
-	resources = owner.data.resources_data.resources
-	capacities = owner.data.resources_data.capacities
+func add(resources_to_add: Resources):
+	resources.add(resources_to_add)
+
+func take(resources_to_remove: Resources):
+	resources.remove(resources_to_remove)
+
+func add_capacity(additional_capacity: Resources):
+	capacities.add(additional_capacity)
+
+func surplus(resource_type: String) -> int:
+	var surplus_limit = capacities.amount(resource_type) * surplus_threshold
+	return max(resources.amount(resource_type) - surplus_limit, 0)
+
+func has(resources_to_check: Resources) -> bool:
+	for resource in resources_to_check.keys():
+		if resources.amount(resource) < resources_to_check.amount(resource):
+			return false # we don't have enouhg
+	return true # we have everything
+
+#func resource_produced(resource_type: Enums.ResourceType, amount: float):
+	#amounts.amount(resource_type) = min(amounts.amount(resource_type) + amount, capacities.amount(resource_type))
 
 
-func surplus(resource_type) -> int:
-	var surplus_limit = capacities[resource_type] * surplus_threshold
-	return max(resources[resource_type] - surplus_limit, 0)
+#func add_resource(resource_type: Enums.ResourceType, amount: int) -> void:
+	#if resources.has(resource_type):
+		#amounts.amount(resource_type) += amount
+	#else:
+		#amounts.amount(resource_type) = amount
 
 
-func resource_produced(resource_type: Enums.ResourceType, amount: float):
-	resources[resource_type] = min(resources[resource_type] + amount, capacities[resource_type])
+#func consume_resource(resource_type: Enums.ResourceType, amount: int) -> bool:
+	#if resources.has(resource_type) and amounts.amount(resource_type) >= amount:
+		#amounts.amount(resource_type) -= amount
+		#return true
+	#return false
 
 
-func add_resource(resource_type: Enums.ResourceType, amount: int) -> void:
-	if resources.has(resource_type):
-		resources[resource_type] = clamp(resources[resource_type] + amount, 0, capacities[resource_type])
-
-
-func consume_resource(resource_type: Enums.ResourceType, amount: int) -> bool:
-	if resources.has(resource_type) and resources[resource_type] >= amount:
-		resources[resource_type] -= amount
-		return true
-	return false
-
-
-func set_capacity(resource_type: Enums.ResourceType, new_capacity: int) -> void:
-	if capacities.has(resource_type):
-		capacities[resource_type] = max(new_capacity, 0)
+#func set_capacity(resource_type: Enums.ResourceType, new_capacity: int) -> void:
+	#if capacities.has(resource_type):
+		#capacities.amount(resource_type) = max(new_capacity, 0)
 
 
 func get_distribution_contracts() -> Array:
 	var distribution_contracts = []
-	for resource in resources:
-		if resources[resource] > capacities[resource] * surplus_threshold:
+	for resource in Enums.resource_types:
+		if resources.amount(resource) > capacities.amount(resource) * surplus_threshold:
 			distribution_contracts.append(_get_distribution_contract(resource))
 	return distribution_contracts
 
 
-func _get_distribution_contract(resource_type: Enums.ResourceType) -> Objective:
+func _get_distribution_contract(resource_type: String) -> Objective:
 	var new_reward: Reputation = Reputation.new()
 	var new_trigger: ResourceDeliveredTrigger = ResourceDeliveredTrigger.new()
 	new_trigger.target_resource_type = resource_type

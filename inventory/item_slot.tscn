@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://inventory/item_slot.gd" id="1_mqlo4"]
 
-[node name="InventorySlot" type="Panel"]
+[node name="ItemSlot" type="Panel"]
 custom_minimum_size = Vector2(128, 128)
 anchors_preset = 8
 anchor_left = 0.5
@@ -17,3 +17,27 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_mqlo4")
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0

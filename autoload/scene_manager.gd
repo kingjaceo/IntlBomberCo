@@ -6,6 +6,7 @@ var current_scene_instance
 var main_menu: PackedScene = load("res://_common/start_screen.tscn")
 var credit_screen: PackedScene = load("res://_common/credit_screen.tscn")
 var world: PackedScene = load("res://game_scenes/world/world.tscn")
+var observer_world: PackedScene = load("res://game_scenes/world/observer_world.tscn")
 var town_menu: PackedScene = load("res://game_scenes/town_screen/town_screen.tscn")
 var objective_grid_editor: PackedScene = load("res://objectives/objective_grid/objective_grid.tscn")
 var battleground: PackedScene = load("res://game_scenes/battleground.tscn")
@@ -19,16 +20,6 @@ func transition_to(scene: PackedScene):
 	await _load_scene(scene)
 	await get_tree().create_timer(0.1).timeout
 	#_toggle_blackscreen()
-
-
-func show_menu(scene: PackedScene):
-	pass
-	#if is_instance_valid(current_scene_instance):
-		#var scene_instance: Node = scene.instantiate()
-		#current_scene.call_deferred("add_child",scene_instance)
-	#get_tree().set_deferred("current_scene",scene_instance)
-	#current_scene = scene_instance
-	#await scene_instance.scene_ready
 
 
 func reload_current_scene():
@@ -77,32 +68,28 @@ func _load_scene(scene:PackedScene) -> void:
 func to_main_menu():
 	transition_to(main_menu)
 
-
 func load_world():
 	transition_to(world)
-
 
 func open_town_menu():
 	transition_to(town_menu)
 
-
 func load_credit_screen():
 	transition_to(credit_screen)
-
 
 func game_over():
 	if is_instance_valid(current_scene):
 		current_scene.show_game_over()
 
-
 func victory():
 	if is_instance_valid(current_scene):
 		current_scene.show_victory()
 
-
 func load_objective_tree_editor():
 	transition_to(objective_grid_editor)
 
-
 func load_battleground():
 	transition_to(battleground)
+
+func load_observer_world():
+	transition_to(observer_world)

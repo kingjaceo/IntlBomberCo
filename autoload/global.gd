@@ -11,7 +11,6 @@ var settlements: Dictionary
 var c_to_tweens: Dictionary # {CanvasItem: Tween)
 
 func highlight(c: CanvasItem):
-	print(c.modulate.v)
 	var tween = get_tree().create_tween()
 	c_to_tweens[c] = tween
 	tween.bind_node(c)

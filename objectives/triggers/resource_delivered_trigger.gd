@@ -2,7 +2,7 @@ class_name ResourceDeliveredTrigger
 extends Trigger
 
 @export var target_place_names: Array
-@export var target_resource_type: Enums.ResourceType
+@export var target_resource_type: String
 @export var target_amount: float
 var current_amount: float
 var active = false
@@ -21,9 +21,9 @@ func try_complete(ship: Ship, location: Settlement) -> bool:
 	var correct_place = location.place_name in target_place_names
 	var correct_resource = ship.hold.has(target_resource_type)
 	current_amount = ship.hold.amount(target_resource_type)
-	var correct_amount = current_amount >= target_amount
-	if correct_place and correct_resource and correct_amount:
-		ship.deliver(resource_type, target_amount, location)
+	#var correct_amount = current_amount >= target_amount
+	if correct_place and correct_resource:
+		ship.deliver(target_resource_type, 1000000, location)
 		return true
 	return false
 

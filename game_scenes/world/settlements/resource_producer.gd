@@ -1,5 +1,5 @@
-class_name ResourceProducer
-extends Node2D
+class_name ResourceProducerDEPRECATED
+extends Resource
 
 @export var resource_type: Enums.ResourceType
 @export var production_rate: float # units per second
@@ -9,7 +9,7 @@ var amount: float
 signal resource_produced(resource_type: Enums.ResourceType, amount: float)
 
 
-func _process(delta):
+func process(delta):
 	amount += delta * production_rate
 	if amount > packet_size:
 		amount -= packet_size
