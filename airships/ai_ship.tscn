@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://airships/hold.gd" id="2_5wiqn"]
 [ext_resource type="Texture2D" uid="uid://sbon6eujnn3c" path="res://airships/player/airship_low_detail.png" id="2_otj4a"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_w2g6q"]
-[ext_resource type="Shader" path="res://buildings/dotted_circle_outline.gdshader" id="3_5vnn4"]
+[ext_resource type="Shader" path="res://_common/shaders/dotted_circle_outline.gdshader" id="3_5vnn4"]
 [ext_resource type="Script" path="res://airships/behaviors/target_selector.gd" id="3_ic0cr"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="3_qq2m7"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="4_gxy04"]
@@ -117,7 +117,7 @@ script = ExtResource("17_yusyw")
 
 [node name="BehaviorTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("2_w2g6q")
-blackboard = NodePath("@Node@137267")
+blackboard = NodePath("@Node@18192")
 actor = NodePath("..")
 
 [node name="SelectorComposite" type="Node" parent="BehaviorTree"]
@@ -307,10 +307,10 @@ offset_right = 108.0
 offset_bottom = 312.0
 script = ExtResource("33_8wnxh")
 
-[node name="InventorySlot" parent="Displays/HoldDisplay" instance=ExtResource("33_55u23")]
+[node name="HoldSlot" parent="Displays/HoldDisplay" instance=ExtResource("33_55u23")]
 layout_mode = 2
 
-[node name="InventorySlot2" parent="Displays/HoldDisplay" instance=ExtResource("33_55u23")]
+[node name="HoldSlot2" parent="Displays/HoldDisplay" instance=ExtResource("33_55u23")]
 layout_mode = 2
 
 [connection signal="area_entered" from="Body" to="." method="_dock"]

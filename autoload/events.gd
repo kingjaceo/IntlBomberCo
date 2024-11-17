@@ -1,6 +1,6 @@
 extends Node
 
-
+@warning_ignore("unused_signal")
 signal building_destroyed(building_type: int)
 signal aid_delivered(location: Vector2, place: Enums.PlaceName)
 signal item_purchased(item: Enums.ItemType)

@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" path="res://_common/game_scene.gd" id="1_lnx2w"]
 [ext_resource type="Texture2D" uid="uid://wo8pjxxq8kk8" path="res://game_scenes/world/desert_tile.png" id="2_5qnfu"]
-[ext_resource type="PackedScene" uid="uid://ctcnh2en3sovj" path="res://game_scenes/world/settlements/village.tscn" id="3_08vrt"]
+[ext_resource type="PackedScene" uid="uid://ctcnh2en3sovj" path="res://game_scenes/world/settlements/settlement.tscn" id="3_08vrt"]
 [ext_resource type="Resource" uid="uid://ck1gtw12jeblh" path="res://game_scenes/world/settlements/daresh_data.tres" id="4_ot67k"]
-[ext_resource type="Script" path="res://inventory/game_item.gd" id="5_o8pvb"]
 [ext_resource type="Script" path="res://game_scenes/world/settlements/settlement_data.gd" id="6_uk3oo"]
 [ext_resource type="PackedScene" uid="uid://b53mv24s6skjf" path="res://airships/ai_ship.tscn" id="8_hi8wj"]
 [ext_resource type="PackedScene" uid="uid://cdm80x5f7vpis" path="res://_common/escape_menu.tscn" id="9_k8byu"]
@@ -12,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b2rr25mgugo3y" path="res://_common/victory_menu.tscn" id="11_0dbg0"]
 [ext_resource type="Script" path="res://controllers/movement_controller.gd" id="11_pd01h"]
 [ext_resource type="Script" path="res://controllers/zoom_controller.gd" id="12_r7odk"]
+[ext_resource type="Script" path="res://controllers/time_controller.gd" id="13_6bcjv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bv5v2"]
 texture = ExtResource("2_5qnfu")
@@ -25,12 +25,14 @@ sources/1 = SubResource("TileSetAtlasSource_bv5v2")
 [sub_resource type="Resource" id="Resource_4q8jh"]
 script = ExtResource("6_uk3oo")
 settlement_name = 1
-items = Array[ExtResource("5_o8pvb")]([])
+items = null
+features = null
 
 [sub_resource type="Resource" id="Resource_07cmc"]
 script = ExtResource("6_uk3oo")
 settlement_name = 2
-items = Array[ExtResource("5_o8pvb")]([])
+items = null
+features = null
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_lnx2w")
@@ -68,6 +70,7 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 position = Vector2(736, 457)
 
 [node name="MovementController" type="Node" parent="Camera2D"]
@@ -76,3 +79,6 @@ script = ExtResource("11_pd01h")
 [node name="ZoomController" type="Node" parent="Camera2D"]
 script = ExtResource("12_r7odk")
 min_zoom = Vector2(0.1, 0.1)
+
+[node name="TimeController" type="Node" parent="Camera2D"]
+script = ExtResource("13_6bcjv")

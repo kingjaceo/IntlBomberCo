@@ -84,9 +84,9 @@ func get_screen_center(node: Node) -> Vector2:
 
 func load_game_data(path: String):
 	Global.game_data = ResourceLoader.load("res://game_data/player_game_data.tres")
-	for contract in Global.game_data.contracts:
-		if contract.accepted:
-			contract.activate()
+	#for contract in Global.game_data.contracts:
+		#if contract.accepted:
+			#contract.activate()
 
 
 func save_game_data(path: String):

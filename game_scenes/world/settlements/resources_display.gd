@@ -14,7 +14,7 @@ var resources: Resources
 func _ready():
 	for child in get_children():
 		child.queue_free()
-	await owner.tree_entered
+	await owner.ready
 	for resource_type in Enums.ResourceType.values():
 		var c = resource_display.instantiate()
 		c.resources = resources

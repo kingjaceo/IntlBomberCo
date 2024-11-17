@@ -13,12 +13,24 @@ enum BuildingType {RESIDENTIAL, COMMERCIAL, INDUSTRIAL, MILITARY}
 enum RewardType {NONE, REPUTATION, VICTORY}
 enum TriggerType {NONE, DELIVERED}
 enum ReputationType {HELP, HURT}
+enum SettlementFeature {SPRING, STONE, ORE}
 
 enum ResourceType {POPULATION, STONE, FOOD, BRONZE}
-var resource_types: Array[String] = ["population", "stone", "food", "bronze"]
-var empty_resources_dict: Dictionary = {
-	"population": 0,
-	"stone": 0,
-	"food": 0,
-	"bronze": 0,
+var ResourceWeights = {
+	ResourceType.POPULATION: 0,
+	ResourceType.STONE: 1,
+	ResourceType.FOOD: 5,
+	ResourceType.BRONZE: 3
 }
+var Colors = [
+	Color.FIREBRICK,
+	Color.GOLDENROD,
+	Color.CORAL,
+	Color.SEA_GREEN
+]
+var buildings = [
+	load("res://game_scenes/world/settlements/buildings/apartment.tres"),
+	load("res://game_scenes/world/settlements/buildings/quarry.tres"),
+	load("res://game_scenes/world/settlements/buildings/bronze_manufactory.tres"),
+	load("res://game_scenes/world/settlements/buildings/orchard.tres"),
+]

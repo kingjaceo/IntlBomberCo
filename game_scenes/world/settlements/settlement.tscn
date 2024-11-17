@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctcnh2en3sovj"]
+[gd_scene load_steps=8 format=3 uid="uid://ctcnh2en3sovj"]
 
 [ext_resource type="Script" path="res://game_scenes/world/settlements/settlement.gd" id="1_r0coc"]
 [ext_resource type="Script" path="res://game_scenes/world/settlements/building_manager.gd" id="2_c5pst"]
-[ext_resource type="Script" path="res://buildings/building.gd" id="3_w4gkh"]
 [ext_resource type="Script" path="res://game_scenes/world/settlements/resource_manager.gd" id="4_o2wfa"]
 [ext_resource type="PackedScene" uid="uid://htv2xjxwl35t" path="res://buildings/apartment.tscn" id="4_rx346"]
 [ext_resource type="PackedScene" uid="uid://ga8f51p6gb5q" path="res://game_scenes/world/settlements/resources_display.tscn" id="5_0b17w"]
@@ -30,19 +29,9 @@ position = Vector2(261, -243)
 [node name="Apartment5" parent="BuildingManager" instance=ExtResource("4_rx346")]
 position = Vector2(-97, -232)
 
-[node name="Bronze Manufactory" type="Node2D" parent="BuildingManager"]
-script = ExtResource("3_w4gkh")
-
-[node name="Quarry" type="Node2D" parent="BuildingManager"]
-script = ExtResource("3_w4gkh")
-
-[node name="SandPlumOrchard" type="Node2D" parent="BuildingManager"]
-script = ExtResource("3_w4gkh")
-
 [node name="Dock" parent="." instance=ExtResource("5_0dmav")]
 position = Vector2(-116, 36)
 scale = Vector2(1.72, 1.72)
-building_type = 0
 
 [node name="Bounds" type="Area2D" parent="."]
 visible = false
@@ -79,5 +68,14 @@ offset_top = 328.0
 offset_right = 381.0
 offset_bottom = 676.0
 grow_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -167.0
+offset_top = -343.0
+offset_right = -127.0
+offset_bottom = -303.0
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
 
 [connection signal="area_entered" from="Bounds" to="." method="_on_area_detected"]

@@ -16,6 +16,10 @@ func set_icon(texture: Texture):
 	icon.texture = texture
 
 
+func clear():
+	icon.texture = null
+	label.text = ""
+
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	if has_node("Icon"):
 		return false

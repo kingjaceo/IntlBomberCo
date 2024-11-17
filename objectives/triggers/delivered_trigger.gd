@@ -12,7 +12,7 @@ func _init():
 	trigger_type = Enums.TriggerType.DELIVERED
 
 
-func activate():
+func activate(ship: Ship, location: Settlement):
 	current_amount = 0
 	active = true
 

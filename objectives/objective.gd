@@ -20,13 +20,13 @@ signal objective_completed
 
 func accept(): # called when contract is accepted by player
 	accepted = true
-	activate()
+	#activate() # need to activate this, probably
 	if upfront_reward:
 		upfront_reward.receive()
 
 
-func activate(): # called when contract is loaded into memory or accepted
-	trigger.activate()
+func activate(ship: Ship, location: Settlement): # called when contract is loaded into memory or accepted
+	trigger.activate(ship, location)
 	trigger.triggered.connect(_on_trigger)
 	trigger.progress_changed.connect(progress_changed.emit)
 

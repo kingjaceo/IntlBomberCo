@@ -44,8 +44,8 @@ func remove_downlink(location: Vector2i):
 
 
 func frontier() -> Array[Objective]:
-	var frontier: Array[Objective]
+	var _frontier: Array[Objective]
 	for objective in grid.values():
 		if objective.available:
-			frontier.append(objective)
-	return frontier
+			_frontier.append(objective)
+	return _frontier

@@ -1,14 +1,14 @@
-[gd_scene load_steps=16 format=4 uid="uid://dtwh113wc5fpm"]
+[gd_scene load_steps=14 format=4 uid="uid://dtwh113wc5fpm"]
 
 [ext_resource type="Script" path="res://_common/game_scene.gd" id="1_mfa67"]
-[ext_resource type="PackedScene" uid="uid://ctcnh2en3sovj" path="res://game_scenes/world/settlements/village.tscn" id="2_dkhhs"]
+[ext_resource type="PackedScene" uid="uid://ctcnh2en3sovj" path="res://game_scenes/world/settlements/settlement.tscn" id="2_dkhhs"]
 [ext_resource type="Texture2D" uid="uid://wo8pjxxq8kk8" path="res://game_scenes/world/desert_tile.png" id="2_mahel"]
 [ext_resource type="Resource" uid="uid://ck1gtw12jeblh" path="res://game_scenes/world/settlements/daresh_data.tres" id="3_277t3"]
 [ext_resource type="PackedScene" uid="uid://cdm80x5f7vpis" path="res://_common/escape_menu.tscn" id="3_ahabp"]
 [ext_resource type="PackedScene" uid="uid://thons4d02mrv" path="res://airships/player/player.tscn" id="4_pims6"]
-[ext_resource type="Script" path="res://inventory/game_item.gd" id="6_fnxm6"]
+[ext_resource type="Resource" uid="uid://cyxjmqo2as0wr" path="res://game_scenes/world/vitok_data.tres" id="5_mnj4g"]
+[ext_resource type="Resource" uid="uid://cd5m5bvkk50hj" path="res://game_scenes/world/sabrek_data.tres" id="6_ekgyd"]
 [ext_resource type="PackedScene" uid="uid://b53mv24s6skjf" path="res://airships/ai_ship.tscn" id="8_y6d1a"]
-[ext_resource type="Script" path="res://game_scenes/world/settlements/settlement_data.gd" id="9_gobnr"]
 [ext_resource type="PackedScene" uid="uid://br5gcmmu5hjyt" path="res://_common/game_over_menu.tscn" id="10_1m3jf"]
 [ext_resource type="PackedScene" uid="uid://b2rr25mgugo3y" path="res://_common/victory_menu.tscn" id="12_a2paj"]
 
@@ -20,16 +20,6 @@ texture_region_size = Vector2i(256, 256)
 [sub_resource type="TileSet" id="TileSet_0sc3i"]
 tile_size = Vector2i(256, 256)
 sources/1 = SubResource("TileSetAtlasSource_bv5v2")
-
-[sub_resource type="Resource" id="Resource_4q8jh"]
-script = ExtResource("9_gobnr")
-settlement_name = 1
-items = Array[ExtResource("6_fnxm6")]([])
-
-[sub_resource type="Resource" id="Resource_07cmc"]
-script = ExtResource("9_gobnr")
-settlement_name = 2
-items = Array[ExtResource("6_fnxm6")]([])
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_mfa67")
@@ -44,11 +34,11 @@ data = ExtResource("3_277t3")
 
 [node name="Vitok" parent="." instance=ExtResource("2_dkhhs")]
 position = Vector2(5232, 3221)
-data = SubResource("Resource_4q8jh")
+data = ExtResource("5_mnj4g")
 
 [node name="Sabrek" parent="." instance=ExtResource("2_dkhhs")]
 position = Vector2(3129, 148)
-data = SubResource("Resource_07cmc")
+data = ExtResource("6_ekgyd")
 
 [node name="Player" parent="." instance=ExtResource("4_pims6")]
 

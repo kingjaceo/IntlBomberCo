@@ -1,4 +1,4 @@
-class_name TimeControllerDEPRECATED
+class_name TimeController
 extends Node
 
 

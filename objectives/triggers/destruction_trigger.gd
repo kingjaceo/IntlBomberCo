@@ -6,7 +6,7 @@ extends Trigger
 var current_amount = 0
 
 
-func activate():
+func activate(ship: Ship, settlement: Settlement):
 	current_amount = 0
 	Events.building_destroyed.connect(_on_building_destroyed)
 

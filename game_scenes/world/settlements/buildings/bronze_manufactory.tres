@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=8 format=3 uid="uid://bvlfycqr0cgm3"]
+
+[ext_resource type="Script" path="res://game_scenes/world/settlements/resources.gd" id="1_b65ra"]
+[ext_resource type="Script" path="res://game_scenes/world/settlements/building_data.gd" id="2_dq5xn"]
+
+[sub_resource type="Resource" id="Resource_q7o73"]
+script = ExtResource("1_b65ra")
+data = Dictionary[int, int]({
+3: 50
+})
+
+[sub_resource type="Resource" id="Resource_6sbth"]
+script = ExtResource("1_b65ra")
+data = Dictionary[int, int]({
+1: 50
+})
+
+[sub_resource type="Resource" id="Resource_h8k0s"]
+script = ExtResource("1_b65ra")
+data = Dictionary[int, float]({})
+
+[sub_resource type="Resource" id="Resource_eauu5"]
+script = ExtResource("1_b65ra")
+data = Dictionary[int, float]({})
+
+[sub_resource type="Resource" id="Resource_a4uer"]
+script = ExtResource("1_b65ra")
+data = Dictionary[int, int]({
+3: 1
+})
+
+[resource]
+script = ExtResource("2_dq5xn")
+name = "Bronze Manufactory"
+building_type = 2
+building_cost = SubResource("Resource_6sbth")
+produced_resources = SubResource("Resource_a4uer")
+production_cycle_time = 10.0
+consumed_resources = SubResource("Resource_h8k0s")
+consumption_cycle_time = 0.0
+additional_capacity = SubResource("Resource_q7o73")
+desired_minimum = SubResource("Resource_eauu5")
+required_features = Array[int]([2])
+build_time = 20.0

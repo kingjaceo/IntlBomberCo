@@ -6,7 +6,7 @@ extends Trigger
 var current_amount = 0
 
 
-func activate():
+func activate(ship: Ship, location: Settlement):
 	Events.item_purchased.connect(_on_item_purchased)
 
 

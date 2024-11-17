@@ -5,7 +5,7 @@ extends Trigger
 var current_amount = 0
 
 
-func activate():
+func activate(ship: Ship, settlement: Settlement):
 	Events.aid_delivered.connect(_on_aid_delivered)
 
 

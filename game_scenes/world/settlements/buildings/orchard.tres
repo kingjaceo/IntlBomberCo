@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=8 format=3 uid="uid://lw0qx3104541"]
+
+[ext_resource type="Script" path="res://game_scenes/world/settlements/resources.gd" id="1_kk8vm"]
+[ext_resource type="Script" path="res://game_scenes/world/settlements/building_data.gd" id="2_kgq0t"]
+
+[sub_resource type="Resource" id="Resource_wkrbq"]
+script = ExtResource("1_kk8vm")
+data = Dictionary[int, int]({
+2: 200
+})
+
+[sub_resource type="Resource" id="Resource_kfbln"]
+script = ExtResource("1_kk8vm")
+data = Dictionary[int, int]({
+1: 2
+})
+
+[sub_resource type="Resource" id="Resource_75ykg"]
+script = ExtResource("1_kk8vm")
+data = Dictionary[int, float]({})
+
+[sub_resource type="Resource" id="Resource_t5f0v"]
+script = ExtResource("1_kk8vm")
+data = Dictionary[int, int]({
+2: 50
+})
+
+[sub_resource type="Resource" id="Resource_n3wox"]
+script = ExtResource("1_kk8vm")
+data = Dictionary[int, int]({
+2: 20
+})
+
+[resource]
+script = ExtResource("2_kgq0t")
+name = "Sand Plum Orchard"
+building_type = 1
+building_cost = SubResource("Resource_kfbln")
+produced_resources = SubResource("Resource_n3wox")
+production_cycle_time = 3.0
+consumed_resources = SubResource("Resource_75ykg")
+consumption_cycle_time = 0.0
+additional_capacity = SubResource("Resource_wkrbq")
+desired_minimum = SubResource("Resource_t5f0v")
+required_features = Array[int]([0])
+build_time = 10.0

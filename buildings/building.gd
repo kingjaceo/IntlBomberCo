@@ -1,21 +1,13 @@
 class_name Building
 extends Node2D
 
-@export var building_type: Enums.BuildingType
-@onready var sprite_2d: Sprite2D = %Sprite2D
-
+@export var building_data: BuildingData
 @export var health: float = 100
 var destroyed: bool
 var settlement: Settlement
-
-@export var building_cost: Resources
-@export var produced_resources: Resources
-@export var production_cycle_period: float # seconds
-var production_timer: Timer = Timer.new()
-@export var consumed_resources: Resources
-@export var additional_capacity: Resources
-@export var consumption_cycle_period: float # seconds
+@onready var sprite_2d: Sprite2D = $Sprite2D
 var consumption_timer: Timer = Timer.new()
+var production_timer: Timer = Timer.new()
 
 # TODO: use time_until_cycle_end so that saving/reloading doesn't waste resources
 # the building manager connects to this to daisy chain signals
@@ -27,10 +19,13 @@ func _ready():
 	add_child(production_timer)
 	add_child(consumption_timer)
 	settlement = owner
-	await settlement.tree_entered
-	settlement.increase_resource_capacity(additional_capacity)
-	_consumption()
-	_production()
+	await settlement.ready
+	settlement.increase_resource_capacity(building_data.additional_capacity)
+	settlement.increase_desired_minimum(building_data.desired_minimum)
+	if building_data.consumption_cycle_time > 0:
+		_consumption()
+	if building_data.production_cycle_time > 0:
+		_production()
 
 
 func damage(amount: float):
@@ -39,14 +34,14 @@ func damage(amount: float):
 		destroyed = true
 		sprite_2d.set_modulate(Color.BLACK)
 		building_destroyed.emit()
-		Events.building_destroyed.emit(building_type)
+		Events.building_destroyed.emit(building_data.building_type)
 
 
 func _consumption():
 	while true:
-		consumption_timer.start(consumption_cycle_period)
-		if settlement.has(consumed_resources):
-			settlement.take_resources_from_settlement(consumed_resources)
+		consumption_timer.start(building_data.consumption_cycle_time)
+		if settlement.has(building_data.consumed_resources):
+			settlement.take_resources_from_settlement(building_data.consumed_resources)
 			production_timer.set_paused(false)
 		else:
 			_failed_to_consume()
@@ -56,10 +51,16 @@ func _consumption():
 
 func _production():
 	while true:
-		production_timer.start(production_cycle_period)
+		production_timer.start(building_data.production_cycle_time)
 		await production_timer.timeout
-		settlement.give_resources_to(produced_resources)
+		settlement.give_resources_to_settlement(building_data.produced_resources)
 
 
 func _failed_to_consume():
 	print("I didn't consume what I wanted/needed to! Are there consequences???")
+
+func production_rate():
+	return building_data.production_rate
+
+func consumption_rate():
+	return building_data.consumption_rate

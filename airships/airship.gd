@@ -54,9 +54,9 @@ func damage(amount: float):
 		queue_free()
 
 
-func deliver(resource_type: String, amount: int, location: Settlement):
+func deliver(resource_type: Enums.ResourceType, amount: int, settlement: Settlement):
 	var amount_delivered = hold.remove(resource_type, amount)
-	location.receive(resource_type, amount_delivered)
+	settlement.give_resource_to_settlement(resource_type, amount_delivered)
 
 
 func complete(objective: Objective):
@@ -89,7 +89,7 @@ func _choose_contracts(settlement):
 		var choice = randi() % len(available_contracts)
 		while len(active_contracts) < contract_limit:
 			var new_contract = available_contracts[choice]
-			activate(new_contract, settlement)
+			new_contract.activate(self, settlement)
 			active_contracts.append(available_contracts[choice])
 			choice = (choice + 1) % len(available_contracts)
 
@@ -102,8 +102,7 @@ func _update_destination():
 			return
 
 
-func activate(contract: Objective, settlement: Settlement):
-	if contract.trigger is ResourceDeliveredTrigger:
-		var amount_requested = hold.room_for(contract.trigger.target_resource_type)
-		var amount_taken = settlement.request(contract.trigger.target_resource_type, amount_requested)
-		hold.add(contract.trigger.target_resource_type, amount_taken)
+# take the suprlus from the settlement to deliver
+#func activate(contract: Objective, settlement: Settlement):
+	#if contract.trigger is ResourceDeliveredTrigger:
+		

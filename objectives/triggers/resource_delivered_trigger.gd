@@ -2,7 +2,7 @@ class_name ResourceDeliveredTrigger
 extends Trigger
 
 @export var target_place_names: Array
-@export var target_resource_type: String
+@export var target_resource_type: Enums.ResourceType
 @export var target_amount: float
 var current_amount: float
 var active = false
@@ -12,9 +12,10 @@ func _init():
 	trigger_type = Enums.TriggerType.DELIVERED
 
 
-func activate():
-	current_amount = 0
-	active = true
+func activate(ship: Ship, settlement: Settlement):
+	var amount_requested = ship.hold.room_for(target_resource_type)
+	var amount_taken = settlement.take_resource_from_settlement(target_resource_type, amount_requested)
+	ship.hold.add(target_resource_type, amount_taken)
 
 
 func try_complete(ship: Ship, location: Settlement) -> bool:

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=8 format=3 uid="uid://cma8mab7qsmwi"]
+
+[ext_resource type="Script" path="res://game_scenes/world/settlements/resources.gd" id="1_iecs4"]
+[ext_resource type="Script" path="res://game_scenes/world/settlements/building_data.gd" id="2_hgcuo"]
+
+[sub_resource type="Resource" id="Resource_q7o73"]
+script = ExtResource("1_iecs4")
+data = Dictionary[int, int]({
+1: 100
+})
+
+[sub_resource type="Resource" id="Resource_6sbth"]
+script = ExtResource("1_iecs4")
+data = Dictionary[int, int]({
+1: 10
+})
+
+[sub_resource type="Resource" id="Resource_h8k0s"]
+script = ExtResource("1_iecs4")
+data = Dictionary[int, float]({})
+
+[sub_resource type="Resource" id="Resource_eauu5"]
+script = ExtResource("1_iecs4")
+data = Dictionary[int, float]({})
+
+[sub_resource type="Resource" id="Resource_a4uer"]
+script = ExtResource("1_iecs4")
+data = Dictionary[int, float]({})
+
+[resource]
+script = ExtResource("2_hgcuo")
+name = "Quarry"
+building_type = 2
+building_cost = SubResource("Resource_6sbth")
+produced_resources = SubResource("Resource_a4uer")
+production_cycle_time = 5.0
+consumed_resources = SubResource("Resource_h8k0s")
+consumption_cycle_time = 0.0
+additional_capacity = SubResource("Resource_q7o73")
+desired_minimum = SubResource("Resource_eauu5")
+required_features = Array[int]([1])
+build_time = 10.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://8cma6mur4xhm"]
 
-[ext_resource type="Shader" path="res://_common/scrolling_background.gdshader" id="1_u3n2b"]
+[ext_resource type="Shader" path="res://_common/shaders/scrolling_background.gdshader" id="1_u3n2b"]
 [ext_resource type="Script" path="res://_common/game_menu.gd" id="1_vdana"]
 [ext_resource type="Texture2D" uid="uid://bxaciubp3a2ui" path="res://icon.svg" id="2_xacsy"]
 [ext_resource type="Theme" uid="uid://twbyj3fev8td" path="res://_common/main_theme.tres" id="3_y4704"]

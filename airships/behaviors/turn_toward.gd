@@ -4,7 +4,7 @@ const TOLERANCE = PI/20
 @export_enum("Target", "Destination") var target_type
 var target
 
-func tick(actor, blackboard: Blackboard):
+func tick(actor, _blackboard: Blackboard):
 	if target_type == 0:
 		target = actor.target
 	elif target_type == 1:

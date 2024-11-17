@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SettlementData" load_steps=3 format=3 uid="uid://cyxjmqo2as0wr"]
+
+[ext_resource type="Resource" uid="uid://df1wbfre5rcq6" path="res://game_scenes/world/settlements/vitok_resources.tres" id="1_cntka"]
+[ext_resource type="Script" path="res://game_scenes/world/settlements/settlement_data.gd" id="2_5n75k"]
+
+[resource]
+script = ExtResource("2_5n75k")
+settlement_name = 1
+resources_data = ExtResource("1_cntka")
+items = null
+features = Array[int]([1])

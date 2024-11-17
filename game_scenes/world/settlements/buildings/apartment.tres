@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=8 format=3 uid="uid://bfoshssfq12w4"]
+
+[ext_resource type="Script" path="res://game_scenes/world/settlements/resources.gd" id="1_b8h4s"]
+[ext_resource type="Script" path="res://game_scenes/world/settlements/building_data.gd" id="2_n0b5a"]
+
+[sub_resource type="Resource" id="Resource_q7o73"]
+script = ExtResource("1_b8h4s")
+data = Dictionary[int, int]({
+0: 5
+})
+
+[sub_resource type="Resource" id="Resource_6sbth"]
+script = ExtResource("1_b8h4s")
+data = Dictionary[int, int]({
+1: 10
+})
+
+[sub_resource type="Resource" id="Resource_m4hkn"]
+script = ExtResource("1_b8h4s")
+data = Dictionary[int, int]({
+2: 1
+})
+
+[sub_resource type="Resource" id="Resource_76ywv"]
+script = ExtResource("1_b8h4s")
+data = Dictionary[int, int]({
+0: 5,
+2: 10
+})
+
+[sub_resource type="Resource" id="Resource_a4uer"]
+script = ExtResource("1_b8h4s")
+data = Dictionary[int, int]({
+0: 1
+})
+
+[resource]
+script = ExtResource("2_n0b5a")
+name = "Apartment"
+building_type = 0
+building_cost = SubResource("Resource_6sbth")
+produced_resources = SubResource("Resource_a4uer")
+production_cycle_time = 20.0
+consumed_resources = SubResource("Resource_m4hkn")
+consumption_cycle_time = 1.0
+additional_capacity = SubResource("Resource_q7o73")
+desired_minimum = SubResource("Resource_76ywv")
+required_features = Array[int]([])
+build_time = 5.0

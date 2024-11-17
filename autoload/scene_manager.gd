@@ -26,7 +26,7 @@ func reload_current_scene():
 	_load_scene(current_scene)
 
 
-func _fade_in_out(length: float):
+func _fade_in_out(_length: float):
 	var tween = get_tree().create_tween()
 	blackscreen.visible = false
 	blackscreen.modulate.a = 0.0

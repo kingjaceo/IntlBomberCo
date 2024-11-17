@@ -10,7 +10,7 @@ signal triggered
 signal progress_changed
 
 
-func activate():
+func activate(ship: Ship, settlement: Settlement):
 	pass
 
 

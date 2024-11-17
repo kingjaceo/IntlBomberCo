@@ -22,21 +22,26 @@ func _ready():
 
 func take_resources_from_settlement(resources: Resources):
 	# request may be more than available, take as much as possible
-	var resources_available = resource_manager.take(resources)
-	return resources_available
+	resource_manager.take(resources)
 
+func take_resource_from_settlement(resource_type: Enums.ResourceType, amount: int) -> int:
+	var resource_available = resource_manager.take_resource(resource_type, amount)
+	return resource_available
 
 func give_resources_to_settlement(resources: Resources):
 	resource_manager.add(resources)
 
+func give_resource_to_settlement(resource_type: Enums.ResourceType, amount: int):
+	resource_manager.add_resource(resource_type, amount)
 
 func increase_resource_capacity(additional_capacity: Resources):
 	resource_manager.add_capacity(additional_capacity)
 
+func increase_desired_minimum(desired_minimum: Resources):
+	resource_manager.add_desired_minimum(desired_minimum)
 
 func has(resources: Resources) -> bool:
 	return resource_manager.has(resources)
-
 
 func get_available_contracts() -> Array:
 	return resource_manager.get_distribution_contracts()
@@ -47,16 +52,3 @@ func _on_area_detected(area: Area2D):
 		Events.aid_delivered.emit(area.global_position, data.settlement_name)
 	if area.owner is Bomb:
 		print("Oh no, you dropped a bomb!!!")
-
-#
-#func _resource_produced(resource_type: Enums.ResourceType, amount: float):
-	#resource_manager.resource_produced(resource_type, amount)
-
-# DEPRECATED
-#func receive(resource_type: Enums.ResourceType, amount: int):
-	#resource_manager.add_resource(resource_type, amount)
-#
-#func request(resource_type: Enums.ResourceType, amount: int):
-	#var amount_to_take = min(amount, resource_manager.surplus(resource_type))
-	#resource_manager.consume_resource(resource_type, amount_to_take)
-	#return amount_to_take

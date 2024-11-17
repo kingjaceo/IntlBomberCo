@@ -6,6 +6,7 @@ extends Resource
 @export var bulidings_data: Buildings
 @export var objective_grid: ObjectiveGrid
 @export var items: Array[GameItem]
+@export var features: Array[Enums.SettlementFeature]
 
 signal contract_added
 

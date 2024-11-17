@@ -1,4 +1,4 @@
-class_name ZoomControllerDEPRECATED
+class_name ZoomController
 extends Node
 
 var target: Camera2D

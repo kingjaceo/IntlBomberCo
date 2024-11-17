@@ -17,10 +17,10 @@ func amount(key: Variant) -> int:
 	return hold.get(key, 0)
 
 
-func add(key: Variant, amount: int) -> int:
+func add(key: Variant, _amount: int) -> int:
 	var amount_added: int = 0
 	var max_to_add  = slot_capacity - hold.get(key, 0)
-	amount_added = min(amount, max_to_add)
+	amount_added = min(_amount, max_to_add)
 	if key in hold:
 		hold[key] += amount_added
 	elif len(hold) < hold_slots:
@@ -29,8 +29,8 @@ func add(key: Variant, amount: int) -> int:
 	return amount_added
 
 
-func remove(key: Variant, amount: int) -> int:
-	var amount_removed: int = min(amount, hold.get(key, 0))
+func remove(key: Variant, _amount: int) -> int:
+	var amount_removed: int = min(_amount, hold.get(key, 0))
 	if hold.has(key):
 		hold[key] -= amount_removed
 		if hold[key] <= 0:

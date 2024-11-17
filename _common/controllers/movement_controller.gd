@@ -1,4 +1,4 @@
-class_name MovementControllerDEPRECATED
+class_name MovementController
 extends Node
 
 @export var speed: float = 300
